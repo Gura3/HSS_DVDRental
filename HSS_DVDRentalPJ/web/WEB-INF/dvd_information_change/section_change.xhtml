@@ -12,41 +12,74 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel="stylesheet" type="text/css" href="../css/title.css"/>
         <link rel="stylesheet" type="text/css" href="../css/section_change.css"/>
+        <script src="../js/section_change.js"/>
+
     </head>
     <body>
         <h1>HCSDVDレンタル</h1>
         <h2>新作区分変更</h2>
-        DVDバーコードをスキャンすると一覧に表示されます。
-
-        <form>
-            <input type="text"/>フリーキーワード
-            
-            <p class="checkboxstyle">
-                <input type="checkbox" name="riyu" value="1" checked="checked" />ドラマ
-                <input type="checkbox" name="riyu" value="1" checked="checked" />アクション
-                <input type="checkbox" name="riyu" value="1" checked="checked" />ホラー
-                <input type="checkbox" name="riyu" value="1" checked="checked" />その他
-            </p>
-            <p class="checkboxstyle">
-                <input type="checkbox" name="riyu" value="1" checked="checked" />シリアス
-                <input type="checkbox" name="riyu" value="1" checked="checked" />サスペンス
-                <input type="checkbox" name="riyu" value="1" checked="checked" />ドキュメント
-                <input type="checkbox" name="riyu" value="1" checked="checked" />スポーツ
-            </p>
-            <p class="checkboxstyle">
-                <input type="checkbox" name="riyu" value="1" checked="checked" />特撮
-                <input type="checkbox" name="riyu" value="1" checked="checked" />青春
-                <input type="checkbox" name="riyu" value="1" checked="checked" />刑事
-                <input type="checkbox" name="riyu" value="1" checked="checked" />ロボット   
-            </p>
 
 
+        <form class="main">
+            <h3>DVDバーコードをスキャンすると一覧に表示されます</h3>
+            <div>
+                フリーキーワード<input type="text"/>
 
-
-
-
-
+            </div>
+            <div>
+                <table>
+                    <tr>
+                        <td colspan="3">結合されたセル</td>
+                        <td colspan="2"><select name="検索内容">
+                                <option value="1" selected="selected">DVDコード</option>
+                                <option value="2">タイトル</option>
+                                <option value="3">バーコード番号</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3">ジャンル絞込み</td>
+                        <td><input type="checkbox" name="riyu" value="1" checked="checked" />ドラマ</td>
+                        <td><input type="checkbox" name="riyu" value="1" checked="checked" />アクション</td>
+                        <td><input type="checkbox" name="riyu" value="1" checked="checked" />ホラー</td>
+                        <td><input type="checkbox" name="riyu" value="1" checked="checked" />その他</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" name="riyu" value="1" checked="checked" />シリアス</td>
+                        <td><input type="checkbox" name="riyu" value="1" checked="checked" />サスペンス</td>
+                        <td><input type="checkbox" name="riyu" value="1" checked="checked" />ドキュメント</td>
+                        <td><input type="checkbox" name="riyu" value="1" checked="checked" />特撮</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" name="riyu" value="1" checked="checked" />特撮</td>
+                        <td><input type="checkbox" name="riyu" value="1" checked="checked" />青春</td>
+                        <td><input type="checkbox" name="riyu" value="1" checked="checked" />刑事</td>
+                        <td><input type="checkbox" name="riyu" value="1" checked="checked" />ロボット</td>
+                    </tr>
+                </table>
+            </div>
         </form>
+        <table border="1" class="selecttable">
+            <tr>
+                <th></th>
+                <th>DVDコード</th>
+                <th>タイトル</th>
+                <th>ジャンル</th>
+                <th>新作区分</th>
+                <th>入荷日</th>
+                <th>区分変更</th>
+            </tr>
+            <tr>
+                <th>1</th>
+                <td>111001</td>
+                <td>情専</td>
+                <td>ホラー</td>
+                <td>新作</td>
+                <td>2016/1/1</td>
+                <td><button>区分変更</button></td>
+            </tr>
+        </table>
+
 
     </body>
 </html>

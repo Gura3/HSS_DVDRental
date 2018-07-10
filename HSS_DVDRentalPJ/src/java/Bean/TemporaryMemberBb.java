@@ -5,10 +5,15 @@
  */
 package Bean;
 
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Named;
+
 /**
  *
  * @author Gura3
  */
+@Named
+@RequestScoped
 
 /* 仮会員バッキングビーン */
 public class TemporaryMemberBb {
@@ -24,4 +29,8 @@ public class TemporaryMemberBb {
     private String mail_address;        //メールアドレス
     private String mail_magazine;       //メールマガジン
     private String registararion_date;  //仮会員登録日
+    
+    public String next(){
+        return "/WEB-INF/top/top";
+    }
 }

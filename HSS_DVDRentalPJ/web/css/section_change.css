@@ -1,0 +1,40 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2018/07/09, 15:27:49
+    Author     : s20163002
+*/
+
+/* メッセージの文字サイズ */
+h3{
+    font-size: 175%;
+}
+
+.main{  
+    width: 75%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/*  */
+.selecttable{
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+}
+
+.checkboxstyle label {
+  display: inline-block;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+table th, table td {
+  border: solid 2px #3498db;    //線の色
+}

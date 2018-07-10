@@ -11,9 +11,10 @@ function keydown(e) {
     if(e.keyCode === 13){
         function keydown(e) {
             if(e.keyCode === 13){
-                document.memberScan.submit();
+                document.cookie = 'ID = ' + document.getElementById("scan").value;
             }else{
-                document.getElementById("member").value = document.getElementById("member").value + String.fromCharCode(e.keyCode);
+                document.getElementById("scan").value = document.getElementById("scan").value + String.fromCharCode(e.keyCode);
+                console.log(document.getElementById("scan").value);
             }
         }
         window.onkeydown = keydown;

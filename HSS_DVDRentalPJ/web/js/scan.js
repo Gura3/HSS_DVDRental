@@ -12,12 +12,9 @@ function keydown(e) {
         var code = "";
         function keydown(e) {
             if(e.keyCode === 13){
-                alert('c');
-                console.log(code);
                 document.cookie = 'ID = ' + code;
                 submit();
             }else{
-                alert('b');
                 code = code + String.fromCharCode(e.keyCode);
             }
         }

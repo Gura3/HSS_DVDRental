@@ -9,12 +9,19 @@
 // ---------------------------
 function keydown(e) {
     if(e.keyCode === 13){
+        alert("a");
+        var code = "";
         function keydown(e) {
             if(e.keyCode === 13){
-                document.cookie = 'ID = ' + document.getElementById("scan").value;
+                alert("c");
+                console.log(code);
+                document.cookie = 'ID = ' + code;
             }else{
-                document.getElementById("scan").value = document.getElementById("scan").value + String.fromCharCode(e.keyCode);
-                console.log(document.getElementById("scan").value);
+                alert("b");
+                code = code + String.fromCharCode(e.keyCode);
+                console.log(code);
+                console.log(code);
+//                document.getElementById("scan").value = document.getElementById("scan").value + String.fromCharCode(e.keyCode);
             }
         }
         window.onkeydown = keydown;

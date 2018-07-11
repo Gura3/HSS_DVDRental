@@ -9,19 +9,13 @@
 // ---------------------------
 function keydown(e) {
     if(e.keyCode === 13){
-        alert("a");
         var code = "";
         function keydown(e) {
             if(e.keyCode === 13){
-                alert("c");
-                console.log(code);
                 document.cookie = 'ID = ' + code;
+                submit();
             }else{
-                alert("b");
                 code = code + String.fromCharCode(e.keyCode);
-                console.log(code);
-                console.log(code);
-//                document.getElementById("scan").value = document.getElementById("scan").value + String.fromCharCode(e.keyCode);
             }
         }
         window.onkeydown = keydown;
@@ -29,3 +23,27 @@ function keydown(e) {
     
 }
 window.onkeydown = keydown;
+
+// ---------------------------
+// ▼B：Servletを呼び出す。
+// ---------------------------
+function submit(){
+ if(window.XMLHttpRequest){
+  req = new XMLHttpRequest();
+ }else if(window.ActiveXObject){
+  req = new ActiveXObject("Microsoft.XMLHTTP");
+ }else{
+  return false;
+ }
+ req.onreadystatechange=callback;
+ console.log("a");
+ req.open("GET","../src/java/Bean/TemporaryMemberBb",true);
+ console.log("b");
+ req.send(null);
+ console.log("c");
+}
+function callback(){
+ if(req.readyState==4 && req.status==200){
+  document.getElementById("result").innerHTML=req.responseText;
+ }
+}

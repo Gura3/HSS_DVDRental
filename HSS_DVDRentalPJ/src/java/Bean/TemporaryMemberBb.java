@@ -31,6 +31,6 @@ public class TemporaryMemberBb {
     private String registararion_date;  //仮会員登録日
     
     public String next(){
-        return "/WEB-INF/top/top";
+        return "/WEB-INF/kashidashi/memberScan";
     }
 }

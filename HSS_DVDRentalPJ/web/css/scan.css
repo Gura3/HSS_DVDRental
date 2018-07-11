@@ -10,6 +10,6 @@ and open the template in the editor.
 
 //入力フォーム透明
 
-#member{
-     display:none;
+#scan{
+    display: none;
 }

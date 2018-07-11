@@ -9,15 +9,15 @@
 // ---------------------------
 function keydown(e) {
     if(e.keyCode === 13){
-        alert("a");
+        alert('a');
         var code = "";
         function keydown(e) {
             if(e.keyCode === 13){
-                alert("c");
+                alert('c');
                 console.log(code);
                 document.cookie = 'ID = ' + code;
             }else{
-                alert("b");
+                alert('b');
                 code = code + String.fromCharCode(e.keyCode);
                 console.log(code);
                 console.log(code);

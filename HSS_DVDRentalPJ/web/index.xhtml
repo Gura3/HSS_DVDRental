@@ -1,17 +1,95 @@
-<?xml version='1.0' encoding='UTF-8' ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <h:head>
-        <title>Facelet Title</title>
+        <title>HCSDVDレンタル-トップページ</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" href="css/title.css"/>
+        <link rel="stylesheet" type="text/css" href="css/top.css"/>
     </h:head>
-    <h:body onload="#{temporaryMemberBb.next()}">
-        Hello from Facelets
-        <h:form>
-            <h:commandButton value="送信" action="#{temporaryMemberBb.next()}"/>
-            
-            
-        </h:form>
+
+    <h:body>
+        <h1>HCSDVDレンタル</h1>
+        <h2>トップページ</h2>
+        <div class="main" >
+            <!-- 左側　-->
+            <div class="box">
+                <div id="tabcontrol" class="leftbox">
+                    <!-- ボタン列左側 -->
+                    <div>
+                        <h:form>
+                            <h:commandButton value="貸出" styleClass="boxcb" action="#{rentalBb.next()}"/>
+                            <h:commandButton value="入会金/延滞料金支払い" styleClass="boxcb" />
+                        </h:form>
+                        <a href="#tabpage2"><button>DVD情報管理</button></a>
+                        <a href="#tabpage4"><button>分析機能</button></a>
+                        <a href="#tabpage5"><button>店員管理</button></a>
+                    </div>
+
+                    <!-- ボタン列右側 -->
+                    <div>
+                        <h:form>
+                            <h:commandButton value="返却" styleClass="boxcb" />
+                        </h:form>
+                        <a href="#tabpage1"><button>会員管理</button></a>
+                        <a href="#tabpage3"><button>DVD在庫管理</button></a>
+                        <h:form>
+                            <h:commandButton value="返金" styleClass="boxcb" />
+                        </h:form>
+                        <a href="#tabpage6"><button>レジ〆</button></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 右側 -->
+            <div class="box">
+                <div id="tabbody" class="rightbox">
+                    <!--会員管理-->
+                    <div id="tabpage1">
+                        <!-- TODO  3つずつ分ける-->
+                        <p><button>会員入会</button></p>
+                        <p><button>会員有効期限更新</button></p>
+                        <p><button>会員情報更新</button></p>
+                        <p><button>会員退会</button></p>
+                        <p><button>ブラック会員登録</button></p>
+                        <p><button>ブラック会員解除</button></p>
+                    </div>
+                    <!-- DVD情報管理 -->
+                    <div id="tabpage2">
+                        <p><button>一覧表示</button></p>
+                        <p><button>区分変更</button></p>
+                        <p><button>プロテクト</button></p>
+                    </div>
+                    <!-- DVD在庫管理 -->
+                    <div id="tabpage3">
+                        <p><button>在庫移動</button></p>
+                        <p><button>棚卸し</button></p>
+                    </div>
+                    <!--　分析機能 -->
+                    <div id="tabpage4">
+                        <p><button>全店舗？人気ランキング参照</button></p>
+                        <p><button>店舗別？</button></p>
+                    </div>
+
+                    <!--　店員管理 -->
+                    <div id="tabpage5">
+                        <p><button>店員登録</button></p>
+                        <p><button>店員情報変更</button></p>
+                    </div>
+
+                    <!--　レジ〆 -->
+                    <!-- レジ〆の名前を変えるかも？ -->
+                    <div id="tabpage6">
+                        <p><button>レジ〆(途中)</button></p>
+                        <p><button>レジ〆(最後)</button></p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- タブのスクリプト -->
+        <script src="js/tab.js"/>
     </h:body>
 </html>
-

@@ -60,6 +60,11 @@ button{
     width: 100%;
     height: 60px;
 }
+.boxcb{
+    margin: 6px 6px 6px 6px;
+    width: 80%;
+    height: 60px;
+}
 /* ▼タブ */
 #tabcontrol a {
    //display: inline-block;            /* インラインブロック化 */

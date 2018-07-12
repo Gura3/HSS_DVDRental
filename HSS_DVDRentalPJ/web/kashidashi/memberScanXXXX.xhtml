@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>HCSDVDレンタル-貸出バーコードスキャン</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        <link rel="stylesheet" type="text/css" href="../css/title.css"/>
+        <link rel="stylesheet" type="text/css" href="../css/memberScan.css"/>
+        <!-- スキャンのスクリプト -->
+        <script src="../js/scan.js"/>
+    </head>
+
+    <body>
+        <h1>HCSDVDレンタル</h1>
+        <h2>貸出処理</h2>
+        <div class="box">
+            <p align="center">スキャン待ち</p>
+        </div>
+        
+        <div class="subMenu">
+            <a href="#"><button>手動指定</button></a>
+            <a href="#"><button>カード忘れ</button></a>
+            <a href="#"><button>処理を中断</button></a>
+        </div>
+        
+        <div class="nextJump">
+            <a href="#" id="next"><button type="button" disabled="disabled">貸出処理</button></a>
+        </div>
+        
+        <a href="../test/MemberScanCompleteServlet.java">aaa</a>
+    </body>
+</html>

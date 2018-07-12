@@ -1,21 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
-    <head>
+    <h:head>
         <title>HCSDVDレンタル-トップページ</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" href="../../resource/css/title.css"/>
+        <link rel="stylesheet" type="text/css" href="../../resource/css/top.css"/>
+    </h:head>
 
-        <link rel="stylesheet" type="text/css" href="../css/title.css"/>
-        <link rel="stylesheet" type="text/css" href="../css/top.css"/>
-    </head>
-
-    <body>
+    <h:body>
         <h1>HCSDVDレンタル</h1>
         <h2>トップページ</h2>
         <div class="main" >
@@ -24,72 +18,88 @@ and open the template in the editor.
                 <div id="tabcontrol" class="leftbox">
                     <!-- ボタン列左側 -->
                     <div>
-                        <a href=""><button>貸出</button></a>
-                        <a href=""><button>入会金/延滞料金支払い</button></a>
+                        <h:form>
+                            <h:commandButton value="貸出" styleClass="boxcb" action="#{rentalBb.next()}"/>
+                            <h:commandButton value="入会金/延滞料金支払い" styleClass="boxcb" />
+                        </h:form>
                         <a href="#tabpage2"><button>DVD情報管理</button></a>
                         <a href="#tabpage4"><button>分析機能</button></a>
                         <a href="#tabpage5"><button>店員管理</button></a>
                     </div>
-                    
+
                     <!-- ボタン列右側 -->
                     <div>
-                        <a href="#"><button>返却</button></a>
+                        <h:form>
+                            <h:commandButton value="返却" styleClass="boxcb" />
+                        </h:form>
                         <a href="#tabpage1"><button>会員管理</button></a>
                         <a href="#tabpage3"><button>DVD在庫管理</button></a>
-                        <a href="#"><button>返金</button></a>
+                        <h:form>
+                            <h:commandButton value="返金" styleClass="boxcb" />
+                        </h:form>
                         <a href="#tabpage6"><button>レジ〆</button></a>
                     </div>
                 </div>
             </div>
-            
+
             <!-- 右側 -->
             <div class="box">
                 <div id="tabbody" class="rightbox">
                     <!--会員管理-->
                     <div id="tabpage1">
                         <!-- TODO  3つずつ分ける-->
-                        <p><button>会員入会</button></p>
-                        <p><button>会員有効期限更新</button></p>
-                        <p><button>会員情報更新</button></p>
-                        <p><button>会員退会</button></p>
-                        <p><button>ブラック会員登録</button></p>
-                        <p><button>ブラック会員解除</button></p>
+                        <h:form>
+                            <h:commandButton value="会員入会" styleClass="boxcb" />
+                            <h:commandButton value="会員有効期限更新" styleClass="boxcb" />
+                            <h:commandButton value="会員情報更新" styleClass="boxcb" />
+                            <h:commandButton value="会員退会" styleClass="boxcb" />
+                            <h:commandButton value="ブラック会員登録" styleClass="boxcb" />
+                            <h:commandButton value="ブラック会員解除" styleClass="boxcb" />
+                        </h:form>
                     </div>
                     <!-- DVD情報管理 -->
                     <div id="tabpage2">
-                        <p><button>一覧表示</button></p>
-                        <p><button>区分変更</button></p>
-                        <p><button>プロテクト</button></p>
+                        <h:form>
+                            <h:commandButton value="一覧表示" styleClass="boxcb" />
+                            <h:commandButton value="区分変更" styleClass="boxcb" />
+                            <h:commandButton value="プロテクト" styleClass="boxcb" />
+                        </h:form>
                     </div>
                     <!-- DVD在庫管理 -->
                     <div id="tabpage3">
-                        <p><button>在庫移動</button></p>
-                        <p><button>棚卸し</button></p>
+                        <h:form>
+                            <h:commandButton value="在庫移動" styleClass="boxcb" />
+                            <h:commandButton value="棚卸し" styleClass="boxcb" />
+                            <h:commandButton value="プロテクト" styleClass="boxcb" />
+                        </h:form>
                     </div>
                     <!--　分析機能 -->
                     <div id="tabpage4">
                         <p><button>全店舗？人気ランキング参照</button></p>
                         <p><button>店舗別？</button></p>
                     </div>
-                    
+
                     <!--　店員管理 -->
                     <div id="tabpage5">
-                        <p><button>店員登録</button></p>
-                        <p><button>店員情報変更</button></p>
+                        <h:form>
+                            <h:commandButton value="店員登録" styleClass="boxcb" />
+                            <h:commandButton value="店員情報変更" styleClass="boxcb" />
+                        </h:form>
                     </div>
-                    
+
                     <!--　レジ〆 -->
                     <!-- レジ〆の名前を変えるかも？ -->
                     <div id="tabpage6">
-                        <p><button>レジ〆(途中)</button></p>
-                        <p><button>レジ〆(最後)</button></p>
+                        <h:form>
+                            <h:commandButton value="レジ〆(途中)" styleClass="boxcb" />
+                            <h:commandButton value="レジ〆(最後)" styleClass="boxcb" />
+                        </h:form>
                     </div>
                 </div>
-
             </div>
         </div>
 
         <!-- タブのスクリプト -->
-        <script src="../js/tab.js"/>
-    </body>
+        <script src="resource/js/tab.js"/>
+    </h:body>
 </html>

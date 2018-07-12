@@ -6,16 +6,16 @@ and open the template in the editor.
 -->
 <!-- 区分変更 -->
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
+<html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
         <title>HCSビデオレンタル</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link rel="stylesheet" type="text/css" href="../../css/title.css"/>
-        <link rel="stylesheet" type="text/css" href="../../css/section_change.css"/>
-        <script src="../js/section_change.js"/>
+        <link rel="stylesheet" type="text/css" href="resource//css/title.css"/>
+        <link rel="stylesheet" type="text/css" href="resource/css/section_change.css"/>
 
-    </head>
-    <body>
+    </h:head>
+    <h:body>
         <h1>HCSDVDレンタル</h1>
         <h2>新作区分変更</h2>
 
@@ -72,10 +72,14 @@ and open the template in the editor.
                 <td>ホラー</td>
                 <td>新作</td>
                 <td>2016/1/1</td>
-                <td><button>区分変更</button></td>
+                <td>
+                    <h:form>
+                        <h:commandButton value="区分変更"/>
+                    </h:form>
+                </td>
             </tr>
         </table>
 
 
-    </body>
+    </h:body>
 </html>

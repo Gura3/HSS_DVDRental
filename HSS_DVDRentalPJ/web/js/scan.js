@@ -13,7 +13,7 @@ function keydown(e) {
         function keydown(e) {
             if(e.keyCode === 13){
                 document.cookie = 'ID = ' + code;
-                submit();
+                tugi();
             }else{
                 code = code + String.fromCharCode(e.keyCode);
             }
@@ -36,14 +36,25 @@ function submit(){
   return false;
  }
  req.onreadystatechange=callback;
- console.log("a");
- req.open("GET","../src/java/Bean/TemporaryMemberBb",true);
- console.log("b");
+ req.open("GET","MemberScanCompleteServlet.java",true);
  req.send(null);
- console.log("c");
 }
 function callback(){
  if(req.readyState==4 && req.status==200){
   document.getElementById("result").innerHTML=req.responseText;
  }
+}
+
+// ---------------------------
+// ▼C：BackingBeanを呼び出す。
+// ---------------------------
+function next(){
+    MemberScanCompleteBb.next();
+}
+
+// ---------------------------
+// ▼D：Servletを呼び出す。
+// ---------------------------
+function tugi(){
+    location.href = "http://localhost:8080/HSS_DVDRentalPJ/faces/index.xhtml";
 }

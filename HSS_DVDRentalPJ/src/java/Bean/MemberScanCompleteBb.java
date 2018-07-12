@@ -31,6 +31,6 @@ public class MemberScanCompleteBb {
     private String registararion_date;  //仮会員登録日
     
     public String next(){
-        return "/WEB-INF/kashidashi/memberScan";
+        return "/pages/kashidashi/memberScan";
     }
 }

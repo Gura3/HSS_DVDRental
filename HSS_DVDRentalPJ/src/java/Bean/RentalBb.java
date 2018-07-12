@@ -20,6 +20,6 @@ import static Parameters.RentalPaths.*;
 public class RentalBb {
     
     public String next(){
-        return "/WEB-INF/kashidashi/memberScan.xhtml";
+        return "/pages/kashidashi/memberScan.xhtml";
     }
 }

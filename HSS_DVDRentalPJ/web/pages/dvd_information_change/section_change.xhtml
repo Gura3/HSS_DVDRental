@@ -13,44 +13,69 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel="stylesheet" type="text/css" href="resource//css/title.css"/>
         <link rel="stylesheet" type="text/css" href="resource/css/section_change.css"/>
-
+        <script src="resource/js/section_change.js"/>
     </h:head>
     <h:body>
         <h1>HCSDVDレンタル</h1>
         <h2>新作区分変更</h2>
 
 
-        <form class="main">
+        <form class="main" name="sampleform">
             <h3>DVDバーコードをスキャンすると一覧に表示されます</h3>
             <div>
+                <!-- checkboxlist -->
                 <table>
+                    <!-- キーワード・検索番号 -->
                     <tr>
-                        <td colspan="3">フリーキーワード<input type="text"/></td>
-                        <td colspan="2"><select name="検索内容">
+                        <td class="centertd">フリーキーワード</td>
+                        <td colspan="3" class="centertd">
+                            <input type="text" />
+                            <button>検索</button>
+                        </td>
+                        
+                        <td class="centertd">
+                            <select name="検索内容">
                                 <option value="1" selected="selected">DVDコード</option>
                                 <option value="2">タイトル</option>
                                 <option value="3">バーコード番号</option>
                             </select>
                         </td>
                     </tr>
+                    <!-- 新作区分 -->
+                    <form class="main" name="sampleform">
                     <tr>
-                        <td rowspan="3">ジャンル絞込み</td>
-                        <td><input type="checkbox" name="riyu" value="1" checked="checked" />ドラマ</td>
-                        <td><input type="checkbox" name="riyu" value="1" checked="checked" />アクション</td>
-                        <td><input type="checkbox" name="riyu" value="1" checked="checked" />ホラー</td>
-                        <td><input type="checkbox" name="riyu" value="1" checked="checked" />その他</td>
+                        <td class="centertd">新作区分</td>
+                        <td><input type="checkbox"  value="1" checked="checked" />旧作</td>
+                        <td><input type="checkbox"  value="1" checked="checked" />準新作</td>
+                        <td colspan="2"><input type="checkbox"  value="1" checked="checked" />新作</td>
+                    </tr>
+                    
+                    <tr>
+                        <td rowspan="4" class="centertd">ジャンル絞込み</td>
+                        <td><input type="checkbox"  value="1" checked="checked" />ドラマ</td>
+                        <td><input type="checkbox"  value="1" checked="checked" />アクション</td>
+                        <td><input type="checkbox"  value="1" checked="checked" />ホラー</td>
+                        <td><input type="checkbox"  value="1" checked="checked" />その他</td>
+                    </tr>
+                    
+                    <tr>
+                        <td><input type="checkbox"  value="1" checked="checked" />シリアス</td>
+                        <td><input type="checkbox"  value="1" checked="checked" />サスペンス</td>
+                        <td><input type="checkbox"  value="1" checked="checked" />ドキュメント</td>
+                        <td><input type="checkbox"  value="1" checked="checked" />特撮</td>
                     </tr>
                     <tr>
-                        <td><input type="checkbox" name="riyu" value="1" checked="checked" />シリアス</td>
-                        <td><input type="checkbox" name="riyu" value="1" checked="checked" />サスペンス</td>
-                        <td><input type="checkbox" name="riyu" value="1" checked="checked" />ドキュメント</td>
-                        <td><input type="checkbox" name="riyu" value="1" checked="checked" />特撮</td>
+                        <td><input type="checkbox"  value="1" checked="checked" />特撮</td>
+                        <td><input type="checkbox"  value="1" checked="checked" />青春</td>
+                        <td><input type="checkbox"  value="1" checked="checked" />刑事</td>
+                        <td><input type="checkbox"  value="1" checked="checked" />ロボット</td>
                     </tr>
+                        </form>
                     <tr>
-                        <td><input type="checkbox" name="riyu" value="1" checked="checked" />特撮</td>
-                        <td><input type="checkbox" name="riyu" value="1" checked="checked" />青春</td>
-                        <td><input type="checkbox" name="riyu" value="1" checked="checked" />刑事</td>
-                        <td><input type="checkbox" name="riyu" value="1" checked="checked" />ロボット</td>
+                        <td colspan="4" class="centertd">
+                            <input type="button" value="すべて選択" onclick="allcheck(true)"/>
+                            <input type="button" value="すべて外す" onclick="allcheck(false)"/>
+                        </td>
                     </tr>
                 </table>
             </div>

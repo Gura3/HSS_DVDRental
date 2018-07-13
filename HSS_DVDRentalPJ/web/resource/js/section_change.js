@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-function showPopup()
-{
-    wOBJ = window.createPopup();
-    popOBJ = wOBJ.document.body;
-    popOBJ.style.border = "solid blue 2px";
-    popOBJ.innerHTML = "サンプル";
-    wOBJ.show(-100, 80, 320, 32, document.body);
+
+//チェックボックスにすべてチェックをつけるまたは外す
+function allcheck( tf ) {
+   var ElementsCount = document.sampleform.elements.length; // チェックボックスの数
+   for( i=0 ; i<ElementsCount ; i++ ) {
+      document.sampleform.elements[i].checked = tf; // ON・OFFを切り替え
+   }
 }

@@ -11,31 +11,48 @@ and open the template in the editor.
 /* メッセージの文字サイズ */
 h3{
     font-size: 175%;
-}
+    text-align: center;
+}/*
 
 .main{  
     width: 75%;
     margin-right: auto;
     margin-left: auto;
-}
+}*/
 
 /*  */
 .selecttable{
-    width: 100%;
-    margin-right: auto;
-    margin-left: auto;
     text-align: center;
 }
 
-.checkboxstyle label {
-  display: inline-block;
+/*.checkboxstyle label {
+    display: inline-block;
 }
 
-table {
-  border-collapse: collapse;
-  width: 100%;
+*/table {
+    border-collapse: collapse;
+    width: 70%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 2em;
 }
 
 table th, table td {
-  border: solid 2px #3498db;    //線の色
+    border: solid 2px #3498db;    //線の色
+    padding: 2px 4px;
+}
+
+
+.centertd{
+    text-align: center;
+}
+
+.buttonstyle{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+//textboxstyle
+.tbstyle{
+    width: 100%
 }

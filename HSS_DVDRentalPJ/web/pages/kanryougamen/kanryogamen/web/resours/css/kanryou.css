@@ -1,0 +1,172 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2018/07/02, 9:45:58
+    Author     : s20163028
+*/
+
+
+body {
+    font-family: メイリオ ,Osaka;	/* 全体のフォント */
+    font-size: 12pt;			/* 全体の文字サイズ */
+    margin: 20px 10px 10px 20px;	/* 上右下左の順でマージンを指定 */
+    line-height: 1.6em;
+}
+
+/*
+h1 {
+    font-size: 1.2em;			/* 文字サイズ */
+/*    border-bottom: solid 1px #999;	/* ボーダーライン（下） */
+/*    text-align: left;		/* 中央揃え */
+/*    min-width:600px;	/* 横幅440px */
+/*    color: #ffff00;
+    background-color: #00008d;
+}
+*/
+/* h1{
+    position: relative;
+    padding: 0.35em 0.5em;
+    background: #0E7AC4;
+    color: #FFF200;
+    text-shadow: 1px 2px 3px #808080;
+}
+h1:before{
+    content: " ";
+    position: absolute;
+    top: -16px;
+    left: 0;
+    width: -webkit-calc(100% - 16px);
+    width: calc(100% - 16px);
+    height: 0;
+    border: solid 8px transparent;
+    border-bottom-color: #b2ddf0;
+    
+}
+
+menu {
+	list-style: none;
+	width: 100px;
+	height: 20px;
+	margin: 2px 2px 0 2px;
+	padding: 2px;
+	display: block;
+	color: #03F;
+	font-size: 18px;
+	text-align: center;
+	border: double 5px #0033FF;
+	border-bottom: none;
+	background-color: #CFC;
+	float: left;
+}
+*/
+div {
+    text-align: center;
+    
+}
+table {
+    height: 40px;
+    margin: 10px;
+    width: 80%;
+    text-align: center;
+}
+#genkei {                   /*現計処理　テーブル*/
+    text-align: center;
+}
+tbody {                     /*現計処理　テーブル*/
+    text-align: center;
+}
+td.hed {                    /*現計処理　テーブル　ヘッダー*/
+    width: 100px;
+    height: 60px;
+}
+tr#so {                     /*現計処理　テーブル　内容*/
+    width: 1000px;
+}
+a {
+    margin: 20px;
+}
+button {
+    text-align: center;
+    margin: 25px;
+}
+p.dai{                      /*完了表示*/
+    text-align: center;
+    color: #00ff00;
+    font-size: 30px;
+}
+strong {                /*青文字　ボタン*/
+    text-align: center;
+    color: #4196e1;
+}
+button.saido {              /*再度処理ボタン*/
+    height: 40px;
+    width: 40px;
+    margin: 40px;
+}
+button.top {                /*トップページボタン*/
+     height: 40px;
+    width: 40px;
+    margin: 40px;
+}
+command.saido {
+     height: 40px;
+    width: 40px;
+    margin: 40px;
+}
+/*table {
+    text-align: center;
+}
+*/
+table.saido {
+    text-align: center;
+    margin: 40px;
+}
+table.top {
+    text-align: center;
+}
+input.saido {
+    height: 80px;
+    width: 200px;
+    margin: 40px;
+}
+input.top {
+    height: 80px;
+    width: 150px;
+    margin: 40px;
+}
+#Pass li {                  /*パンくずリスト*/
+    background: #ffffff url(../images/panri1.png)no-repeat;
+    height: 22px;
+    float: left;
+    line-height: 22px;
+    padding-right: 10px;
+    padding-left: 20px;
+    list-style-type: none;
+}
+#Pass li.loc {              /*パンくずリスト    現在位置*/
+    background: #03F url(../images/pan.png)no-repeat;
+    font-weight: bold;
+    color: #ffffff;
+    list-style-type: none;
+}
+#Pass li.after {
+     content: ">";
+    position: absolute;
+    top: 0;
+    left: 100%;
+    border-style: solid;
+    border-color: transparent;
+    border-left-color: #aedfc6;/*背景色*/
+    border-width: 14px 12px;
+    width: 0;
+    height: 0;
+}
+
+ img {
+    height: 44px;
+    width: 345px;
+}
+

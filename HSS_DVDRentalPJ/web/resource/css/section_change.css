@@ -29,7 +29,8 @@ h3{
     display: inline-block;
 }
 
-*/table {
+*/
+table {
     border-collapse: collapse;
     width: 70%;
     margin-right: auto;

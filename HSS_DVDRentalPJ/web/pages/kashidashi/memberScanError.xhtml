@@ -5,28 +5,27 @@
     <h:head>
         <title>HCSDVDレンタル-貸出バーコードスキャン</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link rel="stylesheet" type="text/css" href="resource/css/title.css"/>
-        <link rel="stylesheet" type="text/css" href="resource/css/memberScan.css"/>
+        <link rel="stylesheet" type="text/css" href="../../resource/css/title.css"/>
+        <link rel="stylesheet" type="text/css" href="../../resource/css/memberError.css"/>
         <!-- スキャンのスクリプト -->
-        <script src="resource/js/scan.js"/>
+        <script src="../../resource/js/scan.js"/>
     </h:head>
     <h:body>
         <h1>HCSDVDレンタル</h1>
         <h2>貸出処理</h2>
         <h3>お客様の会員カードのバーコードをスキャンしてください。</h3>
+        <h3 id="error">：エラー　もう一度スキャンしてください。</h3>
         <div class="box">
-            <p align="center">スキャン待ち</p>
+            <p align="center">読み込みエラー</p>
         </div>
-        
-        
         <div class="subMenu">
             <a href="#"><button>手動指定</button></a>
             <a href="#"><button>カード忘れ</button></a>
-            <input type="button" class="button" value="処理を中断" onClick="location.href='index.xhtml'"/>
+            <input type="button" class="button" value="処理を中断" onClick="location.href='http://localhost:8080/HSS_DVDRentalPJ/'"/>
         </div>
         
         <div class="nextJump">
-            <a href="#" id="rental"><button type="button" disabled="disabled">貸出処理</button></a>
+            <a href="#" id="next"><button type="button" disabled="disabled">貸出処理</button></a>
         </div>
         
         <h:form id="tugi">
@@ -36,4 +35,3 @@
         </h:form>
     </h:body>
 </html>
-

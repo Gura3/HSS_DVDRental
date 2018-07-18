@@ -1,25 +1,54 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
         <title>HCSDVDレンタル-貸出バーコードスキャン</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" href="../../resource/css/title.css"/>
+        <link rel="stylesheet" type="text/css" href="../../resource/css/memberScanComplete.css"/>
+    </h:head>
+    <h:body>
+        <h1>HCSDVDレンタル</h1>
+        <h2>貸出処理</h2>
+        <h3>お客様の会員カードのバーコードをスキャンしてください。</h3>
+        <h3 id="complete">：完了　<span id="gamen">貸出処理画面</span>へ移行してください。</h3>
+        <div id="center"><b><h:outputText value="：警告　この会員の有効期限は残り　#{memberScanCompleteBb.expirationDate}　日です。" styleClass="error" rendered="#{memberScanCompleteBb.flg1}"/></b></div>
+        <div id="center"><b><h:outputText value="：警告　この会員は延滞金を繰り越しています。" styleClass="error" rendered="#{memberScanCompleteBb.flg2}"/></b></div>
+        <div id="delayDate"><h:outputText value="延滞情報" styleClass="delayDate" rendered="#{memberScanCompleteBb.flg2}"/></div>
 
-        <link rel="stylesheet" type="text/css" href="../css/title.css"/>
-        <link rel="stylesheet" type="text/css" href="../css/memberScan.css"/>
-        <!-- スキャンのスクリプト -->
-        <script src="../js/scan.js"/>
-    </head>
-
-    <body>
-        <p>hello,world</p>
+        <h:panelGrid columns="2"  border="1" rendered="#{memberScanCompleteBb.flg2}" columnClasses="left,right">
+            <h:outputText value="延滞金" />
+            <h:outputText value="#{memberScanCompleteBb.delay}"/>
+        </h:panelGrid>
         
-
-
-    </body>
+        <p>お客様の基本情報</p>
+        <table>
+            <tr>
+                <td id="left">性別</td>
+                <td id="right"><h:outputText value="#{memberScanCompleteBb.sex}" id="sex"/></td>
+            </tr>
+            <tr>
+                <td id="left">氏名</td>
+                <td id="right"><h:outputText value="#{memberScanCompleteBb.name}" id="name"/></td>
+            </tr>
+            <tr>
+                <td id="left">氏名(フリガナ)</td>
+                <td id="right"><h:outputText value="#{memberScanCompleteBb.kana}" id="kana"/></td>
+            </tr>
+            <tr>
+                <td id="left">生年月日</td>
+                <td id="right"><h:outputText value="#{memberScanCompleteBb.birthday}" id="birthday"/></td>
+            </tr>
+            <tr>
+                <td id="left">電話番号</td>
+                <td id="right"><h:outputText value="#{memberScanCompleteBb.phone}" id="phone"/></td>
+            </tr>
+        </table>
+        <h:form styleClass="subMenu">
+            <input type="button" class="button" value="処理を中断" onClick="location.href='http://localhost:8080/HSS_DVDRentalPJ/'"/>
+            <h:commandButton value="貸出" styleClass="button" action="#{DVDScanBb.next()}"/>
+        </h:form>
+    </h:body>
 </html>
+

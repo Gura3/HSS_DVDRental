@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>HCSDVDレンタル-貸出バーコードスキャン</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" href="../../resource/css/title.css"/>
+        <link rel="stylesheet" type="text/css" href="../../resource/css/memberExpirationDate.css"/>
+        <!-- スキャンのスクリプト -->
+        <script src="../../resource/js/scan.js"/>
+    </h:head>
+    <h:body>
+        <h1>HCSDVDレンタル</h1>
+        <h2>貸出処理</h2>
+        <div class="box">
+            <p align="center">有効期限切れ</p>
+        </div>
+        <h3 id="error">お客様の会員カードの有効期限が切れています。</h3>
+        <h3 id="error">会員カードの更新を行ってください。</h3>
+        <div class="subMenu">
+            <input type="button" class="button" value="処理を中断" onClick="location.href='http://localhost:8080/HSS_DVDRentalPJ/'"/>
+            <a href="#"><button>有効期限更新処理</button></a>
+        </div>
+    </h:body>
+</html>
+

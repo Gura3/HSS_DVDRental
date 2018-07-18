@@ -16,7 +16,7 @@ import javax.inject.Named;
 @RequestScoped
 
 /* 貸出会員スキャンバッキングビーン */
-public class MemberScanCompleteBb {
+public class DVDScanBb {
     private String memberno;            //会員No
 
     public void setMemberno(String memberno) {
@@ -166,38 +166,9 @@ public class MemberScanCompleteBb {
     private String expirationDate;  //残り有効期限
     
     public String next(){
-        //test
-        setSex("男性");
-        setName("加藤弘幸");
-        setKana("カトウヒロユキ");
-        setBirthday("1987/6/5");
-        setPhone("001-831-5511");
-        
-        if(("1").equals(getMemberno())){                
-            return "memberScanComplete";                //正常
-        }else if(("2").equals(getMemberno())){          //スキャン完了有効期限切れ1ヶ月前へ
-            setFlg1(true);
-            setExpirationDate("30");
-            return "memberScanComplete";
-        }else if(("3").equals(getMemberno())){          //スキャン完了未払い金へ
-            setFlg2(true);
-            setDelay("300");
-            return "memberScanComplete";
-        }else if(("4").equals(getMemberno())){          //スキャン完了未払い金有効期限切れ1ヶ月前へ
-            setFlg1(true);
-            setFlg2(true);
-            setExpirationDate("30");
-            setDelay("300");
-            return "memberScanComplete";
-                                                        //スキャン完了有効期限切れ1ヶ月前へ
-                                                        //スキャン完了未払い金へ
-        }else if(("5").equals(getMemberno())){          //有効期限更新へ
-            return "memberExpirationDate";
-        }else if(("6").equals(getMemberno())){          //会員情報無しエラー
-            return "memberEmptyError";
-        }else{                                          //スキャンエラー
-            return "memberScanError";
-        }
-        
+        return "DVDScan.xhtml";
     }
+    
+       
+
 }

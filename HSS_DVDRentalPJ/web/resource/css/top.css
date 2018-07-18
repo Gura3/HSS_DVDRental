@@ -48,9 +48,9 @@ button{
     border-spacing: 5px 0;
 }
 .leftbox div{
-    //float: left;
+    /*float: left;*/
     padding: 1em;
-    //vertical-align: middle;
+    /*vertical-align: middle;*/
     display: table-cell;
     width: 50%;
 }

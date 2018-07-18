@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-//チェックボックスにすべてチェックをつけるまたは外す
+//チェックボックスにすべてチェックをつけるまたははずす
 function allcheck( tf ) {
    var ElementsCount = document.sampleform.elements.length; // チェックボックスの数
    for( i=0 ; i<ElementsCount ; i++ ) {

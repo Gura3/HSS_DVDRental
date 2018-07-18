@@ -29,7 +29,8 @@ h3{
     display: inline-block;
 }
 
-*/table {
+*/
+table {
     border-collapse: collapse;
     width: 70%;
     margin-right: auto;
@@ -38,7 +39,7 @@ h3{
 }
 
 table th, table td {
-    border: solid 2px #3498db;    //線の色
+   border: solid 2px #3498db;   /*線の色*/
     padding: 2px 4px;
 }
 
@@ -52,7 +53,8 @@ table th, table td {
     margin-right: auto;
 }
 
-//textboxstyle
+
+/*textboxstyle*/
 .tbstyle{
     width: 100%
 }

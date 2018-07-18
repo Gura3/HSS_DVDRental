@@ -23,8 +23,11 @@ and open the template in the editor.
     
         
          <div class="subMenu">
-             <a href="instore_enroll.xhtml"><button>店内会員登録</button></a>
-             <a href="ininfo_enroll.xhtml"><button>仮登録済み会員登録</button></a>
+             <a href="/instore_enroll.xhtml"><button>店内会員登録</button></a>
+             <h:form>
+             <h:commandButton value="店内会員登録" styleClass="boxcb" action="#{enrollmentBb.instore_next()}" />
+             </h:form>
+             <a href="/ininfo_enroll.xhtml"><button>仮登録済み会員登録</button></a>
              <a href="./index.xhtml"><button>トップページに戻る</button></a>
             
         </div>

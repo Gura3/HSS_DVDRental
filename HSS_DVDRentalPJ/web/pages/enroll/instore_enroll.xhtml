@@ -6,18 +6,76 @@ and open the template in the editor.
 -->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-        xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <head>
-        <title>入会処理</title>
+        <title>店内入会TOPページ</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" href="../resource/css/top.css"/>
+        <link rel="stylesheet" type="text/css" href="../resource/css/enroll.css"/>
+
     </head>
     <body>
-        <input type="radio" name="身分証明書" value="運転免許証" />
-        <input type="radio" name="身分証明書" value="保険証（健康保険）" />
-        <input type="radio" name="身分証明書" value="学生証（高校生を除く）" />
-        <input type="radio" name="身分証明書" value="保険証（後期高齢者医療）" />
-        　<input type="radio" name="身分証明書" value="パスポート（未成年を除く）" />
-         <input type="radio" name="身分証明書" value="その他" />
-        <div></div>
+        <h1>HCSDVDレンタル</h1>
+        <h2>会員登録処理</h2>
+        <br></br>
+       <!--遷移表示まだ-->
+        <h3>会員情報を入力してください</h3>
+        <h:form>
+        <table>
+            <tr>
+                <td>性別</td>
+                <td><input type="radio" name="sex" value="男">男</input><input type="radio" name="sex" value="女">女</input></td>
+            </tr>
+            <tr>
+                <td>氏名</td>
+                <td><h:inputText  value="name"/></td> 
+            </tr>
+                <tr>
+                    <td>氏名（フリガナ）</td>
+                    <td><h:inputText  value="kana"/></td>
+                </tr>
+                <tr>
+                    <td>生年月日</td>
+                    <td>    
+                        <form action="cgi-bin/example.cgi" method="post">
+                          
+                            <input type="date" name="date">
+                                
+                            </input>
+                        </form>
+                    </td>
+                </tr>
+                <tr>
+                    <td>郵便番号</td>
+                    <td><h:inputText  value="postal"/> <input type="submit" value="住所検索"/></td>
+                </tr>
+                <tr>
+                    <td>住所</td>
+                    <td><h:inputText  value="address"/></td>
+                </tr>
+                <tr>
+                    <td>電話番号</td>
+                    <td><h:inputText  value="phone"/></td>
+                </tr>
+                <tr>
+                    <td>Mailアドレス</td>
+                    <td><h:inputText  value="mail_address"/></td>
+                </tr>
+                <tr>
+                    <td>職業</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>メール配信を希望</td>
+                    <td><h:selectBooleanCheckbox />メールマガジンを希望</td>
+                </tr>
+            
+
+
+
+        </table>
+        </h:form>
+
     </body>
 </html>

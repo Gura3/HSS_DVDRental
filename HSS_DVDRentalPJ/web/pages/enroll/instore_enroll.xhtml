@@ -11,71 +11,77 @@ and open the template in the editor.
     <head>
         <title>店内入会TOPページ</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link rel="stylesheet" type="text/css" href="../resource/css/top.css"/>
-        <link rel="stylesheet" type="text/css" href="../resource/css/enroll.css"/>
+        <link rel="stylesheet" type="text/css" href="../../resource/css/top.css"/>
+        <link rel="stylesheet" type="text/css" href="../../resource/css/enroll.css"/>
 
     </head>
     <body>
         <h1>HCSDVDレンタル</h1>
         <h2>会員登録処理</h2>
         <br></br>
-       <!--遷移表示まだ-->
+
         <h3>会員情報を入力してください</h3>
         <h:form>
-        <table>
-            <tr>
-                <td>性別</td>
-                <td><input type="radio" name="sex" value="男">男</input><input type="radio" name="sex" value="女">女</input></td>
-            </tr>
-            <tr>
-                <td>氏名</td>
-                <td><h:inputText  value="name"/></td> 
-            </tr>
+            <table >
                 <tr>
-                    <td>氏名（フリガナ）</td>
-                    <td><h:inputText  value="kana"/></td>
+                    <td>性別<span class="req">　　　　　　　　　[必須]</span></td>
+                    <td class="sub2"><input type="radio" name="sex" value="">男　　</input><input type="radio" name="sex" >女</input></td>
                 </tr>
                 <tr>
-                    <td>生年月日</td>
-                    <td>    
+                    <td>氏名<span class="req">　　　　　　　　　[必須]</span></td>
+                    <td class="sub2"><h:inputText  value=""/></td> 
+                </tr>
+                <tr>
+                    <td>氏名（フリガナ）<span class="req">　　[必須]</span></td>
+                    <td class="sub2"><h:inputText  value=""/></td>
+                </tr>
+                <tr>
+                    <td>生年月日<span class="req">　　　　　　[必須]</span></td>
+                    <td class="sub2">    
                         <form action="cgi-bin/example.cgi" method="post">
-                          
+                           
                             <input type="date" name="date">
-                                
+                                <input type="submit" name="submit" value="登録"/>
                             </input>
                         </form>
                     </td>
                 </tr>
                 <tr>
-                    <td>郵便番号</td>
-                    <td><h:inputText  value="postal"/> <input type="submit" value="住所検索"/></td>
+                    <td>郵便番号<span class="req">　　　　　　[必須]</span></td>
+                    <div class="boxsize"> <td class="sub2"><h:inputText  value=""/> <input type="submit" value="住所検索"/></td></div>
                 </tr>
                 <tr>
-                    <td>住所</td>
-                    <td><h:inputText  value="address"/></td>
+                    <td>住所<span class="req">　　　　　　　　　[必須]</span></td>
+                    <td class="sub2"><h:inputText  value=""/></td>
                 </tr>
                 <tr>
-                    <td>電話番号</td>
-                    <td><h:inputText  value="phone"/></td>
+                    <td>電話番号<span class="req">　　　　　　[必須]</span></td>
+                    <td class="sub2"><h:inputText  value=""/></td>
                 </tr>
                 <tr>
-                    <td>Mailアドレス</td>
-                    <td><h:inputText  value="mail_address"/></td>
+                    <td>E-Mailアドレス</td>
+                    <td class="sub2"><h:inputText  value=""/></td>
                 </tr>
                 <tr>
-                    <td>職業</td>
-                    <td></td>
+                    <td rowspan="3">職業<span class="req">　　　　　　　　[必須]</span></td>
+                    <td class="sub2"><input type="radio" name="kbn" >会社員　　</input><input type="radio" name="kbn">派遣・アルバイト　　</input><input type="radio" name="kbn">自営業</input></td> 
+                    <tr><td class="sub2"><input type="radio" name="kbn" >専業主婦　　</input><input type="radio" name="kbn" >学生　　</input><input type="radio" name="kbn" >その他</input></td></tr>
                 </tr>
+                <tr></tr>
                 <tr>
                     <td>メール配信を希望</td>
-                    <td><h:selectBooleanCheckbox />メールマガジンを希望</td>
+                    <td class="sub2"><input type="radio" name="mailmg" >希望する　　</input><input type="radio" name="mailmg" >希望しない　　</input></td>
                 </tr>
-            
 
 
 
-        </table>
+
+            </table>
         </h:form>
+        <h3>入力が完了しましたら<span class="blue">会員情報確認ボタン</span>を押してください</h3>
+        <a href="./index.xhtml"><button>トップページに戻る</button></a>
+        <a href="./enroll_confirm.xhtml"><button>会員情報確認</button></a>
+
 
     </body>
 </html>

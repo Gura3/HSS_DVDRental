@@ -109,7 +109,7 @@ a button{
 }
 
 
-td {
+/*td {
 　font-size: 3px;
     dominant-baseline: auto;
     margin-left:  auto;
@@ -124,18 +124,33 @@ table{
   border-collapse: collapse;
   border: 1px solid #ccc;
     border-color: blue;
+}*/
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-color: blue;
 }
+td{
+padding: 10px;
+border: 1px solid #padding 10px;
+border: 1px solid #dddddd;
+border-color: blue;
+}
+
 kbn{
     marigin-left: auto;
     margin-right: auto;
     margin-top: auto;
 }
 
-sub2{
-    border:solid;
-    border-color: menu;
-    width: 550px;
-}
+
+
+
+
+
+
+
 
 
 

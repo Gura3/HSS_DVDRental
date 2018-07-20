@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>会員カード再発行</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" href="resource//css/title.css"/>
+    </head>
+    <body>
+        <h1>HCSDVDレンタル</h1>
+        <h2>会員カード再発行処理</h2>
+
+        <h:form>
+            <h3>DVDバーコードをスキャンすると一覧に表示されます</h3>
+            <!-- checkboxlist -->
+            <table>
+                <!-- キーワード・検索番号 -->
+                <tr>
+                    <td>氏名(フリガナ)</td>
+                    <td>
+                        <h:inputText/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>住所</td>
+                    <td>
+                        <h:inputText/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>身分証明書の種類</td>
+                    <td>
+                        <h:selectOneRadio>
+                            <f:selectItem itemLabel="運転免許"/>
+                            <f:selectItem itemLabel="保険証(健康保険)"/>
+                            <f:selectItem itemLabel="学生証"/>
+                            <f:selectItem itemLabel="保険証(後期高齢者医療)"/>
+                            <f:selectItem itemLabel="パスポート"/>
+                            <f:selectItem itemLabel="その他"/>
+                        </h:selectOneRadio>
+                    </td>
+                </tr>
+                <tr>
+                    <td>身分証番号</td>
+                    <td>
+                        <h:inputText/>
+                    </td>
+                </tr>
+            </table>
+            <h:commandButton value="検索"/>
+        </h:form>
+        
+        <!-- 検索結果の表示 -->
+        <table>
+            <tr>
+                <th>会員No</th>
+                <th>氏名</th>
+                <th>身分証番号</th>
+                <th>住所</th>
+            </tr>
+            <tr>
+                <td>111001</td>
+                <td>111001</td>
+                <td>情専</td>
+                <td>ホラー</td>
+            </tr>
+        </table>
+    </body>
+</html>

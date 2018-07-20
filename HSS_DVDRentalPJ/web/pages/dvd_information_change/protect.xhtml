@@ -13,13 +13,27 @@ and open the template in the editor.
         <link rel="stylesheet" type="text/css" href="resource/css/title.css"/>
         <link rel="stylesheet" type="text/css" href="resource/css/section_change.css"/>
         <link rel="stylesheet" type="text/css" href="resource/css/modalwindow.css"/>
-
+        <script>
+            function MoveCheck() {
+                var res = confirm("プロテクト処理が実行されると処理されたDVDの情報は消去されます。本当に実行しますか？");
+                if (res === true) {
+                    // OKなら移動
+                    runBtnDisabled("protect");
+                }else{
+                    
+                }
+            }
+            //移動のスクリプト
+            function runBtnDisabled(formName) {
+                var entryButton = document.getElementById(formName + ":protected");
+                entryButton.click();
+            }
+        </script>
     </h:head>
     <h:body>
         <h1>HCSDVDレンタル</h1>
         <h2>プロテクト</h2>
         <table>
-
             <tr>
                 <td></td>
                 <td>バーコード</td>
@@ -30,9 +44,8 @@ and open the template in the editor.
                 <td>詳細</td>
                 <td>取消</td>
             </tr>
-
             <tr>
-                <td>1</td>
+                <td></td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -42,15 +55,15 @@ and open the template in the editor.
                 <td></td>
             </tr>
         </table>
-        
+
         <div style="width: 100%; text-align: center;">
             <button>手動設定</button>
-            <button>処理を中断</button>
-            <button id="protect">プロテクト実行</button>
+            <input type="button" onclick="location.href='index.xhtml'" value="トップページに戻る"/>
+            <input type="button" onclick="MoveCheck()" value="プロテクト実行"/>
         </div>
-        
-        <script src="resource/js/jquery-3.3.1.min.js"></script>
-        <script src="resource/js/modalwindow.js"></script>
-        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+        <h:form id="protect">
+            <h:commandButton id="protected" action="protect_comp" style="display: none;" value="プロテクト実行"/>
+        </h:form>
     </h:body>
 </html>

@@ -60,7 +60,7 @@
                     <!-- DVD情報管理 -->
                     <div id="tabpage2">
                         <h:form>
-                            <h:commandButton value="一覧表示" styleClass="boxcb" />
+                            <h:commandButton value="一覧表示" styleClass="boxcb" action="#{sectionChangeBb.disp()}"/>
                             <h:commandButton value="区分変更" styleClass="boxcb" action="#{sectionChangeBb.next()}" />
                             <h:commandButton value="プロテクト" styleClass="boxcb" action="#{protectBb.next()}"/>
                         </h:form>
@@ -70,7 +70,6 @@
                         <h:form>
                             <h:commandButton value="在庫移動" styleClass="boxcb" />
                             <h:commandButton value="棚卸し" styleClass="boxcb" />
-                            <h:commandButton value="プロテクト" styleClass="boxcb" />
                         </h:form>
                     </div>
                     <!--　分析機能 -->

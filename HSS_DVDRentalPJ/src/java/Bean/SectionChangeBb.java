@@ -18,4 +18,8 @@ public class SectionChangeBb {
     public String next(){
         return "/pages/dvd_information_change/section_change.xhtml";
     }
+    
+    public String disp(){
+        return "/pages/dvd_information_change/dvd_disp.xhtml";
+    }
 }

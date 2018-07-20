@@ -5,23 +5,18 @@
  */
 package Bean;
 
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Named;
+
 /**
  *
  * @author s20163002
  */
-import javax.enterprise.context.RequestScoped;
-import javax.inject.Named;
 
 @Named
 @RequestScoped
-
-public class ProtectBb {
-
-    public String next() {
-        return "pages/dvd_information_change/protect.xhtml";
-    }
-    
-    public String comp() {
-        return "protect_comp.xhtml";
+public class indexBb {
+    public String next(){
+        return "/../../index.xhtml";
     }
 }

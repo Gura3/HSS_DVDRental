@@ -58,3 +58,7 @@ table th, table td {
 .tbstyle{
     width: 100%
 }
+
+.btn{
+    display: none;
+}

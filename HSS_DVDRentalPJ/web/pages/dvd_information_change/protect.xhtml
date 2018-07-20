@@ -10,9 +10,11 @@ and open the template in the editor.
     <h:head>
         <title>HCSビデオレンタル</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8"/>
-        <link rel="stylesheet" type="text/css" href="resource/css/title.css"/>
+<!--        <link rel="stylesheet" type="text/css" href="resource/css/title.css"/>
         <link rel="stylesheet" type="text/css" href="resource/css/section_change.css"/>
-        <link rel="stylesheet" type="text/css" href="resource/css/modalwindow.css"/>
+        <link rel="stylesheet" type="text/css" href="resource/css/modalwindow.css"/>-->
+        <h:outputStylesheet library="css" name="title.css"/>
+        <h:outputStylesheet library="css" name="section_change.css"/>
         <script>
             function MoveCheck() {
                 var res = confirm("プロテクト処理が実行されると処理されたDVDの情報は消去されます。本当に実行しますか？");
@@ -31,10 +33,12 @@ and open the template in the editor.
         </script>
     </h:head>
     <h:body>
+         
+      
         <h1>HCSDVDレンタル</h1>
         <h2>プロテクト</h2>
         <table>
-            <tr>
+            <tr>    
                 <td></td>
                 <td>バーコード</td>
                 <td>DVDコード</td>

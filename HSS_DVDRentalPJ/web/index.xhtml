@@ -5,8 +5,8 @@
     <h:head>
         <title>HCSDVDレンタル-トップページ</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8"/>
-        <link rel="stylesheet" type="text/css" href="resource/css/title.css"/>
-        <link rel="stylesheet" type="text/css" href="resource/css/top.css"/>
+        <link rel="stylesheet" type="text/css" href="resources/css/title.css"/>
+        <link rel="stylesheet" type="text/css" href="resources/css/top.css"/>
     </h:head>
 
     <h:body>
@@ -51,7 +51,8 @@
                         <h:form>
                             <h:commandButton value="会員入会" styleClass="boxcb" action="#{enrollmentBb.next()}" />
                             <h:commandButton value="会員有効期限更新" styleClass="boxcb" />
-                            <h:commandButton value="会員情報更新" styleClass="boxcb" />
+                            <h:commandButton value="会員情報更新" styleClass="boxcb"/>
+                            <h:commandButton value="会員カード再発行" styleClass="boxcb" action="#{reissueCard.reissue()}"/>
                             <h:commandButton value="会員退会" styleClass="boxcb" />
                             <h:commandButton value="ブラック会員登録" styleClass="boxcb" />
                             <h:commandButton value="ブラック会員解除" styleClass="boxcb" />
@@ -99,6 +100,6 @@
         </div>
 
         <!-- タブのスクリプト -->
-        <script src="resource/js/tab.js"/>
+        <script src="resources/js/tab.js"/>
     </h:body>
 </html>

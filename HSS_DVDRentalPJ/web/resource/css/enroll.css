@@ -114,14 +114,15 @@ td {
     dominant-baseline: auto;
     margin-left:  auto;
     margin-right: auto;
-    width: 420px;
+    width: 360px;
     height: 100px;
 }
 
 table{
     text-align: center;
     font-size: large;
-    border-style: solid;
+  border-collapse: collapse;
+  border: 1px solid #ccc;
     border-color: blue;
 }
 kbn{

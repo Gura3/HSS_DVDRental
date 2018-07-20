@@ -6,21 +6,32 @@ and open the template in the editor.
 -->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-       xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <head>
         <title>会員登録_身分証明確認</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-           <link rel="stylesheet" type="text/css" href="../resource/css/top.css"/>
-          <link rel="stylesheet" type="text/css" href="../resource/css/identify.css"/>
+        <link rel="stylesheet" type="text/css" href="../resource/css/top.css"/>
+        <link rel="stylesheet" type="text/css" href="../resource/css/identify.css"/>
+
+        <script src="../js/identify.js"/>
+
     </head>
     <body>
+        <h:form>
+            <h:selectOneRadio id="iden" value="#{Identifybb.iden}" onclick="selectbtn()"> 　　　
+                <f:selectItems value="#{Identifybb.items}"/>
+            </h:selectOneRadio>    
+           
+        </h:form>
+        <h:form>
+         <h:inputText value="#{Identifybb.num}"/>
+        </h:form>
+         <div class="subMenu">
+             <a href="index.xhtml"><button>処理を中断<br>（トップページへ戻る）</button></a>
+             <a href="scan_card.xhtml"><button>会員カードをスキャン</button></a>
+        </div>
         
-      <input type="radio" name="身分証明書" value="運転免許証" />
-        <input type="radio" name="身分証明書" value="保険証（健康保険）" />
-        <input type="radio" name="身分証明書" value="学生証（高校生を除く）" />
-        <input type="radio" name="身分証明書" value="保険証（後期高齢者医療）" />
-        　<input type="radio" name="身分証明書" value="パスポート（未成年を除く）" />
-         <input type="radio" name="身分証明書" value="その他" />
-        <div></div>
+
     </body>
 </html>

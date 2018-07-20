@@ -10,13 +10,20 @@ import javax.inject.Named;
 
 public class EnrollmentBb {
       public String next(){
-        return "/pages/enroll/enrollment_top.xhtml";
+        return "/pages/enroll/enrollment_top";
     }
 
+      public String toprt(){
+          return "/index.xhtml";
+      }
       
 
     public String instore_next(){
         return "/pages/enroll/instore_enroll.xhtml";
+    }
+    
+    public String confirm(){
+        return "/pages/enroll/enroll_confirm.xhtml";
     }
 
 }

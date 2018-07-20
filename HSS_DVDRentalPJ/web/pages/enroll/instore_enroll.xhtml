@@ -7,7 +7,7 @@ and open the template in the editor.
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    >
     <head>
         <title>店内入会TOPページ</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -48,19 +48,19 @@ and open the template in the editor.
                 </tr>
                 <tr>
                     <td>郵便番号<span class="req">　　　　　　[必須]</span></td>
-                    <td class="sub2"><h:inputText  value=""/> <input type="submit" value="住所検索"/></td>
+                    <td class="sub2"><h:inputText  value="　"/> <input type="submit" value="住所検索"/></td>
                 </tr>
                 <tr>
                     <td>住所<span class="req">　　　　　　　　　[必須]</span></td>
-                    <td class="sub2"><h:inputText  value=""/></td>
+                    <td class="sub2"><h:inputText  value="　"/></td>
                 </tr>
                 <tr>
                     <td>電話番号<span class="req">　　　　　　[必須]</span></td>
-                    <td class="sub2"><h:inputText  value=""/></td>
+                    <td class="sub2"><h:inputText  value="　"/></td>
                 </tr>
                 <tr>
                     <td>E-Mailアドレス</td>
-                    <td class="sub2"><h:inputText  value=""/></td>
+                    <td class="sub2"><h:inputText  value="　"/></td>
                 </tr>
                 <tr>
                     <td rowspan="3">職業<span class="req">　　　　　　　　[必須]</span></td>
@@ -79,8 +79,12 @@ and open the template in the editor.
             </table>
         </h:form>
         <h3>入力が完了しましたら<span class="blue">会員情報確認ボタン</span>を押してください</h3>
-        <a href="./index.xhtml"><button>トップページに戻る</button></a>
-        <a href="./enroll_confirm.xhtml"><button>会員情報確認</button></a>
+        <!--<a href="./index.xhtml"><button>トップページに戻る</button></a> 
+        <a href="./enroll_confirm.xhtml"><button>会員情報確認</button></a>-->
+        <h:form>
+            <h:commandButton  value="トップページに戻る" styleClass="boxcb" action="#{enrollmentBb.toprt()}"/>
+        <h:commandButton value="会員情報確認" styleClass="boxcb" action="#{enrollmentBb.confirm()}"/>
+        </h:form>
 
 
     </body>

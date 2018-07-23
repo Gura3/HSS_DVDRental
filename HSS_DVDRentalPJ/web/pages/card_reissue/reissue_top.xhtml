@@ -8,11 +8,12 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <head>
+    <h:head>
         <title>会員カード再発行</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link rel="stylesheet" type="text/css" href="resource//css/title.css"/>
-    </head>
+        <h:outputStylesheet library="css" name="title.css"/>
+        <h:outputStylesheet library="css" name="reissue.css"/>
+    </h:head>
     <body>
         <h1>HCSDVDレンタル</h1>
         <h2>会員カード再発行処理</h2>
@@ -20,12 +21,12 @@ and open the template in the editor.
         <h:form>
             <h3>DVDバーコードをスキャンすると一覧に表示されます</h3>
             <!-- checkboxlist -->
-            <table>
+            <table border="1">
                 <!-- キーワード・検索番号 -->
                 <tr>
                     <td>氏名(フリガナ)</td>
                     <td>
-                        <h:inputText/>
+                        <h:inputText styleClass="textbox"/>
                     </td>
                 </tr>
                 <tr>
@@ -37,6 +38,7 @@ and open the template in the editor.
                 <tr>
                     <td>身分証明書の種類</td>
                     <td>
+                        
                         <h:selectOneRadio>
                             <f:selectItem itemLabel="運転免許"/>
                             <f:selectItem itemLabel="保険証(健康保険)"/>
@@ -45,6 +47,7 @@ and open the template in the editor.
                             <f:selectItem itemLabel="パスポート"/>
                             <f:selectItem itemLabel="その他"/>
                         </h:selectOneRadio>
+                            
                     </td>
                 </tr>
                 <tr>
@@ -54,6 +57,14 @@ and open the template in the editor.
                     </td>
                 </tr>
             </table>
+            <h:selectOneRadio>
+                            <f:selectItem itemLabel="運転免許"/>
+                            <f:selectItem itemLabel="保険証(健康保険)"/>
+                            <f:selectItem itemLabel="学生証"/>
+                            <f:selectItem itemLabel="保険証(後期高齢者医療)"/>
+                            <f:selectItem itemLabel="パスポート"/>
+                            <f:selectItem itemLabel="その他"/>
+                        </h:selectOneRadio>
             <h:commandButton value="検索"/>
         </h:form>
         

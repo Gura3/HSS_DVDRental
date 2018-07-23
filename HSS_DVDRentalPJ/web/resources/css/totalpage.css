@@ -1,0 +1,202 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2018/07/13, 14:09:36
+    Author     : s20163031
+*/
+
+
+table th, table td {
+    border: solid 2px #3498db;    //線の色
+    padding: 2px 4px;
+    height: 2.5em;
+}
+
+table{
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+.table{
+    width: 75%;
+}
+
+table#keisan{
+    width: 75%;
+}
+
+.left{
+    width: 10em;
+    text-align: center;
+    height: 3.9em;
+}
+
+.right{
+    width: 30em;
+    height: 3.9em;
+}
+
+.a{
+    position: relative;
+    left: 19em;
+}
+
+.b{
+    position: relative;
+    left: 13em;
+}
+
+.c{
+    position: relative;
+    left: 22.8em;
+    margin: 0 -3em;
+    font-size: 1.4em;
+    color: #000000;
+    width: 25%;
+    height: 3em;
+    font-weight: bold;
+}
+
+.d{
+    position: relative;
+    left: 28.8em;
+    margin: 0 -3em;
+    font-size: 1.4em;
+    color: #FFFFFF;
+    width: 12%;
+    height: 3em;
+    font-weight: bold;
+    background-color: #0000FF;
+}
+
+.delbtn {
+    font-size: 1.4em;
+    margin: 0 -3em;
+    font-size: 1.4em;
+    color: #FFFFFF;
+    width: 12%;
+    height: 3em;
+    font-weight: bold;
+    background-color: #FF0000;
+}
+
+
+table td#left{
+    width: 10em;
+    text-align: center;
+    height: 3.9em;
+}
+
+table td#right{
+    text-align: center;
+    height: 3.9em;
+}
+
+table td#discount{
+    text-align: center;
+    height: 3.9em;
+}
+
+p{
+    margin: 0.5em 0 -0.01em;
+    position:relative;
+    left: 18em;
+    font-size: 120%;
+}
+
+.subMenu{
+    margin: 0 auto;
+    text-align: center;
+}
+
+.button{
+    margin: 1% 8%;
+    width: 15%;
+    height: 5em;
+}
+
+.error{
+    color: #FF0000;/*文字色*/
+    margin: -0.1em 0;
+    font-size: 150%;
+    position:relative;
+}
+
+.btn{
+    display: none;
+}
+
+div#center{
+    text-align: center;
+}
+
+div#delayDate{
+    margin: 0.5em 0 -0.01em;
+    position:relative;
+    left: 18em;
+    font-size: 120%;
+}
+
+ul.set {
+    display: block;
+    position: relative;
+    bottom: 8em;
+    table-layout:fixed;
+    width:80%;
+    padding: 0.5em 1em;
+    margin: 0 0 0 9.5em;
+    height: 0;
+}
+ul.set li {
+    display: inline-block;
+}
+
+.mon{
+    margin: 7.35em 0 12em 0;
+    text-align: center;
+}
+
+.mem{
+    height: 0;
+    position: relative;
+    bottom: 30.4em;
+}
+.na{
+    width: 7em;
+    height: 3.9em;
+}
+
+.kane{
+    width: 10em;
+    height: 3.9em;
+}
+
+.genke{
+    position: relative;
+    bottom: 19.1em;
+    right: 0.4em;
+    width: 11.7em;
+    height: 10.1em;
+}
+
+.member{
+    margin: 10em -0.38em 12em 0;
+    text-align: center;
+}
+
+.header{
+    width: 7em;
+}
+
+.val{
+    width: 10em;
+}
+
+input.depositbox {
+    width: 99%;
+    height: 99%;
+    font-size: 100%;
+}

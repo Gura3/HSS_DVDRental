@@ -6,9 +6,10 @@
       xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
     <h:head>
         <title>HCSDVDレンタル-貸出バーコードスキャン</title>
-        <link rel="stylesheet" type="text/css" href="../../resources/css/title.css"/>
-        <link rel="stylesheet" type="text/css" href="../../resources/css/totalpage.css"/>
-        <script src="../../resources/js/jquery-3.3.1.min.js"/>
+        <h:outputStylesheet library="css" name="title.css"/>
+        <h:outputStylesheet library="css" name="totalpage.css"/>
+        <!-- スキャンのスクリプト -->
+        <h:outputScript library="js" name="jquery-3.3.1.min.js"/>
         <script>
             $(function(){
                 $(".depositbox").keypress(function(ev){

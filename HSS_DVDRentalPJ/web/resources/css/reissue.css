@@ -8,19 +8,27 @@ and open the template in the editor.
     Author     : s20163002
 */
 
-table {
+.formtable {
 /*    border-collapse: collapse;*/
-    width: 100%;
+    width: 80%;
     margin-right: auto;
     margin-left: auto;
     margin-bottom: 2em;
 }
-table td {
+.formtable td {
    border: solid 2px #3498db;   /*線の色*/
    padding: 2px 4px;
 }
 
-textbox{
-    text-align: center;
-    width: 100%;
+/*.formtable input{
+    width: 40%;
+}*/
+/* ラジオボタンテーブルのスタイル(selectOneRadioはhtmlでtable扱いになる) */
+.radiotable{
+    border: none;
 }
+.radiotable td{
+    border: none;
+}
+
+

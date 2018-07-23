@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>現計処理-完了</title>
+        <link rel="stylesheet" type="text/css" href="../../resours/css/mystyle.css"/>
+        <link rel="stylesheet" type="text/css" href="../../resource/css/comps.css"/>
+        <link rel="stylesheet" type="text/css" href="../../resource/css/title.css"/>
+    </h:head>
+    <h:body>
+        <h1>HCSDVDレンタル</h1>
+<!--        <p id="gazou">
+            <img src="resours/images/saihakkou.PNG"></img>
+        </p>
+-->
+<h2>現計処理</h2>
+        <p></p>
+<!--        <div>
+        <ol id="Pass">
+            <li>会員検索</li>
+            <li>会員情報確認</li>
+            <li>身分証番号入力</li>
+            <li>バーコードスキャン</li>
+            <li class="loc">再発行完了</li>
+        </ol>
+        </div>
+-->
+        <h:outputText value="&yen;#{totalBb.deposit}"/>
+        <div class="moji">
+            <p class="dai">現計処理が完了しました。</p>
+            <p class="syou">レシートが発行されます。確認してください。<br></br>引き続き再発行処理をする場合は<strong>再度処理ボタン</strong>を押してください。</p>
+        </div>
+        <p></p>
+        <table id="genkei" align="center" frame="box" rules="all" width="80%">
+            <tbody>
+                <tr id="so">
+                    <td class="hed">総額</td>
+                    <td id="soukin">\99999</td>
+                </tr>
+                <tr id="az"><td class="hed">預かり金額</td><td id="azukin">\999999</td></tr>
+                <tr id="ot"><td class="hed">おつり</td><td id="otukin">\99999</td></tr>
+            </tbody>
+        </table>
+        <div class="botan">
+        <h:form>
+            <h:commandButton class="saido" value="再度処理" alt="sa" action="#{rentalBb.next()}"></h:commandButton>
+            <input type="button" onclick="location.href='../../index.xhtml'" value="トップページに戻る"/>
+        </h:form>
+                
+           
+      
+        </div>
+    </h:body>
+    
+</html>

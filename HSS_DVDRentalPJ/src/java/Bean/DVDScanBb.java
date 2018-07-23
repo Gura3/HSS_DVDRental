@@ -5,7 +5,7 @@
  */
 package Bean;
 
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
 
 /**
@@ -13,162 +13,176 @@ import javax.inject.Named;
  * @author Gura3
  */
 @Named
-@RequestScoped
+@ApplicationScoped
 
 /* 貸出会員スキャンバッキングビーン */
 public class DVDScanBb {
-    private String memberno;            //会員No
+    private String barcode;            //DVDバーコード
+    private String barcodes[] = new String[10];            //DVDバーコード配列
+    private int scancnt;            //スキャンした回数
+    private String titles[] = new String[10]; 
+    private String days[] = new String[10];
+    private String moneys[] = new String[10];
+    private boolean flg1[] = new boolean[10];
+    private boolean flg2[] = new boolean[10];
+    private int total;
+    private int tax;
 
-    public void setMemberno(String memberno) {
-        this.memberno = memberno;
+    public int getTotal() {
+        return total;
     }
 
-    public void setBirthday(String birthday) {
-        this.birthday = birthday;
+    public void setTotal(int total) {
+        this.total = total;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public int getTax() {
+        return tax;
     }
 
-    public void setKana(String kana) {
-        this.kana = kana;
+    public void setTax(int tax) {
+        this.tax = tax;
     }
 
-    public void setSex(String sex) {
-        this.sex = sex;
+
+    public String[] getTitles() {
+        return titles;
     }
 
-    public void setPostal(String postal) {
-        this.postal = postal;
+    public void setTitles(String title,int scancnt) {
+        this.titles[scancnt] = title;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public String[] getDays() {
+        return days;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setDays(String day,int scancnt) {
+        this.days[scancnt] = day;
     }
 
-    public void setOccupation(String occupation) {
-        this.occupation = occupation;
+    public String[] getMoneys() {
+        return moneys;
     }
 
-    public void setMail_address(String mail_address) {
-        this.mail_address = mail_address;
+    public void setMoneys(String money,int scancnt) {
+        this.moneys[scancnt] = money;
     }
 
-    public void setMail_magazine(String mail_magazine) {
-        this.mail_magazine = mail_magazine;
-    }
-
-    public void setRegistararion_date(String registararion_date) {
-        this.registararion_date = registararion_date;
-    }
-
-    public String getMemberno() {
-        return memberno;
-    }
-
-    public String getBirthday() {
-        return birthday;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getKana() {
-        return kana;
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public String getPostal() {
-        return postal;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public String getOccupation() {
-        return occupation;
-    }
-
-    public String getMail_address() {
-        return mail_address;
-    }
-
-    public String getMail_magazine() {
-        return mail_magazine;
-    }
-
-    public String getRegistararion_date() {
-        return registararion_date;
-    }
-    private String birthday;            //生年月日
-    private String name;                //氏名
-    private String kana;                //会員名(フリガナ)
-    private String sex;                 //性別
-    private String postal;              //郵便番号
-    private String address;             //住所
-    private String phone;               //電話番号
-    private String occupation;          //職業
-    private String mail_address;        //メールアドレス
-    private String mail_magazine;       //メールマガジン
-    private String registararion_date;  //仮会員登録日
-    private String delay;  //未払い金
-    /** 未払いフラグ */
-    private boolean flg1 = false;
-
-    public boolean isFlg1() {
+    public boolean[] getFlg1() {
         return flg1;
     }
 
-    public void setFlg1(boolean flg1) {
-        this.flg1 = flg1;
+    public void setFlg1(boolean flg1,int scancnt) {
+        this.flg1[scancnt] = flg1;
     }
 
-    public boolean isFlg2() {
+    public boolean[] getFlg2() {
         return flg2;
     }
 
-    public void setFlg2(boolean flg2) {
-        this.flg2 = flg2;
+    public void setFlg2(boolean flg2,int scancnt) {
+        this.flg2[scancnt] = flg2;
+    }
+    
+    public int getScancnt() {
+        return scancnt;
     }
 
-    /** 延滞フラグ */
-    private boolean flg2 = false;
-
-    public String getDelay() {
-        return delay;
+    public void setScancnt(int scancnt) {
+        this.scancnt = scancnt;
     }
 
-    public void setDelay(String delay) {
-        this.delay = delay;
+    public String[] getBarcodes() {
+        return barcodes;
     }
 
-    public String getExpirationDate() {
-        return expirationDate;
+    public void setBarcodes(String barcode,int scancnt) {
+        this.barcodes[scancnt] = barcode;
+    }
+    
+
+    public String getBarcode() {
+        return barcode;
     }
 
-    public void setExpirationDate(String expirationDate) {
-        this.expirationDate = expirationDate;
+    public void setBarcode(String barcode) {
+        this.barcode = barcode;
     }
-    private String expirationDate;  //残り有効期限
+
     
     public String next(){
+        setScancnt(0);
+        setTotal(0);
+        setTax(0);
+        for(int i=0;i<10;i++){
+            setBarcodes("",i);
+            setTitles("",i);
+            setDays("",i);
+            setMoneys("",i);
+            setFlg1(true,i);
+            setFlg2(false,i);
+        }
+        
         return "DVDScan.xhtml";
     }
     
+    public String scan(){
+        if(!getBarcode().equals("")){
+            setBarcodes(getBarcode(),getScancnt());
+            setTitles("パパ嫌い",getScancnt());
+            setDays("2018/8/1～2018/8/5",getScancnt());
+            setMoneys("100",getScancnt());
+            setFlg1(false,getScancnt());
+            setFlg2(true,getScancnt());
+            String mons[] = getMoneys();
+            setTotal(getTotal()+Integer.parseInt(mons[getScancnt()]));
+            setTax((int)(getTotal()/1.08*0.08));
+            setScancnt(getScancnt()+1);
+        }
+        return "DVDScan.xhtml";
+    }
+    
+    public String del(int it){
+        if(it == 9){
+            String mons[] = getMoneys();
+            setBarcodes("",it);
+            setTitles("",it);
+            setDays("",it);
+            setMoneys("",it);
+            setFlg1(true,it);
+            setFlg2(false,it);
+            setScancnt(getScancnt()-1);
+            setTotal(getTotal()-Integer.parseInt(mons[it]));
+            setTax((int)(getTotal()/1.08*0.08));
+        }else{           
+            String bars[] = getBarcodes();
+            String titls[] = getTitles();
+            String das[] = getDays();
+            String mons[] = getMoneys();
+            boolean flgs1[] = getFlg1();
+            boolean flgs2[] = getFlg2();
+            setTotal(getTotal()-Integer.parseInt(mons[it]));
+            setTax((int)(getTotal()/1.08*0.08));
+            for(int i=it+1;i<getScancnt();i++){
+                setBarcodes(bars[i],it);
+                setTitles(titls[i],it);
+                setDays(das[i],it);
+                setMoneys(mons[i],it);
+                setFlg1(flgs1[i],it);
+                setFlg2(flgs2[i],it);
+                it++;
+            }
+            setScancnt(getScancnt()-1);
+            setBarcodes("",getScancnt());
+            setTitles("",getScancnt());
+            setDays("",getScancnt());
+            setMoneys("",getScancnt());
+            setFlg1(true,getScancnt());
+            setFlg2(false,getScancnt());
+        }
+        return "DVDScan.xhtml";
+    }
        
 
 }

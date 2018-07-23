@@ -104,12 +104,14 @@ div#delayDate{
 }
 
 ul.set {
+    display: block;
     position: relative;
     bottom: 8em;
     table-layout:fixed;
     width:80%;
     padding: 0.5em 1em;
     margin: 0 0 0 9.5em;
+    height: 0;
 }
 ul.set li {
     display: inline-block;
@@ -136,4 +138,16 @@ ul.set li {
     right: 0.4em;
     width: 11.7em;
     height: 10.1em;
+}
+
+.delbtn {
+    font-size: 1.4em;
+    color: #FFFFFF;
+    padding: 0.2em 1.5em;
+    font-weight: bold;
+    background-color: #FF0000;
+}
+
+.btn{
+    display: none;
 }

@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>HCSDVDレンタル-貸出バーコードスキャン</title>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/title.css"/>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/totalpage.css"/>
+        <script src="../../resources/js/jquery-3.3.1.min.js"/>
+        <script>
+            $(function(){
+                $(".depositbox").keypress(function(ev){
+                    if((ev.which &amp;&amp; ev.which === 13) || (ev.keyCode &amp;&amp; ev.keyCode === 13))
+                    {
+                        return false;
+                    }else{
+                            document.getElementById("tugi:mem").value = document.getElementById("tugi:mem").value + String.fromCharCode(ev.keyCode);
+                    }
+                });
+            });
+        </script>
+    </h:head>
+    <h:body>
+        <h1>HCSDVDレンタル</h1>
+        <h2>現計処理</h2>
+       
+        <h:panelGrid columns="2"  border="1" rendered="#{memberScanCompleteBb.flg2}" columnClasses="left,right">
+            <h:outputText value="延滞金" />
+            <h:outputText value="#{memberScanCompleteBb.delay}"/>
+        </h:panelGrid>
+        
+        <h:form styleClass="subMenu">
+            <h:commandButton value="戻る" styleClass="button" action="#{DVDScanBb.back()}"/>
+            <h:commandButton value="延滞金上乗せ" styleClass="delbtn" action="#{DVDScanBb.back()}"/>
+            <input type="button" class="button" value="処理を中断" onClick="location.href='http://localhost:8080/HSS_DVDRentalPJ/'"/>
+        </h:form>
+        
+        <h:form>
+        <h:panelGrid columns="2" border="1" columnClasses="left,right" styleClass="table">
+            <h:outputText value="税込み金額"/>
+            <h:outputText value="&yen;#{DVDScanBb.total}" class="a"/>
+            <h:outputText value="内消費税" />
+            <h:outputText value="&yen;#{DVDScanBb.tax}" class="a"/>
+            <h:outputText value="割引" />
+            <h:panelGroup>
+            <h:outputText value="1枚" class="b"/>
+            <h:commandButton value="割引" styleClass="c" action="#{DVDScanBb.delete(0)}" id="disc"/>
+            <h:commandButton value="クリア" styleClass="d" action="#{DVDScanBb.delete(0)}" id="clear"/>
+            </h:panelGroup>
+            <h:outputText value="預かり金額" />
+            <h:panelGroup>
+            <h:inputText p:type="number" value="#{totalBb.deposit}" styleClass="depositbox" id="deposit"/>
+            </h:panelGroup>
+        </h:panelGrid>
+        </h:form>
+        
+        <ul class = "set">
+            <li class = "mem">
+                <h:panelGrid columns="4"  border="1" columnClasses="header,val,header,val" styleClass="member">
+                    <h:outputText value="会員ID" />
+                    <h:outputText value="#{memberScanCompleteBb.memberno}"/>
+                    <h:outputText value="貸出中個数"/>
+                    <h:outputText value=""/>
+                    <h:outputText value="氏名"/>
+                    <h:outputText value="#{memberScanCompleteBb.name}"/>
+                    <h:outputText value="性別" />
+                    <h:outputText value="#{memberScanCompleteBb.sex}" />
+                    <h:outputText value="生年月日"/>
+                    <h:outputText value="#{memberScanCompleteBb.birthday}"/>
+                    <h:outputText value="会員区分" />
+                    <h:outputText value="" />
+                </h:panelGrid>
+            </li>
+            <li>
+                <h:panelGrid columns="2"  border="1" columnClasses="na,kane" styleClass="mon">
+                    <h:outputText value="小計"/>
+                    <h:outputText value="&yen;#{DVDScanBb.total}"/>
+                    <h:outputText value="内消費税" />
+                    <h:outputText value="&yen;#{DVDScanBb.tax}" />
+                </h:panelGrid>
+            </li>
+            <li>
+                <h:form id="tugi" styleClass="genkei">
+                    <h:commandButton value="現計" id="next" styleClass="genke" action="#{totalBb.complete()}"/>
+                    <h:inputText value="#{totalBb.deposit}" id="mem" styleClass="btn"/>
+                </h:form>
+            </li>
+        </ul>
+        
+    </h:body>
+</html>
+

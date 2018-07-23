@@ -8,21 +8,41 @@ and open the template in the editor.
     Author     : s20163002
 */
 
+
+/* メッセージのスタイル */
+h3{
+    font-size: 175%;
+    text-align: center;
+}
+
 .formtable {
-/*    border-collapse: collapse;*/
-    width: 80%;
+    border-collapse: collapse;
+    width: 70%;
     margin-right: auto;
     margin-left: auto;
     margin-bottom: 2em;
 }
 .formtable td {
-   border: solid 2px #3498db;   /*線の色*/
-   padding: 2px 4px;
+    border: solid 2px #3498db;   /*線の色*/
+    padding: 2px 4px;
 }
 
 /*.formtable input{
     width: 40%;
 }*/
+
+.selecttable{
+    border-collapse: collapse;
+    width: 70%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 2em;
+    text-align: center;
+}
+.selecttable th, .selecttable td {
+    border: solid 2px #3498db;   /*線の色*/
+    padding: 2px 4px;
+}
 /* ラジオボタンテーブルのスタイル(selectOneRadioはhtmlでtable扱いになる) */
 .radiotable{
     border: none;
@@ -31,4 +51,25 @@ and open the template in the editor.
     border: none;
 }
 
+/* 検索ボタンのスタイル */
+.btn{
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+    height: 100%;
+}
 
+/* 確認画面のスタイル */
+.conftable{
+    border-collapse: collapse;
+    width: 70%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 2em;
+    text-align: center;
+}
+.conftable th, .conftable td {
+    border: solid 2px #3498db;   /*線の色*/
+    padding: 2px 4px;
+    text-align: center;
+}

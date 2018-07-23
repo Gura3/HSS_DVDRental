@@ -14,7 +14,7 @@ and open the template in the editor.
         <h:outputStylesheet library="css" name="title.css"/>
         <h:outputStylesheet library="css" name="reissue.css"/>
     </h:head>
-    <body>
+    <h:body>
         <h1>HCSDVDレンタル</h1>
         <h2>会員カード再発行処理</h2>
 
@@ -22,12 +22,9 @@ and open the template in the editor.
             <h3>DVDバーコードをスキャンすると一覧に表示されます</h3>
             <!-- checkboxlist -->
             <table border="1" class="formtable">
-                <!-- キーワード・検索番号 -->
                 <tr>
                     <td>氏名(フリガナ)</td>
-                    <td>
-                        <h:inputText styleClass="textbox"/>
-                    </td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td>住所</td>
@@ -38,7 +35,6 @@ and open the template in the editor.
                 <tr>
                     <td>身分証明書の種類</td>
                     <td>
-                        
                         <h:selectOneRadio styleClass="radiotable" layout="">
                             <f:selectItem itemLabel="運転免許"/>
                             <f:selectItem itemLabel="保険証(健康保険)"/>
@@ -56,22 +52,29 @@ and open the template in the editor.
                     </td>
                 </tr>
             </table>
+            <h:commandButton value="検索" styleClass="btn" action="reissue_conf"/>
         </h:form>
         
         <!-- 検索結果の表示 -->
-        <table style="text-align: center">
+        <table class="selecttable">
             <tr>
-                <th>会員No</th>
-                <th>氏名</th>
-                <th>身分証番号</th>
-                <th>住所</th>
+                <td>会員No</td>
+                <td>氏名</td>
+                <td>身分証番号</td>
+                <td>住所</td>
             </tr>
             <tr>
-                <td>111001</td>
-                <td>111001</td>
-                <td>情専</td>
-                <td>ホラー</td>
+                <td>00000</td>
+                <td>草生男</td>
+                <td>00000000</td>
+                <td>草原</td>
+            </tr>
+            <tr>
+                <td>00000</td>
+                <td>草生男</td>
+                <td>00000000</td>
+                <td>草原</td>
             </tr>
         </table>
-    </body>
+    </h:body>
 </html>

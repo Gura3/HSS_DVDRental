@@ -12,7 +12,8 @@ and open the template in the editor.
 h3{
     font-size: 175%;
     text-align: center;
-}/*
+}
+/*
 
 .main{  
     width: 75%;
@@ -40,7 +41,7 @@ table {
 
 table th, table td {
    border: solid 2px #3498db;   /*線の色*/
-    padding: 2px 4px;
+   padding: 2px 4px;
 }
 
 

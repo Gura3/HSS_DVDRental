@@ -8,15 +8,33 @@ package Bean;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
-/**
- *
- * @author s20163002
- */
-
+/* 会員カード再発行 */
 @Named
 @RequestScoped
 public class ReissueCard {
+    //会員カード再発行トップ
     public String reissue(){
         return "/pages/card_reissue/reissue_top.xhtml";
+    }
+    private String testNo = null;
+
+    public String getTestNo() {
+        return testNo;
+    }
+
+    public void setTestNo(String testNo) {
+        this.testNo = testNo;
+    }
+    
+    
+    //遷移
+    public String scan(){
+        //スキャンエラー
+        return "reissue_scan_error";
+    }
+    
+    public String comp(){
+        //スキャンエラー
+        return "reissue_comp";
     }
 }

@@ -5,7 +5,7 @@
  */
 package Bean;
 
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
 
 /**
@@ -13,7 +13,7 @@ import javax.inject.Named;
  * @author Gura3
  */
 @Named
-@RequestScoped
+@ApplicationScoped
 
 /* 貸出会員スキャンバッキングビーン */
 public class MemberScanCompleteBb {

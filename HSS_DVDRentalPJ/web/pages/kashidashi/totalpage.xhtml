@@ -52,7 +52,7 @@
             </h:panelGroup>
             <h:outputText value="預かり金額" />
             <h:panelGroup>
-            <h:inputText p:type="number" value="#{totalBb.deposit}" styleClass="depositbox" id="deposit"/>
+            <h:inputText p:type="number" value="#{DVDScanBb.deposit}" styleClass="depositbox" id="deposit"/>
             </h:panelGroup>
         </h:panelGrid>
         </h:form>
@@ -84,8 +84,8 @@
             </li>
             <li>
                 <h:form id="tugi" styleClass="genkei">
-                    <h:commandButton value="現計" id="next" styleClass="genke" action="#{totalBb.complete()}"/>
-                    <h:inputText value="#{totalBb.deposit}" id="mem" styleClass="btn"/>
+                    <h:commandButton value="現計" id="next" styleClass="genke" action="#{DVDScanBb.complete()}"/>
+                    <h:inputText value="#{DVDScanBb.deposit}" id="mem" styleClass="btn"/>
                 </h:form>
             </li>
         </ul>

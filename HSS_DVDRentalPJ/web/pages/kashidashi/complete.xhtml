@@ -7,8 +7,8 @@
     <h:head>
         <title>現計処理-完了</title>
         <h:outputStylesheet library="css" name="title.css"/>
-        <h:outputStylesheet library="css" name="mystyle.css"/>
         <h:outputStylesheet library="css" name="comps.css"/>
+        <h:outputStylesheet library="css" name="kashicomp.css"/>
     </h:head>
     <h:body>
         <h1>HCSDVDレンタル</h1>
@@ -28,7 +28,7 @@
         </ol>
         </div>
 -->
-        <h:outputText value="&yen;#{totalBb.deposit}"/>
+        
         <div class="moji">
             <p class="dai">現計処理が完了しました。</p>
             <p class="syou">レシートが発行されます。確認してください。<br></br>引き続き再発行処理をする場合は<strong>再度処理ボタン</strong>を押してください。</p>
@@ -38,16 +38,16 @@
             <tbody>
                 <tr id="so">
                     <td class="hed">総額</td>
-                    <td id="soukin">\99999</td>
+                    <td id="soukin"><h:outputText value="&yen;#{DVDScanBb.total}"/></td>
                 </tr>
-                <tr id="az"><td class="hed">預かり金額</td><td id="azukin">\999999</td></tr>
-                <tr id="ot"><td class="hed">おつり</td><td id="otukin">\99999</td></tr>
+                <tr id="az"><td class="hed">預かり金額</td><td id="azukin"><h:outputText value="&yen;#{DVDScanBb.deposit}"/></td></tr>
+                <tr id="ot"><td class="hed">おつり</td><td id="otukin"><h:outputText value="&yen;#{DVDScanBb.change}"/></td></tr>
             </tbody>
         </table>
         <div class="botan">
         <h:form>
             <h:commandButton class="saido" value="再度処理" alt="sa" action="#{rentalBb.next()}"></h:commandButton>
-            <input type="button" onclick="location.href='../../index.xhtml'" value="トップページに戻る"/>
+            <input type="button" class="button" onclick="location.href='../../index.xhtml'" value="トップページに戻る"/>
         </h:form>
                 
            

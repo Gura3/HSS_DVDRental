@@ -25,8 +25,30 @@ public class DVDScanBb {
     private String moneys[] = new String[10];
     private boolean flg1[] = new boolean[10];
     private boolean flg2[] = new boolean[10];
-    private int total;
+    static private int total;
     private int tax;
+    private int deposit;            //預かり金
+    private int change;            //おつり
+
+    public int getChange() {
+        return change;
+    }
+
+    public void setChange(int change) {
+        this.change = change;
+    }
+
+    public int getDeposit() {
+        return deposit;
+    }
+
+    public void setDeposit(int deposit) {
+        this.deposit = deposit;
+    }
+    
+    public void setDeposit(String deposit) {
+        this.deposit = Integer.parseInt(deposit);
+    }
 
     public int getTotal() {
         return total;
@@ -127,6 +149,10 @@ public class DVDScanBb {
         return "DVDScan.xhtml";
     }
     
+    public String back(){
+        return "DVDScan.xhtml";
+    }
+    
     public String scan(){
         if(!getBarcode().equals("")){
             setBarcodes(getBarcode(),getScancnt());
@@ -183,6 +209,18 @@ public class DVDScanBb {
         }
         return "DVDScan.xhtml";
     }
+    
+    public String complete(){
+        DVDScanBb tot = new DVDScanBb();
+        setChange(getDeposit()-tot.getTotal());
+        return "complete";
+    }
+    
+    public String totalpage(){
+        setDeposit(0);
+        return "totalpage";
+    }
+    
        
 
 }

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>会員カード有効期限更新</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <h:outputStylesheet library="css" name="title.css"/>
+        <h:outputStylesheet library="css" name="reissue.css"/>
+    </h:head>
+    <h:body>
+        <h1>HCSDVDレンタル</h1>
+        <h2>会員カード有効期限更新</h2>
+
+        <h:form>
+            <h3>DVDバーコードをスキャンすると一覧に表示されます</h3>
+            <!-- checkboxlist -->
+            お客様が会員情報を更新したいか聞いてください。
+            会員情報を変更したい場合は変更情報入力ボタン
+            そのまま有効期限を更新する場合は有効期限更新処理ボタンを押してください
+            
+            <h:commandButton value="変更情報入力"/>
+            <h:commandButton value="有効期限更新処理" action="update_comp"/>
+            <input type="button" onclick="location.href='../index.xhtml'" value="更新処理を中断（トップページへ戻る）"/>
+        </h:form>
+    </h:body>
+</html>

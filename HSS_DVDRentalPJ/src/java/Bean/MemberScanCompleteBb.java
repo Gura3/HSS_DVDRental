@@ -198,6 +198,5 @@ public class MemberScanCompleteBb {
         }else{                                          //スキャンエラー
             return "memberScanError";
         }
-        
     }
 }

@@ -1,16 +1,63 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>TODO supply a title</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>HCSDVDレンタル-貸出バーコードスキャン</title>
+        <h:outputStylesheet library="css" name="title.css"/>
+        <h:outputStylesheet library="css" name="memberScanComplete.css"/>
+    </h:head>
+    <h:body>
+        <h1>HCSDVDレンタル</h1>
+        <h2>会員情報更新</h2>
+
+        
+        <p>お客様の会員情報</p>
+        <table>
+            <tr>
+                <td></td>
+                <td>変更前</td>
+                <td>変更後</td>
+            </tr>
+            <tr>
+                <td id="left">氏名</td>
+                <td id="right">加藤弘幸</td>
+                <td id="right">佐藤弘幸</td>
+            </tr>
+            <tr>
+                <td id="left">氏名(フリガナ)</td>
+                <td id="right">カトウヒロユキ</td>
+                <td id="right">サトウヒロユキ</td>
+            </tr>
+            <tr>
+                <td id="left">郵便番号</td>
+                <td id="right"></td>
+                <td id="right"></td>
+            </tr>
+            <tr>
+                <td id="left">住所</td>
+                <td id="right"></td>
+                <td id="right"></td>
+            </tr>
+            <tr>
+                <td id="left">電話番号</td>
+                <td id="right"></td>
+                <td id="right"></td>
+            </tr>
+            <tr>
+                <td id="left">会社員</td>
+                <td id="right"></td>
+                <td id="right"></td>
+            </tr>
+        </table>
+        変更する会員情報を確認してください
+        問題ない場合は更新処理ボタンを押してください
+        再入力を希望している場合は再入力ボタンを押してください
+        <h:form styleClass="subMenu">
+            <input type="button" class="button" value="処理を中断" onClick="location.href='../index.xhtml'"/>
+            <h:commandButton value="更新処理" styleClass="button" action="#{DVDScanBb.next()}"/>
+            <h:button value="再入力" styleClass="button" outcome="member_info_update"/>
+        </h:form>
+    </h:body>
 </html>
+

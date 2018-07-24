@@ -50,7 +50,7 @@
                         <!-- TODO  3つずつ分ける-->
                         <h:form>
                             <h:commandButton value="会員入会" styleClass="boxcb" action="#{enrollmentBb.next()}" />
-                            <h:commandButton value="会員有効期限更新" styleClass="boxcb" />
+                            <h:commandButton value="会員有効期限更新" styleClass="boxcb" action="#{expirationDateUpdateBb.updateScan()}"/>
                             <h:commandButton value="会員情報更新" styleClass="boxcb"/>
                             <h:commandButton value="会員カード再発行" styleClass="boxcb" action="#{reissueCard.reissue()}"/>
                             <h:commandButton value="会員退会" styleClass="boxcb" />

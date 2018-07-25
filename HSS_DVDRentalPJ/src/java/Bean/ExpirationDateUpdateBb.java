@@ -1,6 +1,6 @@
 /*
  * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
+ * o change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package Bean;
@@ -16,7 +16,21 @@ import javax.inject.Named;
 @Named
 @RequestScoped
 public class ExpirationDateUpdateBb {
+    private String test=null;
+
+    public String getTest() {
+        return test;
+    }
+
+    public void setTest(String test) {
+        this.test = test;
+    }
+    
     public String updateScan(){
         return "/pages/expiration_date_update/update_scan.xhtml";
+    }
+    
+    public String updateConf(){
+        return "update_conf.xhtml";
     }
 }

@@ -8,24 +8,30 @@
         <title>HCSDVDレンタル</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <h:outputStylesheet library="css" name="title.css"/>
-        <h:outputStylesheet library="css" name="memberScan.css"/>
+        <h:outputStylesheet library="css" name="expiration_date_update.css"/>
+        
         <!-- スキャンのスクリプト -->
         <h:outputScript library="js" name="scan.js"/>
     </h:head>
+    
     <h:body>
         <h1>HCSDVDレンタル</h1>
         <h2>会員カード有効期限更新</h2>
         <h3>更新するお客様の会員カードをスキャンしてください</h3>
+        
         <div class="box">
             <p align="center">スキャン待ち</p>
         </div>
-        <h:button outcome="index.xhtml" value="更新処理を中断(トップページへ戻る)" />
+        
+        <div class="btnbox">
+            <h:button value="更新処理を中断（トップページへ戻る)" outcome="/index.xhtml" styleClass="updatescanbtn"/>
+            <h:button value="カード忘れ" styleClass="updatescanbtn"/>
+        </div>
         
         <h:form id="tugi">
             <h:commandButton type="button" id="next" onclick="return runBtnDisabled('tugi', 'next')" value="次へ" styleClass="btn"/>
-            <h:commandButton value="送　信"  action="#{reissueCard.scan()}" styleClass="btn"  id ="senni"/>
-            <h:inputText value="#{reissueCard.testNo}" id="mem" styleClass="btn"/>
+            <h:commandButton value="送　信"  action="update_conf" styleClass="btn"  id ="senni"/>
+            <h:inputText value="#{expirationDateUpdateBb.test}" id="mem" styleClass="btn"/>
         </h:form>
     </h:body>
 </html>
-

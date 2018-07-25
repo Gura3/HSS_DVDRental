@@ -1,0 +1,96 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2018/07/24, 14:09:54
+    Author     : s20163031
+*/
+
+#Pass li {                  /*パンくずリスト*/
+    background: #aedfc6 no-repeat;
+    height: 22px;
+    float: left;
+    line-height: 22px;
+    padding-right: 10px;
+    padding-left: 20px;
+    list-style-type: none;
+    border-left-color: #aedfc6;/*背景色*/
+}
+#Pass li.loc {              /*パンくずリスト    現在位置*/
+    background: #03F no-repeat;
+    font-weight: bold;
+    color: #ffffff;
+    list-style-type: none;
+}
+#Pass li.after {
+    content: ">";
+    position: absolute;
+    top: 0;
+    left: 100%;
+    border-style: solid;
+    border-color: transparent;
+    border-left-color: #aedfc6;/*背景色*/
+    border-width: 14px 12px;
+    width: 0;
+    height: 0;
+}
+
+.subMenu{
+    margin: 0 auto;
+    text-align: center;
+}
+.button{
+    margin: 1% 5%;
+    width: 15%;
+    height: 5em;
+}
+
+table th, table td {
+    border: solid 2px #3498db;    //線の色
+    padding: 2px 4px;
+    height: 2.5em;
+    text-align: center;
+}
+
+table{
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+.left{
+    width: 7em;
+    text-align: center;
+    height: 2em;
+}
+.right{
+    width: 26.3em;
+}
+
+.syu{
+    width: 6em;
+    text-align: center;
+    height: 2em;
+}
+.kei{
+    width: 13.6em;
+}
+
+.hidari{
+    width: 7em;
+}
+.migi{
+    width: 40em;
+}
+
+h3{
+    font-size: 150%;
+    text-align: center;
+}
+
+input {
+    width: 50%;
+    height: 60%;
+    font-size: 100%;
+}

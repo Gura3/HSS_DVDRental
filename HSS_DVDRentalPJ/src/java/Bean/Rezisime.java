@@ -29,22 +29,20 @@ public class Rezisime implements Serializable {
     public Rezisime() {
     }
 
-    public Rezisime(String tenpocd, String rezicd, String simetime,
-                     String man,String gosen,String nisen,String sen,String gohyaku,
-                     String hyaku,String goju,String ju,String goyen,String ichi) {
-        this.tenpocd = tenpocd;
-        this.rezicd = rezicd;
-        this.simetime = simetime;
-        this.man = man;
-        this.gosen = gosen;
-        this.nisen = nisen;
-        this.sen = sen;
-        this.gohyaku = gohyaku;
-        this.hyaku = hyaku;
-        this.goju = goju;
-        this.ju = ju;
-        this.goyen = goyen;
-        this.ichi = ichi;
+    public Rezisime(Rezisime rezisime) {
+        this.tenpocd = rezisime.getTenpocd();
+        this.rezicd = rezisime.getRezicd();
+        this.simetime = rezisime.getSimetime();
+        this.man = rezisime.getMan();
+        this.gosen = rezisime.getGosen();
+        this.nisen = rezisime.getNisen();
+        this.sen = rezisime.getSen();
+        this.gohyaku = rezisime.getGohyaku();
+        this.hyaku = rezisime.getHyaku();
+        this.goju = rezisime.getGoju();
+        this.ju = rezisime.getJu();
+        this.goyen = rezisime.getGoyen();
+        this.ichi = rezisime.getIchi();
     }
 
     public Rezisime(String tenpocd, String rezicd, String simetime) {

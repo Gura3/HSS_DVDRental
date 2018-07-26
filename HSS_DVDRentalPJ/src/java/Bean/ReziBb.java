@@ -69,7 +69,8 @@ public class ReziBb {
     }
     
     public void add(){
-        db.add(Rezisime.class);
+        Rezisime a = new Rezisime();
+        db.add(a);
     }
 
     public String getTenpocd() {

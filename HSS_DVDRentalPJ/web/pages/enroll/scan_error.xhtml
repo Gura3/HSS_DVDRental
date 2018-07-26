@@ -6,28 +6,28 @@ and open the template in the editor.
 -->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-        xmlns:h="http://xmlns.jcp.org/jsf/html">
-    <!-- スキャン画面トップ -->
-
-    <h:head>
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+     <h:head>
         <title>HCSDVDレンタル</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <h:outputStylesheet library="css" name="title.css"/>
-        <h:outputStylesheet library="css" name="memberScan.css"/>
+        <h:outputStylesheet library="css" name="memberError.css"/>
         <!-- スキャンのスクリプト -->
         <h:outputScript library="js" name="scan.js"/>
     </h:head>
     <h:body>
+        <!-- バーコードスキャンエラー -->
         <h1>HCSDVDレンタル</h1>
-        <h2>会員カード再発行処理</h2>
-        <h3>未使用の会員カードをスキャンしてください</h3>
+        <h2>店内新規登録</h2>
+        <h3>お客様の会員カードのバーコードをスキャンしてください。</h3>
+        <h3 id="error">：エラー　もう一度スキャンしてください。</h3>
         <div class="box">
-            <p align="center">スキャン待ち</p>
+            <p align="center">読み込みエラー</p>
         </div>
         
         <h:form id="tugi">
             <h:commandButton type="button" id="next" onclick="return runBtnDisabled('tugi', 'next')" value="次へ" styleClass="btn"/>
-            <h:commandButton value="送　信"  action="#{reissueCard.scan()}" styleClass="btn"  id ="senni"/>
+            <h:commandButton value="送　信"  action="#{reissueCard.comp()}" styleClass="btn"  id ="senni"/>
             <h:inputText value="#{reissueCard.testNo}" id="mem" styleClass="btn"/>
         </h:form>
     </h:body>

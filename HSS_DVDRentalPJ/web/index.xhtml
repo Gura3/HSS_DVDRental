@@ -37,7 +37,7 @@
                         <h:form>
                             <h:commandButton value="返金" styleClass="boxcb" />
                         </h:form>
-                        <a href="#tabpage6"><button>レジ〆</button></a>
+                        <a href="#tabpage6"><button>レジ操作</button></a>
                     </div>
                 </div>
             </div>
@@ -91,7 +91,7 @@
                     <!-- レジ〆の名前を変えるかも？ -->
                     <div id="tabpage6">
                         <h:form>
-                            <h:commandButton value="レジ〆(途中)" styleClass="boxcb" />
+                            <h:commandButton value="レジ〆(途中)" styleClass="boxcb" action="#{reziBb.next()}"/>
                             <h:commandButton value="レジ〆(最後)" styleClass="boxcb" />
                         </h:form>
                     </div>

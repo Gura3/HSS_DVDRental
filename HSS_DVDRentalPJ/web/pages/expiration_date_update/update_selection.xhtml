@@ -11,22 +11,35 @@ and open the template in the editor.
         <title>会員カード有効期限更新</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <h:outputStylesheet library="css" name="title.css"/>
-        <h:outputStylesheet library="css" name="reissue.css"/>
+        <h:outputStylesheet library="css" name="expiration_date_update.css"/>
     </h:head>
     <h:body>
         <h1>HCSDVDレンタル</h1>
         <h2>会員カード有効期限更新</h2>
 
-        <h:form>
+
+
+        <div class="msgbox">
             <h3>DVDバーコードをスキャンすると一覧に表示されます</h3>
-            <!-- checkboxlist -->
-            お客様が会員情報を更新したいか聞いてください。
-            会員情報を変更したい場合は変更情報入力ボタン
-            そのまま有効期限を更新する場合は有効期限更新処理ボタンを押してください
-            
-            <h:commandButton value="変更情報入力"/>
-            <h:commandButton value="有効期限更新処理" action="update_comp"/>
-            <input type="button" onclick="location.href='../index.xhtml'" value="更新処理を中断（トップページへ戻る）"/>
-        </h:form>
+            お客様が会員情報を更新したいか聞いてください<br/>
+            会員情報を変更したい場合は変更情報入力ボタン<br/>
+            そのまま有効期限を更新する場合は有効期限更新処理ボタンを押してください<br/>
+
+            <h:form >
+                <div style="display: table;">
+                    <div style="display: table-cell;width: 30%;">
+                        :会員情報を変更したい場合はこちら<br/>
+                        <h:commandButton value="変更情報入力" action="member_info_update"/>
+                    </div>
+                    <div style="display: table-cell; width: 30%;">
+                        :そのまま有効期限を更新する場合はこちら<br/>
+                        <h:commandButton value="有効期限更新処理" action="update_comp"/>
+                    </div>
+                    <div style="display: table-cell; width: 30%;">
+                        <h:button outcome="/index.xhtml" value="更新処理を中断（トップページへ戻る）"/>
+                    </div>
+                </div>
+            </h:form>
+        </div>
     </h:body>
 </html>

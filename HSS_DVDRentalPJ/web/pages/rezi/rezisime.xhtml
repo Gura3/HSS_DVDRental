@@ -1,0 +1,165 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>HCSDVDレンタル-貸出バーコードスキャン</title>
+        <h:outputStylesheet library="css" name="title.css"/>
+        <h:outputStylesheet library="css" name="rezisime.css"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <h1>HCSDVDレンタル</h1>
+        <h2>レジ閉め</h2>
+        <div>
+        <ol id="Pass">
+            <li class="loc">金額入力</li>
+            <li>比較情報確認</li>
+            <li>レジ閉め完了</li>
+        </ol>
+        </div>
+        <br/>
+        <h3>レジ内にある金額を入力してください。</h3>
+        
+        <h:form>
+        <h:panelGrid columns="3" border="1" columnClasses="left,center,right" styleClass="table">
+            <h:outputText value="紙幣"/>
+            <h:outputText value="枚数"/>
+            <h:outputText value="合計金額"/>
+            <h:outputText value="一万円札"/>
+            <h:panelGroup>
+            <h:inputText p:type="number" value=""/>
+            <h:outputText value="枚"/>
+            </h:panelGroup>
+            <h:outputText value="&yen;"/>
+            <h:outputText value="五千円札"/>
+            <h:panelGroup>
+            <h:inputText p:type="number" value=""/>
+            <h:outputText value="枚"/>
+            </h:panelGroup>
+            <h:outputText value="&yen;"/>
+            <h:outputText value="二千円札"/>
+            <h:panelGroup>
+            <h:inputText p:type="number" value=""/>
+            <h:outputText value="枚"/>
+            </h:panelGroup>
+            <h:outputText value="&yen;"/>
+            <h:outputText value="千円札"/>
+            <h:panelGroup>
+            <h:inputText p:type="number" value=""/>
+            <h:outputText value="枚"/>
+            </h:panelGroup>
+            <h:outputText value="&yen;"/>
+            <h:outputText value="紙幣合計"/>
+            <h:panelGroup>
+            <h:inputText p:type="number" disabled="true" value=""/>
+            <h:outputText value="枚"/>
+            </h:panelGroup>
+            <h:outputText value="&yen;"/>
+        </h:panelGrid>
+        </h:form>
+        
+        <br/>
+        
+        <h:form>
+        <h:panelGrid columns="4" border="1" columnClasses="syu,mai,bou,kei" styleClass="table">
+            <h:outputText value="貨幣"/>
+            <h:outputText value="枚数"/>
+            <h:outputText value="棒金本数"/>
+            <h:outputText value="合計金額"/>
+            <h:outputText value="500円玉"/>
+            <h:panelGroup>
+            <h:inputText p:type="number" value=""/>
+            <h:outputText value="枚"/>
+            </h:panelGroup>
+            <h:panelGroup>
+            <h:inputText p:type="number" value=""/>
+            <h:outputText value="本"/>
+            </h:panelGroup>
+            <h:outputText value="&yen;"/>
+            <h:outputText value="100円玉"/>
+            <h:panelGroup>
+            <h:inputText p:type="number" value=""/>
+            <h:outputText value="枚"/>
+            </h:panelGroup>
+            <h:panelGroup>
+            <h:inputText p:type="number" value=""/>
+            <h:outputText value="本"/>
+            </h:panelGroup>
+            <h:outputText value="&yen;"/>
+            <h:outputText value="50円玉"/>
+            <h:panelGroup>
+            <h:inputText p:type="number" value=""/>
+            <h:outputText value="枚"/>
+            </h:panelGroup>
+            <h:panelGroup>
+            <h:inputText p:type="number" value=""/>
+            <h:outputText value="本"/>
+            </h:panelGroup>
+            <h:outputText value="&yen;"/>
+            <h:outputText value="10円玉"/>
+            <h:panelGroup>
+            <h:inputText p:type="number" value=""/>
+            <h:outputText value="枚"/>
+            </h:panelGroup>
+            <h:panelGroup>
+            <h:inputText p:type="number" value=""/>
+            <h:outputText value="本"/>
+            </h:panelGroup>
+            <h:outputText value="&yen;"/>
+            <h:outputText value="5円玉"/>
+            <h:panelGroup>
+            <h:inputText p:type="number" value=""/>
+            <h:outputText value="枚"/>
+            </h:panelGroup>
+            <h:panelGroup>
+            <h:inputText p:type="number" value=""/>
+            <h:outputText value="本"/>
+            </h:panelGroup>
+            <h:outputText value="&yen;"/>
+            <h:outputText value="1円玉"/>
+            <h:panelGroup>
+            <h:inputText p:type="number" value=""/>
+            <h:outputText value="枚"/>
+            </h:panelGroup>
+            <h:panelGroup>
+            <h:inputText p:type="number" value=""/>
+            <h:outputText value="本"/>
+            </h:panelGroup>
+            <h:outputText value="&yen;"/>
+            <h:outputText value="紙幣合計"/>
+            <h:panelGroup>
+            <h:inputText p:type="number" disabled="true" value=""/>
+            <h:outputText value="枚"/>
+            </h:panelGroup>
+            <h:panelGroup>
+            <h:inputText p:type="number" disabled="true" value=""/>
+            <h:outputText value="本"/>
+            </h:panelGroup>
+            <h:outputText value="&yen;"/>
+        </h:panelGrid>
+        </h:form>
+        
+        <br/>
+        
+        <h:panelGrid columns="2" border="1" columnClasses="hidari,migi" styleClass="table">
+            <h:outputText value=""/>
+            <h:outputText value="合計金額"/>
+            <h:outputText value="紙幣合計"/>
+            <h:outputText value="&yen;"/>
+            <h:outputText value="貨幣合計"/>
+            <h:outputText value="&yen;"/>
+            <h:outputText value="総合金額"/>
+            <h:outputText value="&yen;"/>
+        </h:panelGrid>
+        
+        <br/>
+        
+        <h:form styleClass="subMenu">
+            <input type="button" class="button" value="処理を中断" onClick="location.href='http://localhost:8080/HSS_DVDRentalPJ/'"/>
+            <h:commandButton value="売上データと比較" disabled="true" styleClass="button"/>
+        </h:form>
+    </h:body>
+</html>

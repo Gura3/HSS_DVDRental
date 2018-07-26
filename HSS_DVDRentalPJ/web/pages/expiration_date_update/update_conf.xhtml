@@ -12,10 +12,11 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <h:outputStylesheet library="css" name="title.css"/>
         <h:outputStylesheet library="css" name="reissue.css"/>
+        <h:outputStylesheet library="css" name="expiration_date_update.css"/>
     </h:head>
     <h:body>
         <h1>HCSDVDレンタル</h1>
-        <h2>会員カード再発行処理</h2>
+        <h2>会員カード有効期限更新処理</h2>
 
         <h:form>
             <h3>DVDバーコードをスキャンすると一覧に表示されます</h3>
@@ -66,8 +67,10 @@ and open the template in the editor.
             </table>
             
             <!--有効期限更新の奴に変更-->
-            <h:commandButton value="次へ" styleClass="btn" action="reissue_scan"/>
-            <input type="button" onclick="location.href='../index.xhtml'"/>
+            <div class="btnbox">
+                <h:button outcome="/index.xhtml" class="updateconfbtn" value="更新処理の中断"/>
+                <h:commandButton action="update_selection" class="updateconfbtn" value="次へ" />
+            </div>
         </h:form>
     </h:body>
 </html>

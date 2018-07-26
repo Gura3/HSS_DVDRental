@@ -1,0 +1,79 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2018/07/25, 10:29:17
+    Author     : s20163002
+*/
+
+/* メッセージのスタイル */
+h3{
+    font-size: 150%;
+    text-align: center;
+}
+
+
+/* スキャン待ちの枠 */
+.box {
+    padding: 0 1em;
+    margin: 1.61em auto 0;
+    font-weight: bold;
+    color: #6091d3;/*文字色*/
+    background: #FFF;
+    border: solid 3px #6091d3;/*線*/
+    width: 50%;
+}
+
+/* スキャン待ちの文字 */
+.box p{
+    margin: 0.3em 0;
+    font-size: 300%;
+}
+
+/* トップへ戻るボタンのスタイル */
+/* 枠 */
+.btnbox{
+    text-align: center;
+    margin-top: 2em;
+}
+/* ボタン本体 */
+/* update_scanのボタンスタイル */
+.btnbox .updatescanbtn{
+    width: 30%;
+    height: 60px;
+    margin: 1em;
+}
+
+.btnbox .updateconfbtn{
+    width: 25%;
+    height: 60px;
+    margin: 1em;
+}
+
+/* スクリプト部分のボタンを隠す */
+#tugi{
+    display: none;
+}
+
+/* update_selection */
+.formtable {
+    border-collapse: collapse;
+    width: 70%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 2em;
+}
+.formtable td {
+    border: solid 2px #3498db;   /*線の色*/
+    padding: 2px 4px;
+}
+
+
+/* update_selection */
+/* メッセージのスタイル */
+.msgbox{
+    text-align: center;
+    font-size: 120%;
+}

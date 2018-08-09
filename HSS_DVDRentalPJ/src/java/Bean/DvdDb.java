@@ -14,7 +14,7 @@ import javax.persistence.PersistenceContext;
 public class DvdDb {
     @PersistenceContext
     private EntityManager em;
-    public List<Lend_item> getAll(){
-        return em.createQuery("SELECT * FROM dvd").getResultList();
+    public List<Dvd> getAll(){
+        return em.createQuery("SELECT DVD_CODE FROM dvd").getResultList();
     }
 }

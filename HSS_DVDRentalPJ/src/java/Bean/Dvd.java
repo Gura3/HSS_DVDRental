@@ -5,6 +5,8 @@
  */
 package Bean;
 
+import java.io.Serializable;
+import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
@@ -12,7 +14,8 @@ import javax.validation.constraints.NotNull;
  *
  * @author s20163002
  */
-public class Dvd {
+@Entity
+public class Dvd implements Serializable{
     @Id
     @NotNull
     private String dvd_code;//DVDコード

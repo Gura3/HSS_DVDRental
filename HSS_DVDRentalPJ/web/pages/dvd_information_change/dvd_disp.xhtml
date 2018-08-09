@@ -11,13 +11,13 @@ and open the template in the editor.
     <h:head>
         <title>HCSビデオレンタル</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link rel="stylesheet" type="text/css" href="resource//css/title.css"/>
-        <link rel="stylesheet" type="text/css" href="resource/css/section_change.css"/>
-        <script src="resource/js/section_change.js"/>
+        <h:outputStylesheet library="css" name="title.css"/>
+        <h:outputStylesheet library="css" name="section_change.css"/>
+        <h:outputScript library="javascript" name="section_change.js" />
     </h:head>
     <h:body>
         <h1>HCSDVDレンタル</h1>
-        <h2>新作区分変更</h2>
+        <h2>DVD一覧表示</h2>
 
         <!-- TODO h:formだとjavascriptが適用されないため、対策が必要-->
         <form class="main" name="sampleform">
@@ -100,6 +100,10 @@ and open the template in the editor.
                 <td><input type="button" value="詳細"/></td>
             </tr>
         </table>
-
+        <h:dataTable value="#{rentalBb.all}" var="item">
+            <h:column>#{item.dvd_code}</h:column>
+            <h:column>#{item.dvd_code}</h:column>
+            <h:column>#{item.dvd_code}</h:column>
+        </h:dataTable>
     </h:body>
 </html>

@@ -21,4 +21,6 @@
         <property name="driverClass" value="oracle.jdbc.OracleDriver"/>
     </jdbc-connection-pool>
     <jdbc-resource enabled="true" jndi-name="hikaruDB" object-type="user" pool-name="oracle-thin_HCS1_h20163031Pool"/>
+    <jdbc-resource enabled="true" jndi-name="hikaru" object-type="user" pool-name="oracle-thin_HCS1_h20163031Pool"/>
+    <jdbc-resource enabled="true" jndi-name="honban" object-type="user" pool-name="oracle-thin_HCS1_h20163031Pool"/>
 </resources>

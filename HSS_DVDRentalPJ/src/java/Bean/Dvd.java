@@ -8,33 +8,45 @@ package Bean;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-/**
- *
- * @author s20163002
- */
+
+@NamedQueries({
+    @NamedQuery(name=Dvd.Qall,
+                query="SELECT d FROM Dvd d ORDER BY d.dvd_code")
+})
+
 @Entity
-public class Dvd implements Serializable{
+@Table(name="dvd")
+public class Dvd implements Serializable {
+//    private static final long serialVersionUID = 1L;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.AUTO)
+//    private Long id;
+    
+    public static final String Qall ="Qall";
     @Id
     @NotNull
-    private String dvd_code;//DVDコード
+    private String dvd_code;    //DVDコード
     @NotNull
-    private String title;//タイトル
+    private String title;       //タイトル
     @NotNull
-    private String ｇenre;//ジャンル
+    private String genre;      //ジャンル
     @NotNull
-    private String actor;//主演者
-    private String come;//コメント
+    private String actor;       //主演者
+    private String come;        //コメント
     @NotNull
     private String arrivalday;//入荷日
 
     public Dvd() {}
 
-    public Dvd(String dvd_code, String title, String ｇenre, String actor, String come, String arrivalday) {
+    public Dvd(String dvd_code, String title, String genre, String actor, String come, String arrivalday) {
         this.dvd_code = dvd_code;
         this.title = title;
-        this.ｇenre = ｇenre;
+        this.genre = genre;
         this.actor = actor;
         this.come = come;
         this.arrivalday = arrivalday;
@@ -49,8 +61,8 @@ public class Dvd implements Serializable{
         return title;
     }
 
-    public String getＧenre() {
-        return ｇenre;
+    public String getGenre() {
+        return genre;
     }
 
     public String getActor() {
@@ -75,7 +87,7 @@ public class Dvd implements Serializable{
     }
 
     public void setＧenre(String ｇenre) {
-        this.ｇenre = ｇenre;
+        this.genre = ｇenre;
     }
 
     public void setActor(String actor) {
@@ -89,4 +101,8 @@ public class Dvd implements Serializable{
     public void setArrivalday(String arrivalday) {
         this.arrivalday = arrivalday;
     }
+//    
+//    public Long getId() {
+//        return id;
+//    }
 }

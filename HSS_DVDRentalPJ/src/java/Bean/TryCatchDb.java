@@ -10,8 +10,12 @@ public class TryCatchDb<T> extends SuperDb{
 
 	public	void add(T obj){
 		try{
+                    System.out.println("a");
 			create(obj);
-		}catch(Exception e){}
+                        System.out.println("b");
+		}catch(Exception e){
+                    System.out.println(e);
+                }
 	}
 	public	void update(T obj){
 		try{

@@ -173,13 +173,17 @@ public class MemberScanCompleteBb {
         setBirthday("1987/6/5");
         setPhone("001-831-5511");
         
-        if(("1").equals(getMemberno())){                
+        if(("1").equals(getMemberno())){
+            setFlg1(false);
+            setFlg2(false);
             return "memberScanComplete";                //正常
         }else if(("2").equals(getMemberno())){          //スキャン完了有効期限切れ1ヶ月前へ
             setFlg1(true);
+            setFlg2(false);
             setExpirationDate("30");
             return "memberScanComplete";
         }else if(("3").equals(getMemberno())){          //スキャン完了未払い金へ
+            setFlg1(false);
             setFlg2(true);
             setDelay("300");
             return "memberScanComplete";

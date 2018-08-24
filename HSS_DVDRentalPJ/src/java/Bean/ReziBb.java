@@ -46,14 +46,33 @@ public class ReziBb {
     private String goyen;
     @Size(max = 20, min = 1)
     private String ichi;
+    @Size(max = 20, min = 1)
+    private String total_fee;
+    @Size(max = 20, min = 1)
+    private String discount;
+    @Size(max = 20, min = 1)
+    private String total_sales;
+    @Size(max = 20, min = 1)
+    private String difference;
+    
+    private String gohyakuhon;
+    private String hyakuhon;
+    private String gojuhon;
+    private String juhon;
+    private String goyenhon;
+    private String ichihon;
+    
+    private int maisu;
+    private int kosu;
+    private int honsu;
 
     @EJB
     RezisimeDb db;
     
     public String next(){
-        setTenpocd("1");
-        setSimetime("1");
-        setRezicd("1");
+        setTenpocd("10");
+        setSimetime("2");
+        setRezicd("01");
         setMan("1");
         setGosen("1");
         setNisen("1");
@@ -64,12 +83,16 @@ public class ReziBb {
         setJu("1");
         setGoyen("1");
         setIchi("1");
+        setTotal_fee("1");
+        setDiscount("1");
+        setTotal_sales("1");
+        setDifference("1");
         add();
        return "/pages/rezi/rezisime";
     }
     
     public void add(){
-        Rezisime a = new Rezisime();
+        Rezisime a = new Rezisime(tenpocd,rezicd,simetime,total_fee,discount,man,gosen,nisen,sen,gohyaku,hyaku,goju,ju,goyen,ichi,total_sales,difference);
         db.add(a);
     }
 
@@ -175,6 +198,110 @@ public class ReziBb {
 
     public void setIchi(String ichi) {
         this.ichi = ichi;
+    }
+
+    public String getTotal_fee() {
+        return total_fee;
+    }
+
+    public void setTotal_fee(String total_fee) {
+        this.total_fee = total_fee;
+    }
+
+    public String getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(String discount) {
+        this.discount = discount;
+    }
+
+    public String getTotal_sales() {
+        return total_sales;
+    }
+
+    public void setTotal_sales(String total_sales) {
+        this.total_sales = total_sales;
+    }
+
+    public String getDifference() {
+        return difference;
+    }
+
+    public void setDifference(String difference) {
+        this.difference = difference;
+    }
+
+    public int getMaisu() {
+        return maisu;
+    }
+
+    public void setMaisu(int maisu) {
+        this.maisu = maisu;
+    }
+
+    public String getGohyakuhon() {
+        return gohyakuhon;
+    }
+
+    public void setGohyakuhon(String gohyakuhon) {
+        this.gohyakuhon = gohyakuhon;
+    }
+
+    public String getHyakuhon() {
+        return hyakuhon;
+    }
+
+    public void setHyakuhon(String hyakuhon) {
+        this.hyakuhon = hyakuhon;
+    }
+
+    public String getGojuhon() {
+        return gojuhon;
+    }
+
+    public void setGojuhon(String gojuhon) {
+        this.gojuhon = gojuhon;
+    }
+
+    public String getJuhon() {
+        return juhon;
+    }
+
+    public void setJuhon(String juhon) {
+        this.juhon = juhon;
+    }
+
+    public String getGoyenhon() {
+        return goyenhon;
+    }
+
+    public void setGoyenhon(String goyenhon) {
+        this.goyenhon = goyenhon;
+    }
+
+    public String getIchihon() {
+        return ichihon;
+    }
+
+    public void setIchihon(String ichihon) {
+        this.ichihon = ichihon;
+    }
+
+    public int getKosu() {
+        return kosu;
+    }
+
+    public void setKosu(int kosu) {
+        this.kosu = kosu;
+    }
+
+    public int getHonsu() {
+        return honsu;
+    }
+
+    public void setHonsu(int honsu) {
+        this.honsu = honsu;
     }
     
     

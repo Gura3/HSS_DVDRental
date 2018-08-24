@@ -19,7 +19,9 @@ public abstract class SuperDb<T> {
 	//	protected abstract EntityManager getEntityManager();
 
 	public void create(T entity) {
+                System.out.println("bbbb");
 		em.persist(entity);
+                System.out.println("cccc");
 	}
 
 	public void edit(T entity) {

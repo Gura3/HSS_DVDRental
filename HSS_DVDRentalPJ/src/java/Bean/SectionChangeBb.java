@@ -5,17 +5,19 @@
  */
 package Bean;
 
+import Manager.DvdManager;
+import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
 
 @Named
-@RequestScoped
-public class SectionChangeBb {
+@SessionScoped
+public class SectionChangeBb implements Serializable{
     @Id
     @NotNull
     private String dvd_code;//DVDコード
@@ -29,7 +31,10 @@ public class SectionChangeBb {
     @NotNull
     private String arrivalday;//入荷日
     @EJB
-    DvdDb db;
+    DvdDb dd;
+    @EJB
+    DvdManager dm;
+    Dvd sel;
     public String next(){
         return "/pages/dvd_information_change/section_change.xhtml";
     }
@@ -37,12 +42,27 @@ public class SectionChangeBb {
     public String disp(){
         return "/pages/dvd_information_change/dvd_disp.xhtml";
     }
-
-    //DB処理
-    public List<Dvd> getAll(){
-        return db.getAll();
+    
+    //全取得するやつ
+    public List<Dvd> getFromDb(){
+        List<Dvd> list = null;
+        try{
+            list = dm.getFromDb();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return list;
     }
     
+//    public String detail(Dvd dvd){
+//        sel = dvd;
+//    }
+    
+
+//    //DB処理
+//    public List<Dvd> getAll(){
+//        return db.getAll();
+//    }
     
     //getter・setter
     public String getDvd_code() {

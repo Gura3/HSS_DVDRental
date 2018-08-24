@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import javax.validation.constraints.*;
 
 
-//@Entity
+@Entity
 public class Rezisime implements Serializable {
     
     @Id

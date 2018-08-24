@@ -5,16 +5,11 @@
  */
 package Bean;
 
-import java.util.List;
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 
 @Stateless
-public class DvdDb {
-    @PersistenceContext
-    private EntityManager em;
-    public List<Dvd> getAll(){
-        return em.createQuery("SELECT DVD_CODE FROM dvd").getResultList();
+public class DvdDb extends TryCatchDb{
+    public DvdDb(){
+        super(Dvd.class);
     }
 }

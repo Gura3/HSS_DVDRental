@@ -34,7 +34,9 @@ public class Dvd implements Serializable {
     @NotNull
     private String title;       //タイトル
     @NotNull
-    private String genre;      //ジャンル
+    private String genre1;      //ジャンル1
+    @NotNull
+    private String genre2;     //ジャンル2
     @NotNull
     private String actor;       //主演者
     private String come;        //コメント
@@ -43,10 +45,11 @@ public class Dvd implements Serializable {
 
     public Dvd() {}
 
-    public Dvd(String dvd_code, String title, String genre, String actor, String come, String arrivalday) {
+    public Dvd(String dvd_code, String title, String genre1,String genre2, String actor, String come, String arrivalday) {
         this.dvd_code = dvd_code;
         this.title = title;
-        this.genre = genre;
+        this.genre1 = genre1;
+        this.genre2 = genre2;
         this.actor = actor;
         this.come = come;
         this.arrivalday = arrivalday;
@@ -61,10 +64,14 @@ public class Dvd implements Serializable {
         return title;
     }
 
-    public String getGenre() {
-        return genre;
+    public String getGenre1() {
+        return genre1;
     }
-
+    
+    public String getGenre2() {
+        return genre2;
+    }
+    
     public String getActor() {
         return actor;
     }
@@ -86,10 +93,13 @@ public class Dvd implements Serializable {
         this.title = title;
     }
 
-    public void setＧenre(String ｇenre) {
-        this.genre = ｇenre;
+    public void setGenre1(String genre1) {
+        this.genre1 = genre1;
     }
-
+    public void setGenre2(String genre2) {
+        this.genre2 = genre2;
+    }
+    
     public void setActor(String actor) {
         this.actor = actor;
     }

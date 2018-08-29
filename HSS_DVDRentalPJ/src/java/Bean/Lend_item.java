@@ -5,13 +5,14 @@
  */
 package Bean;
 
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
 //貸出物Bean
 @Entity
-public class Lend_item {
+public class Lend_item implements Serializable{
     @Id
     @NotNull
     private String dvd_barcode; //◎DVDバーコード

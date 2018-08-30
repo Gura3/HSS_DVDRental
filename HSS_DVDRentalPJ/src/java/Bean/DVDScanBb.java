@@ -158,8 +158,8 @@ public class DVDScanBb {
             setBarcodes(getBarcode(),getScancnt());
             if(getBarcode().equals("1234567890128")){
                 setTitles("パパ嫌い！～頑張れヒロユキ、二人ではじめてのおつかい～",getScancnt());
-                setDays("2018/8/1～2018/8/5",getScancnt());
-                setMoneys("100",getScancnt());
+                setDays("2018/8/30～2018/9/6",getScancnt());
+                setMoneys("160",getScancnt());
                 setFlg1(false,getScancnt());
                 setFlg2(true,getScancnt());
                 String mons[] = getMoneys();
@@ -168,8 +168,8 @@ public class DVDScanBb {
                 setScancnt(getScancnt()+1);
             }else if(getBarcode().equals("2234567890127")){
                 setTitles("-MESHIYA-この国に独裁者が現れたら、戦う勇気を持てるか？",getScancnt());
-                setDays("2018/8/1～2018/8/5",getScancnt());
-                setMoneys("100",getScancnt());
+                setDays("2018/8/30～2018/9/6",getScancnt());
+                setMoneys("160",getScancnt());
                 setFlg1(false,getScancnt());
                 setFlg2(true,getScancnt());
                 String mons[] = getMoneys();
@@ -178,8 +178,8 @@ public class DVDScanBb {
                 setScancnt(getScancnt()+1);
             }else if(getBarcode().equals("3234567890126")){
                 setTitles("ビール大好き高濱プレゼンツ！通販天国",getScancnt());
-                setDays("2018/8/1～2018/8/5",getScancnt());
-                setMoneys("100",getScancnt());
+                setDays("2018/8/30～2018/9/6",getScancnt());
+                setMoneys("160",getScancnt());
                 setFlg1(false,getScancnt());
                 setFlg2(true,getScancnt());
                 String mons[] = getMoneys();
@@ -188,8 +188,8 @@ public class DVDScanBb {
                 setScancnt(getScancnt()+1);
             }else if(getBarcode().equals("4234567890125")){
                 setTitles("おかせん THE MOVIE",getScancnt());
-                setDays("2018/8/1～2018/8/5",getScancnt());
-                setMoneys("100",getScancnt());
+                setDays("2018/8/30～2018/9/6",getScancnt());
+                setMoneys("160",getScancnt());
                 setFlg1(false,getScancnt());
                 setFlg2(true,getScancnt());
                 String mons[] = getMoneys();

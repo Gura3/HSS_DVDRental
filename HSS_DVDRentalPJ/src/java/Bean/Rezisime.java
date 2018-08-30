@@ -73,6 +73,7 @@ public class Rezisime implements Serializable {
         this.ichiyen = ichiyen;
         this.total_sales = total_sales;
         this.difference = difference;
+        System.out.println(store_cd+"A"+regi_code+"B"+regi_tig_day+"C"+total_fee+"D"+discount+"E"+manyen+"F"+gosenyen+"G"+nisenyen+"H"+senyen+"I"+gohyakuyen+"J"+hyakuyen+"K"+gojuyen+"L"+juyen+"M"+goyen+"N"+ichiyen+"O"+total_sales+"P"+difference);
     }
 
     public String getStore_cd() {

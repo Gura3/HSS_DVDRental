@@ -5,6 +5,10 @@
  */
 package Bean;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import javax.ejb.EJB;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
@@ -104,10 +108,11 @@ public class ReziBb {
     RezisimeDb db;
     
     
-    public String next(){
-        setTenpocd("10");
-        setSimetime("2");
-        setRezicd("01");
+    public String next() throws UnknownHostException{
+        if(InetAddress.getLocalHost().getHostName().equals("HCS23110")){
+            setTenpocd("00");
+            setRezicd("101");
+        }
         setMan("0");
         setGosen("0");
         setNisen("0");
@@ -160,6 +165,7 @@ public class ReziBb {
         setGohoncheck("-1");
         setIchihoncheck("-1");
         setHyoji(true); 
+        System.out.println(InetAddress.getLocalHost().getHostName());
         
        return "/pages/rezi/rezisime";
     }
@@ -502,6 +508,18 @@ public class ReziBb {
     }
     
     public String kanryo(){
+        
+        //現在日時取得
+        Calendar c = Calendar.getInstance();
+
+        //フォーマットを指定
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmm");
+        setSimetime(sdf.format(c.getTime()));
+        setDiscount("0");
+        setTotal_sales("3");
+        setDifference("0");
+        
+        add();
         return "/pages/rezi/rezisimekanryo";
     }
     

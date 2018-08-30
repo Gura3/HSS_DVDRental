@@ -46,7 +46,7 @@
             <h:outputText value="&yen;#{DVDScanBb.tax}" class="a"/>
             <h:outputText value="割引" />
             <h:panelGroup>
-            <h:outputText value="1枚" class="b"/>
+            <h:outputText value="0枚" class="b"/>
             <h:commandButton value="割引" styleClass="c" action="#{DVDScanBb.delete(0)}" id="disc"/>
             <h:commandButton value="クリア" styleClass="d" action="#{DVDScanBb.delete(0)}" id="clear"/>
             </h:panelGroup>
@@ -63,7 +63,7 @@
                     <h:outputText value="会員ID" />
                     <h:outputText value="#{memberScanCompleteBb.memberno}"/>
                     <h:outputText value="貸出中個数"/>
-                    <h:outputText value=""/>
+                    <h:outputText value="0"/>
                     <h:outputText value="氏名"/>
                     <h:outputText value="#{memberScanCompleteBb.name}"/>
                     <h:outputText value="性別" />
@@ -71,7 +71,7 @@
                     <h:outputText value="生年月日"/>
                     <h:outputText value="#{memberScanCompleteBb.birthday}"/>
                     <h:outputText value="会員区分" />
-                    <h:outputText value="" />
+                    <h:outputText value="会員" />
                 </h:panelGrid>
             </li>
             <li>

@@ -6,7 +6,8 @@ and open the template in the editor.
 -->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>HCSビデオレンタル登録TOP</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -19,15 +20,13 @@ and open the template in the editor.
         <h2>会員登録処理</h2>
         <br></br>
         <h3>身分証明の種類を選択してください</h3>
-        <label><input type="radio" name="d5">運転免許</input></label>
-        <label><input type="radio" name="d5">保険証（健康保険）</input></label>
-        <label><input type="radio" name="d5">学生証（高校生を除く）</input></label>
-        <label><input type="radio" name="d5">保険証（後期高齢者医療）</input></label>
-        <label><input type="radio" name="d5">パスポート（未成年を除く）</input></label>
-        <label><input type="radio" name="d5">その他</input></label>
         
-        
-
-
+        <h:form>   
+        <h:selectOneRadio value="#{identifyBb.iden}">
+            <f:selectItems value="#{identifyBb.items}"/>
+        </h:selectOneRadio> 
+        <br></br>
+        <h:commandButton value="送信" action="#{identifyBb.next()}"/>
+        </h:form>
     </h:body>
 </html>

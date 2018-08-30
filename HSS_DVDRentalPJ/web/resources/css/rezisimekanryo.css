@@ -60,12 +60,19 @@ table{
 }
 
 .left{
-    width: 7em;
+    width: 33%;
     text-align: center;
-    height: 2em;
+    height: 3em;
+}
+.center{
+    width: 33%;
+    text-align: center;
+    height: 3em;
 }
 .right{
-    width: 26.3em;
+    width: 33%;
+    text-align: center;
+    height: 3em;
 }
 
 .syu{
@@ -105,4 +112,12 @@ input {
 
 #sampleForm#senni{
     display: none;
+}
+
+#gamen{
+    color: #0E7AC4;/*文字色*/
+}
+
+#ok{
+    color: #00cc00;/*文字色*/
 }

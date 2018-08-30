@@ -8,6 +8,8 @@
         <title>HCSDVDレンタル-貸出バーコードスキャン</title>
         <h:outputStylesheet library="css" name="title.css"/>
         <h:outputStylesheet library="css" name="rezisime.css"/>
+        <!-- スキャンのスクリプト -->
+        <h:outputScript library="js" name="rezi.js"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
     <h:body>
@@ -23,47 +25,50 @@
         <br/>
         <h3>レジ内にある金額を入力してください。</h3>
         
-        <h:form>
+        <h:form id="sampleForm">
         <h:panelGrid columns="3" border="1" columnClasses="left,center,right" styleClass="table">
             <h:outputText value="紙幣"/>
             <h:outputText value="枚数"/>
             <h:outputText value="合計金額"/>
             <h:outputText value="一万円札"/>
             <h:panelGroup>
-            <h:inputText p:type="number" value="#{ReziBb.man}"/>
+            <h:inputText p:type="number" id="man" value="#{reziBb.man}"/>
             <h:outputText value="枚"/>
             </h:panelGroup>
-            <h:outputText value="&yen;"/>
+            <h:outputText id="manko" value="&yen;#{reziBb.manmai}"/>
             <h:outputText value="五千円札"/>
             <h:panelGroup>
-            <h:inputText p:type="number" value="#{ReziBb.gosen}"/>
+            <h:inputText p:type="number" value="#{reziBb.gosen}"/>
             <h:outputText value="枚"/>
             </h:panelGroup>
-            <h:outputText value="&yen;"/>
+            <h:outputText value="&yen;#{reziBb.gosenmai}"/>
             <h:outputText value="二千円札"/>
             <h:panelGroup>
-            <h:inputText p:type="number" value="#{ReziBb.nisen}"/>
+            <h:inputText p:type="number" value="#{reziBb.nisen}"/>
             <h:outputText value="枚"/>
             </h:panelGroup>
-            <h:outputText value="&yen;"/>
+            <h:outputText value="&yen;#{reziBb.nisenmai}"/>
             <h:outputText value="千円札"/>
             <h:panelGroup>
-            <h:inputText p:type="number" value="#{ReziBb.sen}"/>
+            <h:inputText p:type="number" value="#{reziBb.sen}"/>
             <h:outputText value="枚"/>
             </h:panelGroup>
-            <h:outputText value="&yen;"/>
+            <h:outputText value="&yen;#{reziBb.senmai}"/>
             <h:outputText value="紙幣合計"/>
             <h:panelGroup>
-            <h:inputText p:type="number" disabled="true" value="#{ReziBb.maisu}"/>
+            <h:inputText p:type="number" disabled="true" value="#{reziBb.maisu}"/>
             <h:outputText value="枚"/>
             </h:panelGroup>
-            <h:outputText value="&yen;"/>
+            <h:outputText value="&yen;#{reziBb.satutotal}"/>
         </h:panelGrid>
+            <h:commandButton type="button" id="next" onclick="return runBtnDisabled('tugi', 'next')" value="次へ" styleClass="btn" style="display: none"/>
+            <h:commandButton value="送　信" styleClass="btn"  id ="senni" style="display: none"/>
+            <h:inputText value="#{memberScanCompleteBb.memberno}" id="mem" styleClass="btn" style="display: none"/>
         </h:form>
         
         <br/>
         
-        <h:form>
+        <h:form id="sampleForm2">
         <h:panelGrid columns="4" border="1" columnClasses="syu,mai,bou,kei" styleClass="table">
             <h:outputText value="貨幣"/>
             <h:outputText value="枚数"/>
@@ -71,75 +76,78 @@
             <h:outputText value="合計金額"/>
             <h:outputText value="500円玉"/>
             <h:panelGroup>
-            <h:inputText p:type="number" value="#{ReziBb.gohyaku}"/>
+            <h:inputText p:type="number" value="#{reziBb.gohyaku}"/>
             <h:outputText value="枚"/>
             </h:panelGroup>
             <h:panelGroup>
-            <h:inputText p:type="number" value="#{ReziBb.gohyakuhon}"/>
+            <h:inputText p:type="number" value="#{reziBb.gohyakuhon}"/>
             <h:outputText value="本"/>
             </h:panelGroup>
-            <h:outputText value="&yen;"/>
+            <h:outputText value="&yen;#{reziBb.gohyakumai}" id="aiueo"/>
             <h:outputText value="100円玉"/>
             <h:panelGroup>
-            <h:inputText p:type="number" value="#{ReziBb.hyaku}"/>
+            <h:inputText p:type="number" value="#{reziBb.hyaku}"/>
             <h:outputText value="枚"/>
             </h:panelGroup>
             <h:panelGroup>
-            <h:inputText p:type="number" value="#{ReziBb.hyakuhon}"/>
+            <h:inputText p:type="number" value="#{reziBb.hyakuhon}"/>
             <h:outputText value="本"/>
             </h:panelGroup>
-            <h:outputText value="&yen;"/>
+            <h:outputText value="&yen;#{reziBb.hyakumai}"/>
             <h:outputText value="50円玉"/>
             <h:panelGroup>
-            <h:inputText p:type="number" value="#{ReziBb.goju}"/>
+            <h:inputText p:type="number" value="#{reziBb.goju}"/>
             <h:outputText value="枚"/>
             </h:panelGroup>
             <h:panelGroup>
-            <h:inputText p:type="number" value="#{ReziBb.gojuhon}"/>
+            <h:inputText p:type="number" value="#{reziBb.gojuhon}"/>
             <h:outputText value="本"/>
             </h:panelGroup>
-            <h:outputText value="&yen;"/>
+            <h:outputText value="&yen;#{reziBb.gojumai}"/>
             <h:outputText value="10円玉"/>
             <h:panelGroup>
-            <h:inputText p:type="number" value="#{ReziBb.ju}"/>
+            <h:inputText p:type="number" value="#{reziBb.ju}"/>
             <h:outputText value="枚"/>
             </h:panelGroup>
             <h:panelGroup>
-            <h:inputText p:type="number" value="#{ReziBb.juhon}"/>
+            <h:inputText p:type="number" value="#{reziBb.juhon}"/>
             <h:outputText value="本"/>
             </h:panelGroup>
-            <h:outputText value="&yen;"/>
+            <h:outputText value="&yen;#{reziBb.jumai}"/>
             <h:outputText value="5円玉"/>
             <h:panelGroup>
-            <h:inputText p:type="number" value="#{ReziBb.goyen}"/>
+            <h:inputText p:type="number" value="#{reziBb.goyen}"/>
             <h:outputText value="枚"/>
             </h:panelGroup>
             <h:panelGroup>
-            <h:inputText p:type="number" value="#{ReziBb.goyenhon}"/>
+            <h:inputText p:type="number" value="#{reziBb.goyenhon}"/>
             <h:outputText value="本"/>
             </h:panelGroup>
-            <h:outputText value="&yen;"/>
+            <h:outputText value="&yen;#{reziBb.goyenmai}"/>
             <h:outputText value="1円玉"/>
             <h:panelGroup>
-            <h:inputText p:type="number" value="#{ReziBb.ichi}"/>
+            <h:inputText p:type="number" value="#{reziBb.ichi}"/>
             <h:outputText value="枚"/>
             </h:panelGroup>
             <h:panelGroup>
-            <h:inputText p:type="number" value="#{ReziBb.ichihon}"/>
+            <h:inputText p:type="number" value="#{reziBb.ichihon}"/>
             <h:outputText value="本"/>
             </h:panelGroup>
-            <h:outputText value="&yen;"/>
-            <h:outputText value="紙幣合計"/>
+            <h:outputText value="&yen;#{reziBb.ichimai}"/>
+            <h:outputText value="貨幣合計"/>
             <h:panelGroup>
-            <h:inputText p:type="number" disabled="true" value="#{ReziBb.kosu}"/>
+            <h:inputText p:type="number" disabled="true" value="#{reziBb.kosu}"/>
             <h:outputText value="枚"/>
             </h:panelGroup>
             <h:panelGroup>
-            <h:inputText p:type="number" disabled="true" value="#{ReziBb.honsu}"/>
+            <h:inputText p:type="number" disabled="true" value="#{reziBb.honsu}"/>
             <h:outputText value="本"/>
             </h:panelGroup>
-            <h:outputText value="&yen;"/>
+            <h:outputText value="&yen;#{reziBb.kahetotal}"/>
         </h:panelGrid>
+            <h:commandButton type="button" id="next" onclick="return runBtnDisabled('tugi', 'next')" value="次へ" styleClass="btn" style="display: none"/>
+            <h:commandButton value="送　信"   styleClass="btn"  id ="senni" style="display: none"/>
+            <h:inputText value="#{memberScanCompleteBb.memberno}" id="mem" styleClass="btn" style="display: none"/>
         </h:form>
         
         <br/>
@@ -148,18 +156,24 @@
             <h:outputText value=""/>
             <h:outputText value="合計金額"/>
             <h:outputText value="紙幣合計"/>
-            <h:outputText value="&yen;"/>
+            <h:outputText value="&yen;#{reziBb.satutotal}"/>
             <h:outputText value="貨幣合計"/>
-            <h:outputText value="&yen;"/>
+            <h:outputText value="&yen;#{reziBb.kahetotal}"/>
             <h:outputText value="総合金額"/>
-            <h:outputText value="&yen;"/>
+            <h:outputText value="&yen;#{reziBb.total_fee}"/>
         </h:panelGrid>
         
         <br/>
         
+        <h:form id="tugi">
+            <h:commandButton type="button" id="next" onclick="return runBtnDisabled('tugi', 'next')" value="次へ" styleClass="btn" style="display: none"/>
+            <h:commandButton value="送　信"  action="#{reziBb.copy()}" styleClass="btn"  id ="senni" style="display: none"/>
+            <h:inputText value="#{memberScanCompleteBb.memberno}" id="mem" styleClass="btn" style="display: none"/>
+        </h:form>
+        
         <h:form styleClass="subMenu">
             <input type="button" class="button" value="処理を中断" onClick="location.href='http://localhost:8080/HSS_DVDRentalPJ/'"/>
-            <h:commandButton value="売上データと比較" disabled="true" styleClass="button"/>
+            <h:commandButton value="売上データと比較" disabled="#{reziBb.hyoji}" styleClass="button" action="#{reziBb.kakunin()}"/>
         </h:form>
     </h:body>
 </html>

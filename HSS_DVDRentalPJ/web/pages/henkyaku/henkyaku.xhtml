@@ -1,0 +1,172 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>HCSDVDレンタル-貸出バーコードスキャン</title>
+        <h:outputStylesheet library="css" name="title.css"/>
+        <h:outputStylesheet library="css" name="henkyaku.css"/>
+        <!-- スキャンのスクリプト -->
+        <h:outputScript library="js" name="scan.js"/>
+    </h:head>
+    <h:body>
+        <h1>HCSDVDレンタル</h1>
+        <h2>返却処理</h2>
+        <h:form styleClass="subMenu">
+            <h:commandButton value="手動指定" styleClass="button"/>
+            <input type="button" class="button" value="処理を中断" onClick="location.href='http://localhost:8080/HSS_DVDRentalPJ/'"/>
+        </h:form>
+        
+        <h:form>
+        <h:panelGrid columns="8"  border="1" columnClasses="no,code,title,day,entaiday,entaikin,syosai,del">
+            <h:outputText value="" />
+            <h:outputText value="バーコード"/>
+            <h:outputText value="タイトル"/>
+            <h:outputText value="貸出期間"/>
+            <h:outputText value="延滞日数"/>
+            <h:outputText value="延滞料金"/>
+            <h:outputText value="詳細"/>
+            <h:outputText value="取消"/>
+            <h:outputText value="1" />
+            <h:outputText value="#{henkyakuBb.barcodes[0]}" />
+            <h:outputText value="#{henkyakuBb.titles[0]}" />
+            <h:outputText value="#{henkyakuBb.days[0]}" />
+            <h:outputText value="#{henkyakuBb.entaidays[0]}"/>
+            <h:outputText value="#{henkyakuBb.moneys[0]}" />
+            <h:outputText value="" rendered="#{henkyakuBb.flg1[0]}" />
+            <h:commandButton value="表示" styleClass="syosaibtn" action="#{henkyakuBb.del(0)}" rendered="#{henkyakuBb.flg2[0]}" />
+            <h:outputText value="" rendered="#{henkyakuBb.flg1[0]}" />
+            <h:commandButton value="×" styleClass="delbtn" action="#{henkyakuBb.del(0)}" rendered="#{henkyakuBb.flg2[0]}" />
+            <h:outputText value="2" />
+            <h:outputText value="#{henkyakuBb.barcodes[1]}" />
+            <h:outputText value="#{henkyakuBb.titles[1]}" />
+            <h:outputText value="#{henkyakuBb.days[1]}" />
+            <h:outputText value="#{henkyakuBb.entaidays[1]}"/>
+            <h:outputText value="#{henkyakuBb.moneys[1]}" />
+            <h:outputText value="" rendered="#{henkyakuBb.flg1[1]}" />
+            <h:commandButton value="表示" styleClass="syosaibtn" action="#{henkyakuBb.del(1)}" rendered="#{henkyakuBb.flg2[1]}" />
+            <h:outputText value="" rendered="#{henkyakuBb.flg1[1]}" />
+            <h:commandButton value="×" styleClass="delbtn" action="#{henkyakuBb.del(1)}" rendered="#{henkyakuBb.flg2[1]}" />
+            <h:outputText value="3" />
+            <h:outputText value="#{henkyakuBb.barcodes[2]}" />
+            <h:outputText value="#{henkyakuBb.titles[2]}" />
+            <h:outputText value="#{henkyakuBb.days[2]}" />
+            <h:outputText value="#{henkyakuBb.entaidays[2]}"/>
+            <h:outputText value="#{henkyakuBb.moneys[2]}" />
+            <h:outputText value="" rendered="#{henkyakuBb.flg1[2]}" />
+            <h:commandButton value="表示" styleClass="syosaibtn" action="#{henkyakuBb.del(2)}" rendered="#{henkyakuBb.flg2[2]}" />
+            <h:outputText value="" rendered="#{henkyakuBb.flg1[2]}" />
+            <h:commandButton value="×" styleClass="delbtn" action="#{henkyakuBb.del(2)}" rendered="#{henkyakuBb.flg2[2]}" />
+            <h:outputText value="4" />
+            <h:outputText value="#{henkyakuBb.barcodes[3]}" />
+            <h:outputText value="#{henkyakuBb.titles[3]}" />
+            <h:outputText value="#{henkyakuBb.days[3]}" />
+            <h:outputText value="#{henkyakuBb.entaidays[3]}"/>
+            <h:outputText value="#{henkyakuBb.moneys[3]}" />
+            <h:outputText value="" rendered="#{henkyakuBb.flg1[3]}" />
+            <h:commandButton value="表示" styleClass="syosaibtn" action="#{henkyakuBb.del(3)}" rendered="#{henkyakuBb.flg2[3]}" />
+            <h:outputText value="" rendered="#{henkyakuBb.flg1[3]}" />
+            <h:commandButton value="×" styleClass="delbtn" action="#{henkyakuBb.del(3)}" rendered="#{henkyakuBb.flg2[3]}" />
+            <h:outputText value="5" />
+            <h:outputText value="#{henkyakuBb.barcodes[4]}" />
+            <h:outputText value="#{henkyakuBb.titles[4]}" />
+            <h:outputText value="#{henkyakuBb.days[4]}" />
+            <h:outputText value="#{henkyakuBb.entaidays[4]}"/>
+            <h:outputText value="#{henkyakuBb.moneys[4]}" />
+            <h:outputText value="" rendered="#{henkyakuBb.flg1[4]}" />
+            <h:commandButton value="表示" styleClass="syosaibtn" action="#{henkyakuBb.del(4)}" rendered="#{henkyakuBb.flg2[4]}" />
+            <h:outputText value="" rendered="#{henkyakuBb.flg1[4]}" />
+            <h:commandButton value="×" styleClass="delbtn" action="#{henkyakuBb.del(4)}" rendered="#{henkyakuBb.flg2[4]}" />
+            <h:outputText value="6" />
+            <h:outputText value="#{henkyakuBb.barcodes[5]}" />
+            <h:outputText value="#{henkyakuBb.titles[5]}" />
+            <h:outputText value="#{henkyakuBb.days[5]}" />
+            <h:outputText value="#{henkyakuBb.entaidays[5]}"/>
+            <h:outputText value="#{henkyakuBb.moneys[5]}" />
+            <h:outputText value="" rendered="#{henkyakuBb.flg1[5]}" />
+            <h:commandButton value="表示" styleClass="syosaibtn" action="#{henkyakuBb.del(5)}" rendered="#{henkyakuBb.flg2[5]}" />
+            <h:outputText value="" rendered="#{henkyakuBb.flg1[5]}" />
+            <h:commandButton value="×" styleClass="delbtn" action="#{henkyakuBb.del(5)}" rendered="#{henkyakuBb.flg2[5]}" />
+            <h:outputText value="7" />
+            <h:outputText value="#{henkyakuBb.barcodes[6]}" />
+            <h:outputText value="#{henkyakuBb.titles[6]}" />
+            <h:outputText value="#{henkyakuBb.days[6]}" />
+            <h:outputText value="#{henkyakuBb.entaidays[6]}"/>
+            <h:outputText value="#{henkyakuBb.moneys[6]}" />
+            <h:outputText value="" rendered="#{henkyakuBb.flg1[6]}" />
+            <h:commandButton value="表示" styleClass="syosaibtn" action="#{henkyakuBb.del(6)}" rendered="#{henkyakuBb.flg2[6]}" />
+            <h:outputText value="" rendered="#{henkyakuBb.flg1[6]}" />
+            <h:commandButton value="×" styleClass="delbtn" action="#{henkyakuBb.del(6)}" rendered="#{henkyakuBb.flg2[6]}" />
+            <h:outputText value="8" />
+            <h:outputText value="#{henkyakuBb.barcodes[7]}" />
+            <h:outputText value="#{henkyakuBb.titles[7]}" />
+            <h:outputText value="#{henkyakuBb.days[7]}" />
+            <h:outputText value="#{henkyakuBb.entaidays[7]}"/>
+            <h:outputText value="#{henkyakuBb.moneys[7]}" />
+            <h:outputText value="" rendered="#{henkyakuBb.flg1[7]}" />
+            <h:commandButton value="表示" styleClass="syosaibtn" action="#{henkyakuBb.del(7)}" rendered="#{henkyakuBb.flg2[7]}" />
+            <h:outputText value="" rendered="#{henkyakuBb.flg1[7]}" />
+            <h:commandButton value="×" styleClass="delbtn" action="#{henkyakuBb.del(7)}" rendered="#{henkyakuBb.flg2[7]}" />
+            <h:outputText value="9" />
+            <h:outputText value="#{henkyakuBb.barcodes[8]}" />
+            <h:outputText value="#{henkyakuBb.titles[8]}" />
+            <h:outputText value="#{henkyakuBb.days[8]}" />
+            <h:outputText value="#{henkyakuBb.entaidays[8]}"/>
+            <h:outputText value="#{henkyakuBb.moneys[8]}" />
+            <h:outputText value="" rendered="#{henkyakuBb.flg1[8]}" />
+            <h:commandButton value="表示" styleClass="syosaibtn" action="#{henkyakuBb.del(8)}" rendered="#{henkyakuBb.flg2[8]}" />
+            <h:outputText value="" rendered="#{henkyakuBb.flg1[8]}" />
+            <h:commandButton value="×" styleClass="delbtn" action="#{henkyakuBb.del(8)}" rendered="#{henkyakuBb.flg2[8]}" />
+            <h:outputText value="10" />
+            <h:outputText value="#{henkyakuBb.barcodes[9]}" />
+            <h:outputText value="#{henkyakuBb.titles[9]}" />
+            <h:outputText value="#{henkyakuBb.days[9]}" />
+            <h:outputText value="#{henkyakuBb.entaidays[9]}"/>
+            <h:outputText value="#{henkyakuBb.moneys[9]}" />
+            <h:outputText value="" rendered="#{henkyakuBb.flg1[9]}" />
+            <h:commandButton value="表示" styleClass="syosaibtn" action="#{henkyakuBb.del(9)}" rendered="#{henkyakuBb.flg2[9]}" />
+            <h:outputText value="" rendered="#{henkyakuBb.flg1[9]}" />
+            <h:commandButton value="×" styleClass="delbtn" action="#{henkyakuBb.del(9)}" rendered="#{henkyakuBb.flg2[9]}" />
+        </h:panelGrid>
+        </h:form>
+        
+        <ul class = "set">
+            <li>
+                <h:panelGrid columns="6"  border="1" columnClasses="header,val,header,val,header,val" styleClass="member">
+                    <h:outputText value="会員ID" />
+                    <h:outputText value="#{henkyakuBb.memberno}"/>
+                    <h:outputText value="性別" />
+                    <h:outputText value="#{henkyakuBb.sex}" />
+                    <h:outputText value="貸出物合計" />
+                    <h:outputText value="#{henkyakuBb.sex}" />
+                    <h:outputText value="名前"/>
+                    <h:outputText value="#{henkyakuBb.name}"/>
+                    <h:outputText value="貸出中個数"/>
+                    <h:outputText value=""/>
+                    <h:outputText value="延滞物合計"/>
+                    <h:outputText value="#{henkyakuBb.birthday}"/>
+                    <h:outputText value="生年月日"/>
+                    <h:outputText value="#{henkyakuBb.birthday}"/>
+                    <h:outputText value="会員区分" />
+                    <h:outputText value="" />
+                    <h:outputText value="延滞料金" />
+                    <h:outputText value="" />
+                </h:panelGrid>
+            </li>
+            <li>
+                <h:form styleClass="subMenu">
+                    <h:commandButton value="返却実行" styleClass="syoke" action="#{DVDScanBb.totalpage()}"/>
+                </h:form>
+            </li>
+        </ul>
+        
+        <h:form id="tugi">
+            <h:commandButton type="button" id="next" onclick="return runBtnDisabled('tugi', 'next')" value="次へ" styleClass="btn"/>
+            <h:commandButton value="送　信"  action="#{henkyakuBb.scan()}" styleClass="btn"  id ="senni"/>
+            <h:inputText value="#{henkyakuBb.barcode}" id="mem" styleClass="btn"/>
+        </h:form>
+
+    </h:body>
+</html>
+

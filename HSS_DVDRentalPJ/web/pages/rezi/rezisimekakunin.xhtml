@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>HCSDVDレンタル-貸出バーコードスキャン</title>
+        <h:outputStylesheet library="css" name="title.css"/>
+        <h:outputStylesheet library="css" name="rezisimekakunin.css"/>
+        <!-- スキャンのスクリプト -->
+        <h:outputScript library="js" name="rezi.js"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <h1>HCSDVDレンタル</h1>
+        <h2>レジ閉め</h2>
+        <div>
+        <ol id="Pass">
+            <li>金額入力</li>
+            <li class="loc">比較情報確認</li>
+            <li>レジ閉め完了</li>
+        </ol>
+        </div>
+        <br/>
+        <h3>レジ内の現金と売上データの比較を確認してください。</h3>
+        
+        <h:form id="sampleForm">
+        <h:panelGrid columns="3" border="1" columnClasses="left,center,right" styleClass="table">
+            <h:outputText value="レジ内の現金"/>
+            <h:outputText value="売上データ"/>
+            <h:outputText value="差額"/>
+            <h:outputText value="&yen;#{reziBb.total_fee}"/>
+            <h:outputText value="データベースからもってくるよ"/>
+            <h:outputText id="manko" value="&yen;0"/>
+        </h:panelGrid>
+        </h:form>
+        
+        <br/>
+        
+        <h3>確認して問題が無い場合<span id="gamen">レジ〆処理実行ボタン</span>を押してください。</h3>
+        
+        <h:form styleClass="subMenu">
+            <input type="button" class="button" value="処理を中断" onClick="location.href='http://localhost:8080/HSS_DVDRentalPJ/'"/>
+            <h:commandButton value="レジ〆処理実行"  styleClass="button" action="#{reziBb.kanryo()}"/>
+        </h:form>
+    </h:body>
+</html>

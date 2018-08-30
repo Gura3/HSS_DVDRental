@@ -16,12 +16,13 @@ import javax.inject.Named;
 @ApplicationScoped
 
 /* 貸出会員スキャンバッキングビーン */
-public class DVDScanBb {
+public class HenkyakuBb {
     private String barcode;            //DVDバーコード
     private String barcodes[] = new String[10];            //DVDバーコード配列
     private int scancnt;            //スキャンした回数
     private String titles[] = new String[10]; 
     private String days[] = new String[10];
+    private String entaidays[] = new String[10];
     private String moneys[] = new String[10];
     private boolean flg1[] = new boolean[10];
     private boolean flg2[] = new boolean[10];
@@ -29,6 +30,13 @@ public class DVDScanBb {
     private int tax;
     private int deposit;            //預かり金
     private int change;            //おつり
+    
+    private String memberno;            //会員No
+    private String birthday;            //生年月日
+    private String name;                //氏名
+    private String kana;                //会員名(フリガナ)
+    private String sex;                 //性別
+    private String phone;               //電話番号
 
     public int getChange() {
         return change;
@@ -82,6 +90,14 @@ public class DVDScanBb {
     public void setDays(String day,int scancnt) {
         this.days[scancnt] = day;
     }
+    
+    public String[] getEntaidays() {
+        return entaidays;
+    }
+
+    public void setEntaidays(String entaiday,int scancnt) {
+        this.entaidays[scancnt] = entaiday;
+    }
 
     public String[] getMoneys() {
         return moneys;
@@ -132,6 +148,56 @@ public class DVDScanBb {
         this.barcode = barcode;
     }
 
+    public String getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getKana() {
+        return kana;
+    }
+
+    public void setKana(String kana) {
+        this.kana = kana;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getMemberno() {
+        return memberno;
+    }
+
+    public void setMemberno(String memberno) {
+        this.memberno = memberno;
+    }
+    
+    
+
     
     public String next(){
         setScancnt(0);
@@ -141,64 +207,38 @@ public class DVDScanBb {
             setBarcodes("",i);
             setTitles("",i);
             setDays("",i);
+            setEntaidays("",i);
             setMoneys("",i);
             setFlg1(true,i);
             setFlg2(false,i);
         }
+        delMember();
         
-        return "DVDScan.xhtml";
+        return "/pages/henkyaku/henkyaku.xhtml";
     }
     
     public String back(){
-        return "DVDScan.xhtml";
+        return "henkyaku.xhtml";
     }
     
     public String scan(){
         if(!getBarcode().equals("")){
             setBarcodes(getBarcode(),getScancnt());
-            if(getBarcode().equals("1234567890128")){
-                setTitles("パパ嫌い！～頑張れヒロユキ、二人ではじめてのおつかい～",getScancnt());
-                setDays("2018/8/1～2018/8/5",getScancnt());
-                setMoneys("100",getScancnt());
-                setFlg1(false,getScancnt());
-                setFlg2(true,getScancnt());
-                String mons[] = getMoneys();
-                setTotal(getTotal()+Integer.parseInt(mons[getScancnt()]));
-                setTax((int)(getTotal()/1.08*0.08));
-                setScancnt(getScancnt()+1);
-            }else if(getBarcode().equals("2234567890127")){
-                setTitles("-MESHIYA-この国に独裁者が現れたら、戦う勇気を持てるか？",getScancnt());
-                setDays("2018/8/1～2018/8/5",getScancnt());
-                setMoneys("100",getScancnt());
-                setFlg1(false,getScancnt());
-                setFlg2(true,getScancnt());
-                String mons[] = getMoneys();
-                setTotal(getTotal()+Integer.parseInt(mons[getScancnt()]));
-                setTax((int)(getTotal()/1.08*0.08));
-                setScancnt(getScancnt()+1);
-            }else if(getBarcode().equals("3234567890126")){
-                setTitles("ビール大好き高濱プレゼンツ！通販天国",getScancnt());
-                setDays("2018/8/1～2018/8/5",getScancnt());
-                setMoneys("100",getScancnt());
-                setFlg1(false,getScancnt());
-                setFlg2(true,getScancnt());
-                String mons[] = getMoneys();
-                setTotal(getTotal()+Integer.parseInt(mons[getScancnt()]));
-                setTax((int)(getTotal()/1.08*0.08));
-                setScancnt(getScancnt()+1);
-            }else if(getBarcode().equals("4234567890125")){
-                setTitles("おかせん THE MOVIE",getScancnt());
-                setDays("2018/8/1～2018/8/5",getScancnt());
-                setMoneys("100",getScancnt());
-                setFlg1(false,getScancnt());
-                setFlg2(true,getScancnt());
-                String mons[] = getMoneys();
-                setTotal(getTotal()+Integer.parseInt(mons[getScancnt()]));
-                setTax((int)(getTotal()/1.08*0.08));
-                setScancnt(getScancnt()+1);
+            setTitles("パパ嫌い",getScancnt());
+            setDays("2018/8/1～2018/8/5",getScancnt());
+            setEntaidays("-",getScancnt());
+            setMoneys("100",getScancnt());
+            setFlg1(false,getScancnt());
+            setFlg2(true,getScancnt());
+            String mons[] = getMoneys();
+            setTotal(getTotal()+Integer.parseInt(mons[getScancnt()]));
+            setTax((int)(getTotal()/1.08*0.08));
+            setScancnt(getScancnt()+1);
+            if(getScancnt()==1){
+                catchMember(getBarcode());
             }
         }
-        return "DVDScan.xhtml";
+        return "henkyaku.xhtml";
     }
     
     public String del(int it){
@@ -207,6 +247,7 @@ public class DVDScanBb {
             setBarcodes("",it);
             setTitles("",it);
             setDays("",it);
+            setEntaidays("",it);
             setMoneys("",it);
             setFlg1(true,it);
             setFlg2(false,it);
@@ -217,6 +258,7 @@ public class DVDScanBb {
             String bars[] = getBarcodes();
             String titls[] = getTitles();
             String das[] = getDays();
+            String edas[] = getEntaidays();
             String mons[] = getMoneys();
             boolean flgs1[] = getFlg1();
             boolean flgs2[] = getFlg2();
@@ -226,6 +268,7 @@ public class DVDScanBb {
                 setBarcodes(bars[i],it);
                 setTitles(titls[i],it);
                 setDays(das[i],it);
+                setEntaidays(edas[i],it);
                 setMoneys(mons[i],it);
                 setFlg1(flgs1[i],it);
                 setFlg2(flgs2[i],it);
@@ -235,15 +278,19 @@ public class DVDScanBb {
             setBarcodes("",getScancnt());
             setTitles("",getScancnt());
             setDays("",getScancnt());
+            setEntaidays("",getScancnt());
             setMoneys("",getScancnt());
             setFlg1(true,getScancnt());
             setFlg2(false,getScancnt());
         }
-        return "DVDScan.xhtml";
+        if(getScancnt()==0){
+            delMember();
+        }
+        return "henkyaku.xhtml";
     }
     
     public String complete(){
-        DVDScanBb tot = new DVDScanBb();
+        HenkyakuBb tot = new HenkyakuBb();
         setChange(getDeposit()-tot.getTotal());
         return "complete";
     }
@@ -253,6 +300,31 @@ public class DVDScanBb {
         return "totalpage";
     }
     
-       
+    public void catchMember(String barcord){
+        if(barcord.equals("1")){
+            setMemberno("1");
+            setSex("男性");
+            setName("加藤弘幸");
+            setKana("カトウヒロユキ");
+            setBirthday("1987/6/5");
+            setPhone("001-831-5511");
+        }else if(barcord.equals("2")){
+            setMemberno("2");
+            setSex("男性");
+            setName("佐藤弘幸");
+            setKana("サトウヒロユキ");
+            setBirthday("1987/7/5");
+            setPhone("002-832-5522");
+        }
+    }
+    
+    public void delMember(){
+        setMemberno("");
+        setSex("");
+        setName("");
+        setKana("");
+        setBirthday("");
+
+    }
 
 }

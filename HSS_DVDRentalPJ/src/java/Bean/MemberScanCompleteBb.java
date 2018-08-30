@@ -168,12 +168,27 @@ public class MemberScanCompleteBb {
     public String next(){
         //test
         setSex("男性");
-        setName("加藤弘幸");
-        setKana("カトウヒロユキ");
-        setBirthday("1987/6/5");
+        setBirthday("1990/1/1");
         setPhone("001-831-5511");
         
-        if(("1").equals(getMemberno())){
+        if(("1").equals(getMemberno()) || ("00000000").equals(getMemberno()) || ("11111115").equals(getMemberno()) || ("22222220").equals(getMemberno()) || ("33333335").equals(getMemberno()) || ("01234565").equals(getMemberno())){
+            if(("00000000").equals(getMemberno())){
+                setName("A");
+                setKana("エー");
+            }else if(("11111115").equals(getMemberno())){
+                setName("B");
+                setKana("ビー");
+            }else if(("22222220").equals(getMemberno())){
+                setName("C");
+                setKana("シー");
+            }else if(("33333335").equals(getMemberno())){
+                setName("D");
+                setKana("ディー");
+            }else if(("01234565").equals(getMemberno())){
+                setName("山田太郎");
+                setKana("ヤマダタロウ");
+            }
+            
             setFlg1(false);
             setFlg2(false);
             return "memberScanComplete";                //正常
@@ -203,4 +218,6 @@ public class MemberScanCompleteBb {
             return "memberScanError";
         }
     }
+    
+    
 }

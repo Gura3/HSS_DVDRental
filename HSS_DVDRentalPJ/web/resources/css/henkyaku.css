@@ -8,7 +8,6 @@ and open the template in the editor.
     Author     : s20163031
 */
 
-
 table th, table td {
     border: solid 2px #3498db;    //線の色
     padding: 2px 4px;
@@ -20,84 +19,39 @@ table{
     border-collapse: collapse;
 }
 
-.table{
-    width: 75%;
-}
-
-table#keisan{
-    width: 75%;
-}
-
-.left{
-    width: 10em;
+.no{
+    width: 3em;
     text-align: center;
-    height: 3.9em;
 }
 
-.right{
-    width: 30em;
-    height: 3.9em;
-}
-
-.a{
-    position: relative;
-    left: 19em;
-}
-
-.b{
-    position: relative;
-    left: 13em;
-}
-
-.c{
-    position: relative;
-    left: 22.8em;
-    margin: 0 -3em;
-    font-size: 1.4em;
-    color: #000000;
-    width: 25%;
-    height: 3em;
-    font-weight: bold;
-}
-
-.d{
-    position: relative;
-    left: 28.8em;
-    margin: 0 -3em;
-    font-size: 1.4em;
-    color: #FFFFFF;
-    width: 12%;
-    height: 3em;
-    font-weight: bold;
-    background-color: #0000FF;
-}
-
-.delbtn {
-    font-size: 1.4em;
-    margin: 0 -3em;
-    font-size: 1.4em;
-    color: #FFFFFF;
-    width: 12%;
-    height: 3em;
-    font-weight: bold;
-    background-color: #FF0000;
-}
-
-
-table td#left{
-    width: 10em;
+.code{
+    width: 7em;
     text-align: center;
-    height: 3.9em;
 }
 
-table td#right{
+.title{
+    width: 14em;
     text-align: center;
-    height: 3.9em;
 }
 
-table td#discount{
+.day{
+    width: 15em;
     text-align: center;
-    height: 3.9em;
+}
+
+.money{
+    width: 8em;
+    text-align: center;
+}
+
+.syosai{
+    width: 5em;
+    text-align: center;
+}
+
+.del{
+    width: 5em;
+    text-align: center;
 }
 
 p{
@@ -111,8 +65,13 @@ p{
     margin: 0 auto;
     text-align: center;
 }
-
 .button{
+    margin: 1% 8%;
+    width: 15%;
+    height: 5em;
+}
+
+button{
     margin: 1% 8%;
     width: 15%;
     height: 5em;
@@ -125,10 +84,6 @@ p{
     position:relative;
 }
 
-.updatescanbtn{
-    display: none;
-}
-
 div#center{
     text-align: center;
 }
@@ -138,6 +93,19 @@ div#delayDate{
     position:relative;
     left: 18em;
     font-size: 120%;
+}
+
+.member{
+    margin: 10em -0.38em 12em 0;
+    text-align: center;
+}
+
+.header{
+    width: 7em;
+}
+
+.val{
+    width: 10em;
 }
 
 ul.set {
@@ -155,18 +123,21 @@ ul.set li {
 }
 
 .mon{
-    margin: 7.35em 0 12em 0;
+    margin: 0 0 12em 0;
     text-align: center;
 }
 
-.mem{
-    height: 0;
-    position: relative;
-    bottom: 30.4em;
-}
 .na{
     width: 7em;
     height: 3.9em;
+}
+
+.entaikin{
+    text-align: center;
+}
+
+.entaiday{
+    text-align: center;
 }
 
 .kane{
@@ -174,14 +145,7 @@ ul.set li {
     height: 3.9em;
 }
 
-.genke{
-    position: relative;
-    bottom: -3.8em;
-    width: 11.7em;
-    height: 10.1em;
-}
-
-.genkei{
+.syoke{
     position: relative;
     bottom: 19.1em;
     right: 0.4em;
@@ -189,25 +153,25 @@ ul.set li {
     height: 10.1em;
 }
 
-.member{
-    margin: 10em -0.38em 12em 0;
-    text-align: center;
+.delbtn {
+    font-size: 1.4em;
+    color: #FFFFFF;
+    padding: 0.2em 1.5em;
+    font-weight: bold;
+    background-color: #FF0000;
 }
 
-.header{
-    width: 7em;
+.syosaibtn {
+    font-size: 1em;
+    color: #000000;
+    padding: 0.3em 1.5em;
+    background-color: #C0C0C0;
 }
 
-.val{
-    width: 10em;
+.updatescanbtn{
+    display: none;
 }
 
-input.depositbox {
-    width: 99%;
-    height: 99%;
-    font-size: 100%;
-}
-
-.btn{
+#tugi{
     display: none;
 }

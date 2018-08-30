@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>HCSDVDレンタル-貸出バーコードスキャン</title>
+        <h:outputStylesheet library="css" name="title.css"/>
+        <h:outputStylesheet library="css" name="rezisimekanryo.css"/>
+        <!-- スキャンのスクリプト -->
+        <h:outputScript library="js" name="rezi.js"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <h1>HCSDVDレンタル</h1>
+        <h2>レジ閉め</h2>
+        <div>
+        <ol id="Pass">
+            <li>金額入力</li>
+            <li>比較情報確認</li>
+            <li class="loc">レジ閉め完了</li>
+        </ol>
+        </div>
+        <br/>
+        <h3 id="ok">レジ〆処理が完了しました。</h3>      
+        
+        <h3>引き続きこの処理をする場合は<span id="gamen">再度処理ボタン</span>を押してください。</h3>
+        
+        <h:form styleClass="subMenu">
+            <h:commandButton value="再度処理" styleClass="button" action="#{reziBb.next()}"/>
+            <input type="button" class="button" value="トップページに戻る" onClick="location.href='http://localhost:8080/HSS_DVDRentalPJ/'"/>
+        </h:form>
+    </h:body>
+</html>

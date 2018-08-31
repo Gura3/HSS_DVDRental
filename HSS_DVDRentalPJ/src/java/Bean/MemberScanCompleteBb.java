@@ -19,7 +19,6 @@ import javax.inject.Named;
 
 /* 貸出会員スキャンバッキングビーン */
 public class MemberScanCompleteBb {
-
     private String memberno;            //会員No
     private String birthday;            //生年月日
     private String name;                //氏名

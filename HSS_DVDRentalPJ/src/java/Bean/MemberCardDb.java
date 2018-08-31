@@ -37,9 +37,17 @@ public class MemberCardDb extends TryCatchDb {
     
     public List<Member_card> comemember(String mem_barcode){
         TypedQuery<Member_card> query = null;
-        query = em.createNamedQuery(Member_card.Comemem, Member_card.class);
+        query = em.createNamedQuery("SELECT m FROM MEMBER_CARD m WHERE mem_barcode = ?1", Member_card.class);
         query.setParameter(1,mem_barcode);
         return query.getResultList();
     } 
     
+    public Member_card getCard(String mem_barcode){
+        TypedQuery q =null;
+        q=em.createNamedQuery("SELECT m FROM MEMBER_CARD m WHERE m.mem_barcode = ?1",Member_card.class);
+        q.setParameter(1,mem_barcode);
+        
+        Member_card m = (Member_card) q.getSingleResult();
+        return m;
+    }
 }

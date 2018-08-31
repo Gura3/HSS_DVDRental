@@ -7,11 +7,11 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.*;
-
-@NamedQueries({
-    @NamedQuery(name=Member_card.Comemem,
-                query="SELECT m FROM MEMBER_CARD m WHERE m.mem_barcode = ?1")
-})
+//
+//@NamedQueries({
+//    @NamedQuery(name=Member_card.Comemem,
+//                query="SELECT m FROM MEMBER_CARD m")
+//})
 
 
 @Entity

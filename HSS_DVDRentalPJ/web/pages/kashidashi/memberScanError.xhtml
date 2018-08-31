@@ -31,7 +31,7 @@
         <h:form id="tugi">
             <h:commandButton type="button" id="next" onclick="return runBtnDisabled('tugi', 'next')" value="次へ" styleClass="btn"/>
             <h:commandButton value="送　信"  action="#{memberScanCompleteBb.next()}" styleClass="btn"  id ="senni"/>
-            <h:inputText value="#{memberScanCompleteBb.memberno}" id="mem" styleClass="btn"/>
+            <h:inputText value="#{memberScanCompleteBb.mem_barcode}" id="mem" styleClass="btn"/>
         </h:form>
     </h:body>
 </html>

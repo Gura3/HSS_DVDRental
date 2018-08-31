@@ -28,7 +28,7 @@ public class SectionChangeBb implements Serializable{
     DvdDb dd;
     @EJB
     DvdManager dm;
-    Dvd sel;
+//    Dvd sel;
     public String next(){
         return "/pages/dvd_information_change/section_change.xhtml";
     }

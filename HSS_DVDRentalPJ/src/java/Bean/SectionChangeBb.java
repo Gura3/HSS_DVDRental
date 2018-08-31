@@ -38,9 +38,20 @@ public class SectionChangeBb implements Serializable{
     }
     
     //全取得するやつ
-    public List<DvdInfo> getFromDb(){
+//    public List<Dvd> getFromDb(){
+//        List<Dvd> list = null;
+//        try{
+//            //list = dm.getDvdInfoDb();
+//            list = dm.getFromDb();
+//        }catch(Exception e){
+//            e.printStackTrace();
+//        }
+//        return list;
+//    }
+        public List<DvdInfo> getFromDb(){
         List<DvdInfo> list = null;
         try{
+            //list = dm.getDvdInfoDb();
             list = dm.getDvdInfoDb();
         }catch(Exception e){
             e.printStackTrace();

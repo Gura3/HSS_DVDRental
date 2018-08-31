@@ -3,6 +3,7 @@
   <persistence-unit name="HSS_DVDRentalPJPU" transaction-type="JTA">
     <jta-data-source>honbanhikaru</jta-data-source>
     <class>Bean.Rezisime</class>
+    <class>Bean.Member_card</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.schema-generation.database.action" value="create"/>

@@ -1,22 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <head>
-        <title>会員登録_身分証明確認</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link rel="stylesheet" type="text/css" href="../resources/css/top.css"/>
-        <link rel="stylesheet" type="text/css" href="../resources/css/identify.css"/>
-
-        <script src="../js/identify.js"/>
-
-    </head>
+    <h:head>
+        <title>HCSDVDレンタル-トップページ</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8"/>
+        <link rel="stylesheet" type="text/css" href="resources/css/title.css"/>
+        <link rel="stylesheet" type="text/css" href="resources/css/top.css"/>
+    </h:head>
     <body>
         <h:form>
             <h:selectOneRadio id="iden" value="#{Identifybb.iden}" onclick="selectbtn()"> 　　　
@@ -28,18 +20,18 @@ and open the template in the editor.
          <h:inputText value="#{Identifybb.num}"/>
         </h:form>
          <div class="subMenu">
-             <a href="enrollment_top.xhtml"><button>処理を中断<br>（トップページへ戻る）</button></a>
+             <a href="enrollment_top.xhtml"><button>処理を中断<br></br>（トップページへ戻る）</button></a>
              <a href="scan_card.xhtml"><button>会員カードをスキャン</button></a>
         </div>
         
         <h3><!--ラジオボタンで選んだ身分証とその保険区分 -->保険証（健康保険）区分「HK」</h3>
-        <p>:半角数字の記号で数字を入力してください（8桁）<br>
+        <p>:半角数字の記号で数字を入力してください（8桁）<br></br>
            :完了　会員カードスキャンに移行してください</p>
-        <div class="greenbox"><!--身分証番号の入力フォーム--> </div>
+        <div class="greenbox"><h:inputTextarea value="#{identifyBb.iden}"/> </div>
         
             
-           
+           <!--コマンドボタンで切り替え-->
              <a href="./index.xhtml"><button>トップページに戻る</button></a>
-              <a href="/ininfo_enroll.xhtml"><button>会員カードスキャン</button></a>
+              <a href="/scan_card.xhtml"><button>会員カードスキャン</button></a>
     </body>
 </html>

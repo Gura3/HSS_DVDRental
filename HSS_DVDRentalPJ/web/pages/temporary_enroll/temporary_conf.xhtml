@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>会員情報確認画面</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/top.css"/>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/enroll.css"/> 
+
+
+
+    </head>
+    <body>
+        <h1>HCSDVDレンタル</h1>
+        <h2>会員登録処理</h2>
+        <br></br>
+        <p>以下の内容で仮登録してもよろしいでしょうか？</p><br></br>
+            <p>「登録」ボタンを押すと仮登録が完了します</p>
+        
+        <h3>*お客様の基本情報</h3> 
+        <table>
+            <tr><td>性別</td><td>#{memberBb.sex}</td></tr>
+            <tr><td>氏名</td><td>#{memberBb.name}</td></tr>
+            <tr><td>氏名(フリガナ）</td><td>#{memberBb.kana}</td></tr>
+            <tr><td>生年月日</td><td>#{memberBb.birthday}</td></tr>
+            <tr><td>郵便番号</td><td>#{memberBb.postal}</td></tr>
+            <tr><td>住所</td><td>#{memberBb.address}</td></tr>
+            <tr><td>電話番号</td><td>#{memberBb.phone}</td></tr>
+            <tr><td>メールアドレス</td><td>#{memberBb.mail_address}</td></tr>
+            <tr><td>職業</td><td>#{memberBb.job}</td></tr>
+            <tr><td>メールマガジンを希望</td><td>#{memberBb.mail_magazine}</td></tr>
+        </table>
+        
+        <a href="opencode.xhtml"><button>会員仮登録</button></a>
+
+    </body>
+</html>

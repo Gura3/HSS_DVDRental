@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      >
+
+    <head>
+        <title>店内入会TOPページ</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/top.css"/>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/enroll.css"/>
+    </head>
+
+    <body>
+        <h1>HCSDVDレンタル</h1>
+        <h2>会員登録処理</h2>
+        <br></br>
+
+        <h3>会員情報を入力してください</h3>
+        <h:form>
+            <table >
+                <tr>
+                    <td>性別<span class="req">　　　　　　　　　[必須]</span></td>
+                    <td class="sub2"><input type="radio" name="sex" value="#{memberBb.sex}">男　　</input><input type="radio" name="sex" value="#{memberBb.sex}" >女</input></td>
+                </tr>
+                <tr>
+                    <td>氏名<span class="req">　　　　　　　　　[必須]</span></td>
+                    <td class="sub2"><h:inputText  value="#{memberBb.name}"/></td> 
+                </tr>
+                <tr>
+                    <td>氏名（フリガナ）<span class="req">　　[必須]</span></td>
+                    <td class="sub2"><h:inputText  value="#{memberBb.kana}"/></td>
+                </tr>
+                <tr>
+                    <td>生年月日<span class="req">　　　　　　[必須]</span></td>
+                    <td class="sub2">    
+                        <form action="cgi-bin/example.cgi">
+
+                            <input type="date" name="date" value="#{memberBb.birthday}">
+
+                            </input>
+                        </form>
+                    </td>
+                </tr>
+                <tr>
+                    <td>郵便番号<span class="req">　　　　　　[必須]</span></td>
+                    <td class="sub2"><h:inputText  value="#{memberBb.postal}"/></td>
+                </tr>
+                <tr>
+                    <td>住所<span class="req">　　　　　　　　　[必須]</span></td>
+                    <td class="sub2"><h:inputText  value="#{memberBb.postal}"/></td>
+                </tr>
+
+                <tr>
+                    <td>電話番号<span class="req">　　　　　　[必須]</span></td>
+                    <td class="sub2"><h:inputText  value="#{memberBb.phone}"/></td>
+                </tr>
+                <tr>
+                    <td>E-Mailアドレス</td>
+                    <td class="sub2"><h:inputText  value="#{memberBb.mail_address}"/></td>
+                </tr>
+                <tr>
+                    <td rowspan="3">職業<span class="req">　　　　　　　　[必須]</span></td>
+                    <td class="sub2"><input type="radio" name="kbn" value="#{memberBb.job}"/>会社員　　　 <input type="radio" name="kbn" value="#{memberBb.job}"/>派遣・アルバイト 　　　<input type="radio" name="kbn" value="#{memberBb.job}"/>自営業　　　 </td>
+
+                    <tr><td class="sub2"><input type="radio" name="kbn" value="#{memberBb.job}"/>専業主婦　　　<input type="radio" name="kbn" value="#{memberBb.job}"/>学生　　　　<input type="radio" name="kbn" value="#{memberBb.job}"/>その他 </td>　</tr>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>メール配信を希望</td>
+                    <td class="sub2">　<h:selectBooleanCheckbox value="#{memberBb.mail_magazine}"/>メールマガジンを受け取る</td>
+                </tr>
+
+            </table>
+        </h:form>
+        <h3>入力が完了しましたら<span class="blue">会員情報確認ボタン</span>を押してください</h3>
+        <!--<a href="./index.xhtml"><button>トップページに戻る</button></a> 
+        <a href="./enroll_confirm.xhtml"><button>会員情報確認</button></a>-->
+     <!--   <h:form>
+            <h:commandButton value="会員情報確認" styleClass="boxcb" action="#{memberBb.confirm()}"/>
+        </h:form>
+     -->
+     <a href="temporary_conf.xhtml">会員情報確認</a>
+
+    </body>
+</html>
+

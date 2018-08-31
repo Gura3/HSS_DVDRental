@@ -13,6 +13,7 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
         <link rel="stylesheet" type="text/css" href="../resources/css/top.css"/>
+         <link rel="stylesheet" type="text/css" href="resources/css/title.css"/>
         <link rel="stylesheet" type="text/css" href="../../resources/css/ctest.css"/>
     </h:head>
     <h:body>
@@ -26,7 +27,12 @@ and open the template in the editor.
             <f:selectItems value="#{identifyBb.items}"/>
         </h:selectOneRadio> 
         <br></br>
-        <h:commandButton value="送信" action="#{identifyBb.next()}"/>
+        <!--
+        <h:commandButton value="身分証番号入力" action="#{identifyBb.next()}"/>
+         <h:commandButton  value="処理を中断" styleClass="boxcb" action="#{memberBb.toprt()}"/>
+        -->
         </h:form>
+        <a href="identify_confirm.xhtml"><button>身分証番号入力</button></a>
+        <a href="/index.xhtml"><button>処理を中断</button></a>
     </h:body>
 </html>

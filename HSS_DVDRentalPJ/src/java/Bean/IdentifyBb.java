@@ -27,7 +27,7 @@ public class IdentifyBb {
        return items;
    }
    public String next (){
-       return "identifycomplete.xhtml";
+       return "identifyconfirm.xhtml";
    }
 
     @Override

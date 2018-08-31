@@ -217,6 +217,10 @@ public class HenkyakuBb {
         return "/pages/henkyaku/henkyaku.xhtml";
     }
     
+    public String comp(){
+        return "/pages/henkyaku/henkyakucomp.xhtml";
+    }
+    
     public String back(){
         return "henkyaku.xhtml";
     }

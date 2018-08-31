@@ -7,7 +7,6 @@ package Bean;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
-import static Parameters.RentalPaths.*;
 import javax.ejb.EJB;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;

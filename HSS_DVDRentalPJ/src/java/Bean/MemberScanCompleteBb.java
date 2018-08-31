@@ -45,19 +45,31 @@ public class MemberScanCompleteBb {
     MemberCardManager mng;
     
     Member_card m = null;
+    Menber mem = null;
     
     public String next() {
+        //会員カード探す
         try {
             m = mng.getMemBercode(mem_barcode);
         } catch (Exception e) {
             e.printStackTrace();
         }
         
+        
         if(m == null){
+            //見つからなかった場合
             return "memberScanError";
         }else{
+            //見つかった場合
+//            setMem_barcode(m.getMem_barcode());
+//            setIssue_date(m.getIssue_date());
+//            setDel_flg(m.getDel_flg());
+//            setMemberno(m.getMember_no());
+            
             return  "memberScanComplete";
         }
+        
+    }
         //test
 //        setSex("男性");
 //        setBirthday("1990/1/1");
@@ -109,7 +121,7 @@ public class MemberScanCompleteBb {
 //        } else {                                          //スキャンエラー
 //            return "memberScanError";
 //        }
-    }
+//    }
 
 //    public String comeMember() {
 //            Member_card c = new Member_card();

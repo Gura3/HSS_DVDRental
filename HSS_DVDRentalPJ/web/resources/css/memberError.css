@@ -66,3 +66,7 @@ h3{
 h3#error{
     color: #FF0000;/*文字色*/
 }
+
+#tugi{
+    display: none;
+}

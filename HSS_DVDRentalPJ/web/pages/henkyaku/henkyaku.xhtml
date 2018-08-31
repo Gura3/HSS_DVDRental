@@ -139,24 +139,24 @@
                     <h:outputText value="性別" />
                     <h:outputText value="#{henkyakuBb.sex}" />
                     <h:outputText value="貸出物合計" />
-                    <h:outputText value="#{henkyakuBb.sex}" />
+                    <h:outputText value="#{henkyakuBb.scancnt}" />
                     <h:outputText value="名前"/>
                     <h:outputText value="#{henkyakuBb.name}"/>
                     <h:outputText value="貸出中個数"/>
-                    <h:outputText value=""/>
+                    <h:outputText value="0"/>
                     <h:outputText value="延滞物合計"/>
-                    <h:outputText value="#{henkyakuBb.birthday}"/>
+                    <h:outputText value="0"/>
                     <h:outputText value="生年月日"/>
                     <h:outputText value="#{henkyakuBb.birthday}"/>
                     <h:outputText value="会員区分" />
-                    <h:outputText value="" />
+                    <h:outputText value="会員" />
                     <h:outputText value="延滞料金" />
-                    <h:outputText value="" />
+                    <h:outputText value="0" />
                 </h:panelGrid>
             </li>
             <li>
                 <h:form styleClass="subMenu">
-                    <h:commandButton value="返却実行" styleClass="syoke" action="#{DVDScanBb.totalpage()}"/>
+                    <h:commandButton value="返却実行" styleClass="syoke" action="#{henkyakuBb.comp()}"/>
                 </h:form>
             </li>
         </ul>

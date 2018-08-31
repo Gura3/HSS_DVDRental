@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>現計処理-完了</title>
+        <h:outputStylesheet library="css" name="title.css"/>
+        <h:outputStylesheet library="css" name="comps.css"/>
+        <h:outputStylesheet library="css" name="hencomp.css"/>
+    </h:head>
+    <h:body>
+        <h1>HCSDVDレンタル</h1>
+<!--        <p id="gazou">
+            <img src="resours/images/saihakkou.PNG"></img>
+        </p>
+-->
+<h2>現計処理</h2>
+        <p></p>
+<!--        <div>
+        <ol id="Pass">
+            <li>会員検索</li>
+            <li>会員情報確認</li>
+            <li>身分証番号入力</li>
+            <li>バーコードスキャン</li>
+            <li class="loc">再発行完了</li>
+        </ol>
+        </div>
+-->
+        
+        <div class="moji">
+            <p class="dai">返却処理が完了しました。</p>
+            <p class="syou">もう一度この処理をする場合は、<strong>再度処理ボタン</strong>を押してください。</p>
+        </div>
+        <p></p>
+        <div class="botan">
+        <h:form>
+            
+            <h:commandButton class="saido" value="再度処理" alt="sa" action="#{henkyakuBb.next()}"></h:commandButton>
+            <input type="button" class="button" onclick="location.href='../../index.xhtml'" value="トップページに戻る"/>
+        </h:form>
+                
+           
+      
+        </div>
+    </h:body>
+    
+</html>

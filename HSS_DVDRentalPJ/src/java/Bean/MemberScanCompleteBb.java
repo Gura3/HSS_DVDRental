@@ -5,6 +5,7 @@
  */
 package Bean;
 
+import Manager.MemberCardManager;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.ApplicationScoped;
@@ -19,7 +20,7 @@ import javax.inject.Named;
 
 /* 貸出会員スキャンバッキングビーン */
 public class MemberScanCompleteBb {
-    private String memberno;            //会員No
+    private String memberno;            //会員No・・・検索に使用する
     private String birthday;            //生年月日
     private String name;                //氏名
     private String kana;                //会員名(フリガナ)
@@ -40,63 +41,77 @@ public class MemberScanCompleteBb {
 
     @EJB
     MemberCardDb db;
-
+    @EJB
+    MemberCardManager mng;
+    
+    Member_card m = null;
+    
     public String next() {
-        comeMember();
-        //test
-        setSex("男性");
-        setBirthday("1990/1/1");
-        setPhone("001-831-5511");
-
-        if (("1").equals(comeMember())) {
-            if (("00000000").equals(getMemberno())) {
-                setName("A");
-                setKana("エー");
-            } else if (("11111115").equals(getMemberno())) {
-                setName("B");
-                setKana("ビー");
-            } else if (("22222220").equals(getMemberno())) {
-                setName("C");
-                setKana("シー");
-            } else if (("33333335").equals(getMemberno())) {
-                setName("D");
-                setKana("ディー");
-            } else if (("01234565").equals(getMemberno())) {
-                setName("山田太郎");
-                setKana("ヤマダタロウ");
-            }
-
-            setFlg1(false);
-            setFlg2(false);
-            return "memberScanComplete";                //正常
-        } else if (("2").equals(getMemberno())) {          //スキャン完了有効期限切れ1ヶ月前へ
-            setFlg1(true);
-            setFlg2(false);
-            setExpirationDate("30");
-            return "memberScanComplete";
-        } else if (("3").equals(getMemberno())) {          //スキャン完了未払い金へ
-            setFlg1(false);
-            setFlg2(true);
-            setDelay("300");
-            return "memberScanComplete";
-        } else if (("4").equals(getMemberno())) {          //スキャン完了未払い金有効期限切れ1ヶ月前へ
-            setFlg1(true);
-            setFlg2(true);
-            setExpirationDate("30");
-            setDelay("300");
-            return "memberScanComplete";
-                                                        //スキャン完了有効期限切れ1ヶ月前へ
-            //スキャン完了未払い金へ
-        } else if (("5").equals(getMemberno())) {          //有効期限更新へ
-            return "memberExpirationDate";
-        } else if (("6").equals(getMemberno())) {          //会員情報無しエラー
-            return "memberEmptyError";
-        } else {                                          //スキャンエラー
-            return "memberScanError";
+        try {
+            m = mng.getMemBercode(mem_barcode);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+        
+        if(m == null){
+            return "memberScanError";
+        }else{
+            return  "memberScanComplete";
+        }
+        //test
+//        setSex("男性");
+//        setBirthday("1990/1/1");
+//        setPhone("001-831-5511");
+
+//        if (("1").equals(comeMember())) {
+//            if (("00000000").equals(getMemberno())) {
+//                setName("A");
+//                setKana("エー");
+//            } else if (("11111115").equals(getMemberno())) {
+//                setName("B");
+//                setKana("ビー");
+//            } else if (("22222220").equals(getMemberno())) {
+//                setName("C");
+//                setKana("シー");
+//            } else if (("33333335").equals(getMemberno())) {
+//                setName("D");
+//                setKana("ディー");
+//            } else if (("01234565").equals(getMemberno())) {
+//                setName("山田太郎");
+//                setKana("ヤマダタロウ");
+//            }
+
+//            setFlg1(false);
+//            setFlg2(false);
+//            return "memberScanComplete";                //正常
+//        } else if (("2").equals(getMemberno())) {          //スキャン完了有効期限切れ1ヶ月前へ
+//            setFlg1(true);
+//            setFlg2(false);
+//            setExpirationDate("30");
+//            return "memberScanComplete";
+//        } else if (("3").equals(getMemberno())) {          //スキャン完了未払い金へ
+//            setFlg1(false);
+//            setFlg2(true);
+//            setDelay("300");
+//            return "memberScanComplete";
+//        } else if (("4").equals(getMemberno())) {          //スキャン完了未払い金有効期限切れ1ヶ月前へ
+//            setFlg1(true);
+//            setFlg2(true);
+//            setExpirationDate("30");
+//            setDelay("300");
+//            return "memberScanComplete";
+//                                                        //スキャン完了有効期限切れ1ヶ月前へ
+//            //スキャン完了未払い金へ
+//        } else if (("5").equals(getMemberno())) {          //有効期限更新へ
+//            return "memberExpirationDate";
+//        } else if (("6").equals(getMemberno())) {          //会員情報無しエラー
+//            return "memberEmptyError";
+//        } else {                                          //スキャンエラー
+//            return "memberScanError";
+//        }
     }
 
-    public String comeMember() {
+//    public String comeMember() {
 //            Member_card c = new Member_card();
 //            List<Member_card> memlist = null;
 //            try{
@@ -105,22 +120,22 @@ public class MemberScanCompleteBb {
 //                e.printStackTrace();
 //            }
 
-        System.out.println(this.memberno);
-        Member_card m = null;
-        try {
-            m = db.getCard(mem_barcode);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        System.out.println(this.memberno);
+//        Member_card m = null;
+//        try {
+//            m = db.getCard(mem_barcode);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
         //System.out.println(m.getMember_no()+"ふぉおおおおおおおおおおおおｵｵｵｵｵｵｵｵｵｵｵｵｵｵｵｵｵｵ");
-        if (m == null) {
-            return "0";
-        } else {
-            setMemberno(m.getMember_no());
-            return "1";
-        }
-
-    }
+//        if (m == null) {
+//            return "0";
+//        } else {
+//            setMemberno(m.getMember_no());
+//            return "1";
+//        }
+//        return 
+//    }
 
     public void setMemberno(String memberno) {
         this.memberno = memberno;

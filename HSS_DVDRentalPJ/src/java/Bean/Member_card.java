@@ -14,15 +14,8 @@ import javax.validation.constraints.*;
 //})
 
 
-
 @Entity
 @Table(name="MEMBER_CARD")
-
-@NamedQueries({
-    @NamedQuery(name=Member_card.Comemem,
-                query="SELECT d FROM MEMBER_CARD d ORDER BY d.MEM_BARCODE")
-})
-
 public class Member_card implements Serializable {
     
     public static final String Comemem ="Comemem";

@@ -8,14 +8,21 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.*;
 
-@NamedQueries({
-    @NamedQuery(name=Member_card.Comemem,
-                query="SELECT m FROM MEMBER_CARD m WHERE m.mem_barcode = ?1")
-})
+//@NamedQueries({
+//    @NamedQuery(name=Member_card.Comemem,
+//                query="SELECT m FROM MEMBER_CARD m WHERE m.mem_barcode = ?1")
+//})
+
 
 
 @Entity
 @Table(name="MEMBER_CARD")
+
+@NamedQueries({
+    @NamedQuery(name=Member_card.Comemem,
+                query="SELECT d FROM MEMBER_CARD d ORDER BY d.MEM_BARCODE")
+})
+
 public class Member_card implements Serializable {
     
     public static final String Comemem ="Comemem";

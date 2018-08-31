@@ -5,6 +5,8 @@
  */
 package Bean;
 
+import java.util.List;
+import javax.ejb.EJB;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
 
@@ -18,8 +20,105 @@ import javax.inject.Named;
 /* 貸出会員スキャンバッキングビーン */
 public class MemberScanCompleteBb {
     private String memberno;            //会員No
-
-    public void setMemberno(String memberno) {
+    private String birthday;            //生年月日
+    private String name;                //氏名
+    private String kana;                //会員名(フリガナ)
+    private String sex;                 //性別
+    private String postal;              //郵便番号
+    private String address;             //住所
+    private String phone;               //電話番号
+    private String occupation;          //職業
+    private String mail_address;        //メールアドレス
+    private String mail_magazine;       //メールマガジン
+    private String registararion_date;  //仮会員登録日
+    private String delay;  //未払い金
+    private boolean flg1 = false;// 未払いフラグ
+    private String expirationDate;  //残り有効期限
+    private String mem_barcode;
+    private String issue_date;
+    private String del_flg;
+    private String member_no;
+    
+    @EJB
+    MemberCardDb db;
+    
+    public String next(){
+        comeMember();
+        //test
+        setSex("男性");
+        setBirthday("1990/1/1");
+        setPhone("001-831-5511");
+        
+        if(("1").equals(getMemberno()) || ("00000000").equals(getMemberno()) || ("11111115").equals(getMemberno()) || ("22222220").equals(getMemberno()) || ("33333335").equals(getMemberno()) || ("01234565").equals(getMemberno())){
+            if(("00000000").equals(getMemberno())){
+                setName("A");
+                setKana("エー");
+            }else if(("11111115").equals(getMemberno())){
+                setName("B");
+                setKana("ビー");
+            }else if(("22222220").equals(getMemberno())){
+                setName("C");
+                setKana("シー");
+            }else if(("33333335").equals(getMemberno())){
+                setName("D");
+                setKana("ディー");
+            }else if(("01234565").equals(getMemberno())){
+                setName("山田太郎");
+                setKana("ヤマダタロウ");
+            }
+            
+            setFlg1(false);
+            setFlg2(false);
+            return "memberScanComplete";                //正常
+        }else if(("2").equals(getMemberno())){          //スキャン完了有効期限切れ1ヶ月前へ
+            setFlg1(true);
+            setFlg2(false);
+            setExpirationDate("30");
+            return "memberScanComplete";
+        }else if(("3").equals(getMemberno())){          //スキャン完了未払い金へ
+            setFlg1(false);
+            setFlg2(true);
+            setDelay("300");
+            return "memberScanComplete";
+        }else if(("4").equals(getMemberno())){          //スキャン完了未払い金有効期限切れ1ヶ月前へ
+            setFlg1(true);
+            setFlg2(true);
+            setExpirationDate("30");
+            setDelay("300");
+            return "memberScanComplete";
+                                                        //スキャン完了有効期限切れ1ヶ月前へ
+                                                        //スキャン完了未払い金へ
+        }else if(("5").equals(getMemberno())){          //有効期限更新へ
+            return "memberExpirationDate";
+        }else if(("6").equals(getMemberno())){          //会員情報無しエラー
+            return "memberEmptyError";
+        }else{                                          //スキャンエラー
+            return "memberScanError";
+        }
+    }
+        public String comeMember(){
+            Member_card c = new Member_card();
+            List<Member_card> memlist = null;
+            try{
+                memlist= db.comemember(memberno);
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+            
+            if (memlist == null || memlist.size() == 0) {
+                return "0";
+            }else if(memlist.get(0).getDel_flg().equals("1")){
+                return "6";
+            }else{
+                setMem_barcode(memlist.get(0).getMem_barcode());
+                setIssue_date(memlist.get(0).getIssue_date());
+                setDel_flg(memlist.get(0).getDel_flg());
+                setMember_no(memlist.get(0).getMember_no());
+                return "1";
+            }
+        }
+    
+        public void setMemberno(String memberno) {
         this.memberno = memberno;
     }
 
@@ -114,21 +213,6 @@ public class MemberScanCompleteBb {
     public String getRegistararion_date() {
         return registararion_date;
     }
-    private String birthday;            //生年月日
-    private String name;                //氏名
-    private String kana;                //会員名(フリガナ)
-    private String sex;                 //性別
-    private String postal;              //郵便番号
-    private String address;             //住所
-    private String phone;               //電話番号
-    private String occupation;          //職業
-    private String mail_address;        //メールアドレス
-    private String mail_magazine;       //メールマガジン
-    private String registararion_date;  //仮会員登録日
-    private String delay;  //未払い金
-    /** 未払いフラグ */
-    private boolean flg1 = false;
-
     public boolean isFlg1() {
         return flg1;
     }
@@ -163,61 +247,37 @@ public class MemberScanCompleteBb {
     public void setExpirationDate(String expirationDate) {
         this.expirationDate = expirationDate;
     }
-    private String expirationDate;  //残り有効期限
-    
-    public String next(){
-        //test
-        setSex("男性");
-        setBirthday("1990/1/1");
-        setPhone("001-831-5511");
-        
-        if(("1").equals(getMemberno()) || ("00000000").equals(getMemberno()) || ("11111115").equals(getMemberno()) || ("22222220").equals(getMemberno()) || ("33333335").equals(getMemberno()) || ("01234565").equals(getMemberno())){
-            if(("00000000").equals(getMemberno())){
-                setName("A");
-                setKana("エー");
-            }else if(("11111115").equals(getMemberno())){
-                setName("B");
-                setKana("ビー");
-            }else if(("22222220").equals(getMemberno())){
-                setName("C");
-                setKana("シー");
-            }else if(("33333335").equals(getMemberno())){
-                setName("D");
-                setKana("ディー");
-            }else if(("01234565").equals(getMemberno())){
-                setName("山田太郎");
-                setKana("ヤマダタロウ");
-            }
-            
-            setFlg1(false);
-            setFlg2(false);
-            return "memberScanComplete";                //正常
-        }else if(("2").equals(getMemberno())){          //スキャン完了有効期限切れ1ヶ月前へ
-            setFlg1(true);
-            setFlg2(false);
-            setExpirationDate("30");
-            return "memberScanComplete";
-        }else if(("3").equals(getMemberno())){          //スキャン完了未払い金へ
-            setFlg1(false);
-            setFlg2(true);
-            setDelay("300");
-            return "memberScanComplete";
-        }else if(("4").equals(getMemberno())){          //スキャン完了未払い金有効期限切れ1ヶ月前へ
-            setFlg1(true);
-            setFlg2(true);
-            setExpirationDate("30");
-            setDelay("300");
-            return "memberScanComplete";
-                                                        //スキャン完了有効期限切れ1ヶ月前へ
-                                                        //スキャン完了未払い金へ
-        }else if(("5").equals(getMemberno())){          //有効期限更新へ
-            return "memberExpirationDate";
-        }else if(("6").equals(getMemberno())){          //会員情報無しエラー
-            return "memberEmptyError";
-        }else{                                          //スキャンエラー
-            return "memberScanError";
-        }
+
+    public String getMem_barcode() {
+        return mem_barcode;
     }
-    
+
+    public void setMem_barcode(String mem_barcode) {
+        this.mem_barcode = mem_barcode;
+    }
+
+    public String getIssue_date() {
+        return issue_date;
+    }
+
+    public void setIssue_date(String issue_date) {
+        this.issue_date = issue_date;
+    }
+
+    public String getDel_flg() {
+        return del_flg;
+    }
+
+    public void setDel_flg(String del_flg) {
+        this.del_flg = del_flg;
+    }
+
+    public String getMember_no() {
+        return member_no;
+    }
+
+    public void setMember_no(String member_no) {
+        this.member_no = member_no;
+    }
     
 }

@@ -112,6 +112,12 @@ public class ReziBb {
         if(InetAddress.getLocalHost().getHostName().equals("HCS23110")){
             setTenpocd("00");
             setRezicd("101");
+        }else if(InetAddress.getLocalHost().getHostName().equals("HCS23103")){
+            setTenpocd("00");
+            setRezicd("102");
+        }else if(InetAddress.getLocalHost().getHostName().equals("HCS23104")){
+            setTenpocd("01");
+            setRezicd("201");
         }
         setMan("0");
         setGosen("0");

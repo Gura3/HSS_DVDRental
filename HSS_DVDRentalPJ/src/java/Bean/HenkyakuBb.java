@@ -5,6 +5,8 @@
  */
 package Bean;
 
+import Manager.HenkyakuManager;
+import javax.ejb.EJB;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
 
@@ -38,6 +40,13 @@ public class HenkyakuBb {
     private String sex;                 //性別
     private String phone;               //電話番号
 
+    @EJB
+    HenkyakuDb db;
+    @EJB
+    HenkyakuManager mng;
+    
+    Kashi_meisai k = null;
+    
     public int getChange() {
         return change;
     }

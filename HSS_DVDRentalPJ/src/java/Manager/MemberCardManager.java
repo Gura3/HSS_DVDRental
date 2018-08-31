@@ -11,10 +11,8 @@ import javax.persistence.PersistenceContext;
 import Bean.Member_card;
 import javax.ejb.Stateless;
 import javax.persistence.TypedQuery;
-/**
- *
- * @author s20163002
- */
+
+
 @Stateless
 public class MemberCardManager {
     @PersistenceContext

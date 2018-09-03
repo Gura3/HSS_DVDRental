@@ -20,11 +20,15 @@ public class HenkyakuManager {
     @PersistenceContext
     EntityManager em;
     
-    public Kashi_meisai getMemBercode(String dvd_barcode){
+    public Kashi_meisai getKashiBercode(String dvd_barcode){
         Kashi_meisai k = null;
+        System.out.println(1);
         TypedQuery query = em.createNamedQuery(Kashi_meisai.ComeKashi_meisai, Kashi_meisai.class);
+        System.out.println(2);
         query.setParameter(1,dvd_barcode);
+        System.out.println(3);
         k = (Kashi_meisai)query.getSingleResult();
+        System.out.println(4);
         
         return k;
     }

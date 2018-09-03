@@ -10,6 +10,13 @@
         <!-- スキャンのスクリプト -->
         <h:outputScript library="js" name="scan.js"/>
         <h:outputScript library="js" name="henkyaku.js"/>
+        <h:outputScript library="js" name="jquery-3.3.1.min.js"/>
+        <script>
+           $(window).on("load",function(){
+                 alert('正常なバーコードを読み取れませんでした。');
+            });
+            
+        </script>
     </h:head>
     <h:body>
         <h:outputText value="#{henkyakuBb.scanflg}" styleClass="kashicheck" style="display: none"/>

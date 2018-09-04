@@ -6,9 +6,10 @@
 package Bean;
 
 import Manager.MemberCardManager;
-import java.util.List;
+import Manager.MemberManager;
+import java.io.Serializable;
 import javax.ejb.EJB;
-import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
 /**
@@ -16,18 +17,22 @@ import javax.inject.Named;
  * @author Gura3
  */
 @Named
-@ApplicationScoped
+//ログインしてからログアウトするまでの過程でオブジェクトを生成
+@SessionScoped
 
 /* 貸出会員スキャンバッキングビーン */
-public class MemberScanCompleteBb {
+public class MemberScanCompleteBb implements Serializable{
     private String memberno;            //会員No・・・検索に使用する
-    private String birthday;            //生年月日
-    private String name;                //氏名
-    private String kana;                //会員名(フリガナ)
+    
+    //
     private String sex;                 //性別
+    private String name;                //氏名
+    private String kana;                //氏名(フリガナ)
+    private String birthday;            //生年月日
+    private String phone;               //電話番号
+    
     private String postal;              //郵便番号
     private String address;             //住所
-    private String phone;               //電話番号
     private String occupation;          //職業
     private String mail_address;        //メールアドレス
     private String mail_magazine;       //メールマガジン
@@ -42,29 +47,44 @@ public class MemberScanCompleteBb {
     @EJB
     MemberCardDb db;
     @EJB
-    MemberCardManager mng;
+    MemberCardManager mcMng;    //会員カードマネージャ
+    @EJB
+    MemberManager mMng;     //会員マネージャ
     
-    Member_card m = null;
-    Menber mem = null;
+    Member_card mc;   //会員カード
+    Menber mem;      //会員
     
     public String next() {
-        //会員カード探す
-        try {
-            m = mng.getMemBercode(mem_barcode);
-        } catch (Exception e) {
+        mc = null;
+        mem = null;
+        
+        try{
+            //会員カード探す
+            mc = mcMng.getMemBercode(mem_barcode);
+            //会員カードの情報を元に会員を探す
+            mem = mMng.getMemBercode(mc.getMember_no());
+        }catch (Exception e) {
             e.printStackTrace();
         }
         
         
-        if(m == null){
+        if(mc == null){
             //見つからなかった場合
             return "memberScanError";
         }else{
-            //見つかった場合
+            
 //            setMem_barcode(m.getMem_barcode());
 //            setIssue_date(m.getIssue_date());
 //            setDel_flg(m.getDel_flg());
 //            setMemberno(m.getMember_no());
+            
+            //見つかった場合
+            //表示する情報をセット
+            setSex(mem.getSex());
+            setName(mem.getName());
+            setKana(mem.getKana());
+            setBirthday(mem.getBirthday());
+            setPhone(mem.getPhone());
             
             return  "memberScanComplete";
         }

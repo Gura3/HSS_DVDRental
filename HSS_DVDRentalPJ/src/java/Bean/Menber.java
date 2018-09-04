@@ -1,6 +1,5 @@
 package Bean;
 
-
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -8,7 +7,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.*;
-
 @NamedQueries({
     @NamedQuery(name=Menber.Comemem,
                 query="SELECT m FROM Menber m WHERE m.member_no = ?1")

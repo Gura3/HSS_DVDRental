@@ -16,7 +16,9 @@ import javax.validation.constraints.NotNull;
 
 @NamedQueries({
     @NamedQuery(name=Dvd.Qall,
-                query="SELECT d FROM Dvd d ORDER BY d.dvd_code")
+                query="SELECT d FROM Dvd d ORDER BY d.dvd_code"),
+    @NamedQuery(name=Dvd.Comeon,
+                query="SELECT d FROM Dvd d WHERE d.dvd_code = ?1")
 })
 
 @Entity
@@ -25,9 +27,10 @@ public class Dvd implements Serializable {
 //    private static final long serialVersionUID = 1L;
 //    @Id
 //    @GeneratedValue(strategy = GenerationType.AUTO)
-//    private Long id;
+//    private Long id; 
     
     public static final String Qall ="Qall";
+    public static final String Comeon ="Comeon";
     @Id
     @NotNull
     private String dvd_code;    //DVDコード

@@ -36,4 +36,13 @@ public class DvdManager {
         q.setMaxResults(10);
         return q.getResultList();
     }
+    
+    public Dvd getDvdData(String dvd_code) {
+        Dvd d = null;
+        TypedQuery query = null;
+        query = em.createNamedQuery(Dvd.Comeon, Dvd.class);
+        query.setParameter(1,dvd_code);
+        d = (Dvd)query.getSingleResult();
+        return d;
+    }
 }

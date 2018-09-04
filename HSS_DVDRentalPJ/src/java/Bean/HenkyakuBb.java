@@ -5,8 +5,11 @@
  */
 package Bean;
 
+import static HenkanTools.Tool.fmtSlash;
 import Manager.DvdManager;
 import Manager.HenkyakuManager;
+import Manager.KashiDvdManager;
+import Manager.MemberManager;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.ApplicationScoped;
@@ -49,18 +52,18 @@ public class HenkyakuBb {
     @EJB
     HenkyakuManager mng;
     @EJB
+    KashiDvdManager kashimng;
+    @EJB
     DvdDb dvddb;
     @EJB
+    KashiDvdDb kashidvddb;
+    @EJB
     DvdManager dvdmng;
-    @EJB
-    MemberDb memdb;
-    @EJB
-    MemberManager memmng;
     
     Kashi_meisai k = null;
-    Menber m = null;
-    List<Dvd> d = null;
-    
+    Dvd d = null;
+    Lend_item kd = null;
+    Lend l = null;
     
     
 
@@ -94,30 +97,32 @@ public class HenkyakuBb {
     }
     
     public String scan(){
+        
         try {
             k = mng.getKashiBercode(barcode);
-            d = dvdmng.getDvdDate();
+            l = kashimng.getKashiData(k.getLend_no());
+            kd = kashimng.getKashiDvdData(barcode);
+            d = dvdmng.getDvdData(kd.getDvd_code());
         } catch (Exception e) {
             e.printStackTrace();
             setScanflg("true");
             return "henkyakuScanerror.xhtml";
         }
-        if(!getBarcode().equals("")){
-            setBarcodes(getBarcode(),getScancnt());
-            setTitles("パパ嫌い",getScancnt());
-            setDays("2018/8/1～2018/8/5",getScancnt());
-            setEntaidays("-",getScancnt());
-            setMoneys("100",getScancnt());
-            setFlg1(false,getScancnt());
-            setFlg2(true,getScancnt());
-            String mons[] = getMoneys();
-            setTotal(getTotal()+Integer.parseInt(mons[getScancnt()]));
-            setTax((int)(getTotal()/1.08*0.08));
-            setScancnt(getScancnt()+1);
+        setBarcodes(getBarcode(),getScancnt());
+        setTitles(d.getTitle(),getScancnt());
+        setDays(fmtSlash(l.getLend_date())+"～"+fmtSlash(k.getReturn_plan_day()),getScancnt());
+        setEntaidays("-",getScancnt());
+        setMoneys(k.getMoney(),getScancnt());
+        setFlg1(false,getScancnt());
+        setFlg2(true,getScancnt());
+        System.out.println(k.getMoney());
+        String mons[] = getMoneys();
+        setTotal(getTotal()+Integer.parseInt(mons[getScancnt()]));
+        setTax((int)(getTotal()/1.08*0.08));
+        setScancnt(getScancnt()+1);
             if(getScancnt()==1){
-                catchMember(getBarcode());
+                catchMember(l.getMember_no());
             }
-        }
         return "henkyaku.xhtml";
     }
     
@@ -180,22 +185,20 @@ public class HenkyakuBb {
         return "totalpage";
     }
     
-    public void catchMember(String barcord){
-        if(barcord.equals("1")){
-            setMemberno("1");
-            setSex("男性");
-            setName("加藤弘幸");
-            setKana("カトウヒロユキ");
-            setBirthday("1987/6/5");
-            setPhone("001-831-5511");
-        }else if(barcord.equals("2")){
-            setMemberno("2");
-            setSex("男性");
-            setName("佐藤弘幸");
-            setKana("サトウヒロユキ");
-            setBirthday("1987/7/5");
-            setPhone("002-832-5522");
-        }
+    public void catchMember(String memberno){
+//         try {
+//            m = memmng.getTheMem(memberno);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        if(m == null){
+//            setMemberno(Integer.toString(m.getMember_no()));
+//            setSex(m.getSex());
+//            setName(m.getName());
+//            setKana(m.getKana());
+//            setBirthday(fmtSlash(m.getBirthday()));
+//            setPhone(m.getPhone());
+//        }
     }
     
     public void delMember(){

@@ -15,7 +15,7 @@ import javax.validation.constraints.*;
 })
 
 @Entity
-@Table(name="Menber")
+@Table(name="Member")
 public class Menber implements Serializable {
     public static final String Comemem ="Comemem";
     
@@ -23,7 +23,7 @@ public class Menber implements Serializable {
     @NotNull
     private Integer member_no;  //会員No
     @NotNull
-    private String birthday;    //誕生日
+    private String birth_day;    //誕生日
     @NotNull
     private String name;    //氏名
     @NotNull
@@ -57,9 +57,9 @@ public class Menber implements Serializable {
     public Menber() {
     }
 
-    public Menber(Integer member_no, String birthday, String name, String kana, String sex, String postal, String address, String phone, String job, String last_visits, String mail_address, boolean mail_magazine, boolean unpaid, boolean lend_cnt, boolean del_flg, boolean dangercnt) {
+    public Menber(Integer member_no, String birth_day, String name, String kana, String sex, String postal, String address, String phone, String job, String last_visits, String mail_address, boolean mail_magazine, boolean unpaid, boolean lend_cnt, boolean del_flg, boolean dangercnt) {
         this.member_no = member_no;
-        this.birthday = birthday;
+        this.birth_day = birth_day;
         this.name = name;
         this.kana = kana;
         this.sex = sex;
@@ -82,8 +82,8 @@ public class Menber implements Serializable {
         return member_no;
     }
 
-    public String getBirthday() {
-        return birthday;
+    public String getBirth_day() {
+        return birth_day;
     }
 
     public String getName() {
@@ -147,8 +147,8 @@ public class Menber implements Serializable {
         this.member_no = member_no;
     }
 
-    public void setBirthday(String birthday) {
-        this.birthday = birthday;
+    public void setBirth_day(String birth_day) {
+        this.birth_day = birth_day;
     }
 
     public void setName(String name) {

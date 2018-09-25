@@ -16,7 +16,9 @@ import javax.validation.constraints.NotNull;
 
 @NamedQueries({
     @NamedQuery(name=Lend.Comelend,
-                query="SELECT l FROM Lend l WHERE l.lend_no = ?1")
+                query="SELECT l FROM Lend l WHERE l.lend_no = ?1"),
+    @NamedQuery(name=Lend.Memlend,
+                query="SELECT l FROM Lend l WHERE l.member_no = ?1")
 })
 
 @Entity
@@ -24,6 +26,7 @@ import javax.validation.constraints.NotNull;
 public class Lend implements Serializable {
     
     public static final String Comelend ="Comelend";
+    public static final String Memlend ="Memlend";
     @Id
     @NotNull
     private String lend_no;    //貸出番号

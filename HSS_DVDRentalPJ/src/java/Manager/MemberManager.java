@@ -5,8 +5,8 @@
  */
 package Manager;
 
-import Bean.Member_card;
 import Bean.Menber;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -15,6 +15,7 @@ import javax.persistence.TypedQuery;
  *
  * @author s20163002
  */
+@Stateless
 public class MemberManager {
     @PersistenceContext
     EntityManager em;
@@ -25,11 +26,13 @@ public class MemberManager {
     }
     
     public Menber getTheMem(String mem_no){
+        System.out.println("getTheMem");
         Menber m = null;
         System.out.println(1);
-        TypedQuery query = em.createNamedQuery(Menber.Comemem, Menber.class);
+        System.out.println(mem_no);
+        TypedQuery query = em.createNamedQuery(Menber.Comemembers, Menber.class);
         System.out.println(2);
-        query.setParameter(1,mem_no);
+        query.setParameter(1,Integer.parseInt(mem_no));
         System.out.println(3);
         m = (Menber)query.getSingleResult();
         System.out.println(4);

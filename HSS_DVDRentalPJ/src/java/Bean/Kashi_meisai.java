@@ -10,7 +10,9 @@ import javax.validation.constraints.*;
 
 @NamedQueries({
     @NamedQuery(name=Kashi_meisai.ComeKashi_meisai,
-                query="SELECT l FROM Kashi_meisai l WHERE l.dvd_barcode = ?1")
+                query="SELECT l FROM Kashi_meisai l WHERE l.dvd_barcode = ?1 AND l.return_day IS NULL"),
+    @NamedQuery(name=Kashi_meisai.Kaeshitakana,
+                query="SELECT l FROM Kashi_meisai l WHERE l.lend_no = ?1 AND l.return_day IS NULL")
 })
 
 @Entity
@@ -18,6 +20,7 @@ import javax.validation.constraints.*;
 public class Kashi_meisai implements Serializable {
     
     public static final String ComeKashi_meisai ="ComeKashi_meisai";
+    public static final String Kaeshitakana ="Kaeshitakana";
     @Id
     @NotNull
     private String lend_no; //貸出番号
@@ -87,6 +90,14 @@ public class Kashi_meisai implements Serializable {
 
     public void setMoney(String money) {
         this.money = money;
+    }
+
+    public String getLend_det_no() {
+        return lend_det_no;
+    }
+
+    public void setLend_det_no(String lend_det_no) {
+        this.lend_det_no = lend_det_no;
     }
     
 }

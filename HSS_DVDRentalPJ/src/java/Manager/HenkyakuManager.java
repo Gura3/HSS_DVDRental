@@ -33,5 +33,19 @@ public class HenkyakuManager {
         return k;
     }
     
+    public Kashi_meisai getKaeshitenai(String lend_no){
+        System.out.println("getKaeshitenai");
+        Kashi_meisai k = null;
+        System.out.println(1);
+        TypedQuery query = em.createNamedQuery(Kashi_meisai.Kaeshitakana, Kashi_meisai.class);
+        System.out.println(2);
+        query.setParameter(1,lend_no);
+        System.out.println(3);
+        k = (Kashi_meisai)query.getSingleResult();
+        System.out.println(4);
+        
+        return k;
+    }
+    
 
 }

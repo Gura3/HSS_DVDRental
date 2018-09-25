@@ -5,11 +5,16 @@
  */
 package Bean;
 
+import static HenkanTools.Tool.cnvSextion;
+import static HenkanTools.Tool.differenceDays;
 import static HenkanTools.Tool.fmtSlash;
 import Manager.DvdManager;
 import Manager.HenkyakuManager;
 import Manager.KashiDvdManager;
 import Manager.MemberManager;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.ApplicationScoped;
@@ -37,6 +42,7 @@ public class HenkyakuBb {
     private int tax;
     private int deposit;            //預かり金
     private int change;            //おつり
+    private String kashidashinow;
     
     private String memberno;            //会員No
     private String birthday;            //生年月日
@@ -44,6 +50,13 @@ public class HenkyakuBb {
     private String kana;                //会員名(フリガナ)
     private String sex;                 //性別
     private String phone;               //電話番号
+    
+    private String syuen[] = new String[10];               //主演者
+    private String komento[] = new String[10];             //コメント
+    private String getday[] = new String[10];              //入荷日
+    private String newold[] = new String[10];              //新作区分
+    private String startday[] = new String[10];            //貸出開始日
+    private String returnday[] = new String[10];           //返却期限日
     
     private String scanflg;
 
@@ -59,11 +72,17 @@ public class HenkyakuBb {
     KashiDvdDb kashidvddb;
     @EJB
     DvdManager dvdmng;
+    @EJB
+    MemberManager memmng;
+    @EJB
+    Kashi_meisaiDb kashidb;
     
     Kashi_meisai k = null;
     Dvd d = null;
     Lend_item kd = null;
     Lend l = null;
+    Menber m = null;
+    Sextion s = null;
     
     
 
@@ -82,6 +101,7 @@ public class HenkyakuBb {
             setFlg1(true,i);
             setFlg2(false,i);
         }
+        setKashidashinow("");
         delMember();
         System.out.print(getScanflg());
         
@@ -89,6 +109,10 @@ public class HenkyakuBb {
     }
     
     public String comp(){
+        Date date = new Date();
+        SimpleDateFormat sdf1 = new SimpleDateFormat("yyyyMMdd");
+        k.setReturn_day(sdf1.format(date));
+        kashidb.update(k);
         return "/pages/henkyaku/henkyakucomp.xhtml";
     }
     
@@ -96,34 +120,54 @@ public class HenkyakuBb {
         return "henkyaku.xhtml";
     }
     
-    public String scan(){
-        
-        try {
-            k = mng.getKashiBercode(barcode);
-            l = kashimng.getKashiData(k.getLend_no());
-            kd = kashimng.getKashiDvdData(barcode);
-            d = dvdmng.getDvdData(kd.getDvd_code());
-        } catch (Exception e) {
-            e.printStackTrace();
-            setScanflg("true");
-            return "henkyakuScanerror.xhtml";
-        }
-        setBarcodes(getBarcode(),getScancnt());
-        setTitles(d.getTitle(),getScancnt());
-        setDays(fmtSlash(l.getLend_date())+"～"+fmtSlash(k.getReturn_plan_day()),getScancnt());
-        setEntaidays("-",getScancnt());
-        setMoneys(k.getMoney(),getScancnt());
-        setFlg1(false,getScancnt());
-        setFlg2(true,getScancnt());
-        System.out.println(k.getMoney());
-        String mons[] = getMoneys();
-        setTotal(getTotal()+Integer.parseInt(mons[getScancnt()]));
-        setTax((int)(getTotal()/1.08*0.08));
-        setScancnt(getScancnt()+1);
+    public String scan() throws ParseException{
+        if(getScancnt()<10){
+            try {
+                k = mng.getKashiBercode(barcode);
+                l = kashimng.getKashiData(k.getLend_no());
+                kd = kashimng.getKashiDvdData(barcode);
+                d = dvdmng.getDvdData(kd.getDvd_code());
+                s = dvdmng.getSextiondvd(d.getDvd_code(), kd.getStore_cd());
+            } catch (Exception e) {
+                e.printStackTrace();
+                setScanflg("true");
+                return "henkyakuScanerror.xhtml";
+            }
+            setBarcodes(getBarcode(),getScancnt());
+            setTitles(d.getTitle(),getScancnt());
+            setDays(fmtSlash(l.getLend_date())+"～"+fmtSlash(k.getReturn_plan_day()),getScancnt());
+            Date date = new Date();
+            SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy/MM/dd");
+            int ret = differenceDays(sdf1.format(date),fmtSlash(k.getReturn_plan_day()));
+            if(ret<=0){
+                System.out.println("延滞してないよおおおおおおお"+ret);
+                setEntaidays("-",getScancnt());
+                setMoneys("0",getScancnt());
+            }else{
+                System.out.println("延滞してんじゃねえ！！！！！"+ret);
+                setEntaidays(Integer.toString(ret),getScancnt());
+                setMoneys(Integer.toString(ret*300),getScancnt());
+            }
+            setFlg1(false,getScancnt());
+            setFlg2(true,getScancnt());
+            setSyuen(d.getActor(),getScancnt());
+            setKomento(d.getCome(),getScancnt());
+            setGetday(d.getArrivalday(),getScancnt());
+            setNewold(cnvSextion(s.getSextion()), scancnt);
+            setStartday(fmtSlash(l.getLend_date()),getScancnt());
+            setReturnday(fmtSlash(k.getReturn_plan_day()),getScancnt());
+            System.out.println(k.getMoney());
+            String mons[] = getMoneys();
+            setTotal(getTotal()+Integer.parseInt(mons[getScancnt()]));
+            setTax((int)(getTotal()/1.08*0.08));
+            setScancnt(getScancnt()+1);
             if(getScancnt()==1){
+                System.out.println("これ借りてる人は"+l.getMember_no());
                 catchMember(l.getMember_no());
             }
-        return "henkyaku.xhtml";
+            return "henkyaku.xhtml";
+        }
+        return "henkyaku.xhtml";         //10件超えたよってやりたい
     }
     
     public String del(int it){
@@ -186,19 +230,33 @@ public class HenkyakuBb {
     }
     
     public void catchMember(String memberno){
-//         try {
-//            m = memmng.getTheMem(memberno);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        if(m == null){
-//            setMemberno(Integer.toString(m.getMember_no()));
-//            setSex(m.getSex());
-//            setName(m.getName());
-//            setKana(m.getKana());
-//            setBirthday(fmtSlash(m.getBirthday()));
-//            setPhone(m.getPhone());
-//        }
+        try {
+            m = memmng.getTheMem(memberno);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        if(m != null){
+            setMemberno(Integer.toString(m.getMember_no()));
+            setSex(m.getSex());
+            setName(m.getName());
+            setKana(m.getKana());
+            setBirthday(fmtSlash(m.getBirth_day()));
+            setPhone(m.getPhone());
+            List<Lend> llist = kashimng.getMemkashi(getMemberno());
+            if(llist != null){
+                int cnt = 0;
+                for(int i=0;i<llist.size();i++){
+                    if(llist.get(i) != null){
+                        if(mng.getKaeshitenai(llist.get(i).getLend_no()) != null){
+                            cnt++;
+                        }
+                    }
+                }
+                setKashidashinow(Integer.toString(cnt));
+            }else{
+                setKashidashinow("0");
+            }
+        }
     }
     
     public void delMember(){
@@ -207,6 +265,7 @@ public class HenkyakuBb {
         setName("");
         setKana("");
         setBirthday("");
+        setKashidashinow("");
 
     }
 
@@ -376,5 +435,61 @@ public class HenkyakuBb {
     public void setScanflg(String scanflg) {
         this.scanflg = scanflg;
     }
-    
+
+    public String getKashidashinow() {
+        return kashidashinow;
+    }
+
+    public void setKashidashinow(String kashidashinow) {
+        this.kashidashinow = kashidashinow;
+    }
+
+    public String[] getSyuen() {
+        return syuen;
+    }
+
+    public void setSyuen(String syuen,int scancnt) {
+        this.syuen[scancnt] = syuen;
+    }
+
+    public String[] getGetday() {
+        return getday;
+    }
+
+    public void setGetday(String getday,int scancnt) {
+        this.getday[scancnt] = getday;
+    }
+
+    public String[] getNewold() {
+        return newold;
+    }
+
+    public void setNewold(String newold,int scancnt) {
+        this.newold[scancnt] = newold;
+    }
+
+    public String[] getStartday() {
+        return startday;
+    }
+
+    public void setStartday(String startday,int scancnt) {
+        this.startday[scancnt] = startday;
+    }
+
+    public String[] getReturnday() {
+        return returnday;
+    }
+
+    public void setReturnday(String returnday,int scancnt) {
+        this.returnday[scancnt] = returnday;
+    }
+
+    public String[] getKomento() {
+        return komento;
+    }
+
+    public void setKomento(String komento,int scancnt) {
+        this.komento[scancnt] = komento;
+    }
+
 }

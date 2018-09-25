@@ -8,3 +8,7 @@ function dame(){
     alert('JavaScriptのアラート');
 }
 
+function runBtnOpenM(btnId) {
+    var entryButton = document.getElementById(btnId);
+    entryButton.click();
+}

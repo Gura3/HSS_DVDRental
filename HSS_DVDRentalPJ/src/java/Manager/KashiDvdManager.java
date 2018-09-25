@@ -7,6 +7,7 @@ package Manager;
 
 import Bean.Lend;
 import Bean.Lend_item;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -45,5 +46,17 @@ public class KashiDvdManager {
         System.out.println(4);
         
         return l;
+    }
+    
+    public List<Lend> getMemkashi(String member_no){
+        System.out.println("getMemkashi");
+        TypedQuery<Lend> query = null;
+        System.out.println(1);
+        query = em.createNamedQuery(Lend.Memlend, Lend.class);
+        System.out.println(2);
+        query.setParameter(1,member_no);
+        System.out.println(3);
+        
+        return query.getResultList();
     }
 }

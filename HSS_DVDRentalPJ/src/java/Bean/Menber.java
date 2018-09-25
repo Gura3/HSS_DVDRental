@@ -8,47 +8,32 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.*;
 @NamedQueries({
-    @NamedQuery(name=Menber.Comemem,
+    @NamedQuery(name=Menber.Comemembers,
                 query="SELECT m FROM Menber m WHERE m.member_no = ?1")
 })
 
 @Entity
 @Table(name="Member")
 public class Menber implements Serializable {
-    public static final String Comemem ="Comemem";
+    public static final String Comemembers ="Comemembers";
     
     @Id
     @NotNull
     private Integer member_no;  //会員No
-    @NotNull
     private String birth_day;    //誕生日
-    @NotNull
     private String name;    //氏名
-    @NotNull
     private String kana;    //氏名振り仮名
-    @NotNull
     private String sex;     //性別
-    @NotNull
     private String postal;  //郵便番号
-    @NotNull
     private String address; //住所
-    @NotNull
     private String phone;   //電話番号
-    @NotNull
     private String job;     //職業
-    @NotNull
     private String last_visits;//最終来店日
-    @NotNull
     private String mail_address;//メールアドレス
-    @NotNull
     private boolean mail_magazine;//メールマガジン
-    @NotNull
     private boolean unpaid;//未払い情報
-    @NotNull
     private boolean lend_cnt;//貸し出し中個数
-    @NotNull
     private boolean del_flg;//退会フラグ
-    @NotNull
     private boolean dangercnt;//危険なカウント
     
     //コンストラクタ

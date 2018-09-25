@@ -1,6 +1,7 @@
 package Manager;
 
 import Bean.Dvd;
+import Bean.Sextion;
 import Bean.DvdInfo;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -43,6 +44,16 @@ public class DvdManager {
         query = em.createNamedQuery(Dvd.Comeon, Dvd.class);
         query.setParameter(1,dvd_code);
         d = (Dvd)query.getSingleResult();
+        return d;
+    }
+    
+    public Sextion getSextiondvd(String dvd_code,String store_cd) {
+        Sextion d = null;
+        TypedQuery query = null;
+        query = em.createNamedQuery(Sextion.Sextionserch, Sextion.class);
+        query.setParameter(1,dvd_code);
+        query.setParameter(2,store_cd);
+        d = (Sextion)query.getSingleResult();
         return d;
     }
 }

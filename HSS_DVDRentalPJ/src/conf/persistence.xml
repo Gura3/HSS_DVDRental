@@ -8,6 +8,8 @@
     <class>Bean.Dvd</class>
     <class>Bean.Lend_item</class>
     <class>Bean.Lend</class>
+    <class>Bean.Menber</class>
+    <class>Bean.Sextion</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.schema-generation.database.action" value="create"/>

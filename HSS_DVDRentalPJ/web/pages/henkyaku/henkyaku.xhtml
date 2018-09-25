@@ -10,8 +10,111 @@
         <!-- スキャンのスクリプト -->
         <h:outputScript library="js" name="scan.js"/>
         <h:outputScript library="js" name="henkyaku.js"/>
+        <h:outputScript library="js" name="jquery-3.3.1.min.js"/>
+        <script>
+            $(function () {
+                $('#openModal00').click(function(){
+                    $('#modalArea00').fadeIn();
+            });
+            $('#closeModal , #del').click(function(){
+                $('#modalArea00').fadeOut();
+            });
+            });
+        </script>
+        <script>
+            $(function () {
+                $('#openModal01').click(function(){
+                    $('#modalArea01').fadeIn();
+            });
+            $('#closeModal , #del').click(function(){
+                $('#modalArea01').fadeOut();
+            });
+            });
+        </script>
+        <script>
+            $(function () {
+                $('#openModal02').click(function(){
+                    $('#modalArea02').fadeIn();
+            });
+            $('#closeModal , #del').click(function(){
+                $('#modalArea02').fadeOut();
+            });
+            });
+        </script>
+        <script>
+            $(function () {
+                $('#openModal03').click(function(){
+                    $('#modalArea03').fadeIn();
+            });
+            $('#closeModal , #del').click(function(){
+                $('#modalArea03').fadeOut();
+            });
+            });
+        </script>
+        <script>
+            $(function () {
+                $('#openModal04').click(function(){
+                    $('#modalArea04').fadeIn();
+            });
+            $('#closeModal , #del').click(function(){
+                $('#modalArea04').fadeOut();
+            });
+            });
+        </script>
+        <script>
+            $(function () {
+                $('#openModal05').click(function(){
+                    $('#modalArea05').fadeIn();
+            });
+            $('#closeModal , #del').click(function(){
+                $('#modalArea05').fadeOut();
+            });
+            });
+        </script>
+        <script>
+            $(function () {
+                $('#openModal06').click(function(){
+                    $('#modalArea06').fadeIn();
+            });
+            $('#closeModal , #del').click(function(){
+                $('#modalArea06').fadeOut();
+            });
+            });
+        </script>
+        <script>
+            $(function () {
+                $('#openModal07').click(function(){
+                    $('#modalArea07').fadeIn();
+            });
+            $('#closeModal , #del').click(function(){
+                $('#modalArea07').fadeOut();
+            });
+            });
+        </script>
+        <script>
+            $(function () {
+                $('#openModal08').click(function(){
+                    $('#modalArea08').fadeIn();
+            });
+            $('#closeModal , #del').click(function(){
+                $('#modalArea08').fadeOut();
+            });
+            });
+        </script>
+        <script>
+            $(function () {
+                $('#openModal09').click(function(){
+                    $('#modalArea09').fadeIn();
+            });
+            $('#closeModal , #del').click(function(){
+                $('#modalArea09').fadeOut();
+            });
+            });
+        </script>
     </h:head>
     <h:body>
+        
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <h:outputText value="#{henkyakuBb.scanflg}" styleClass="kashicheck" style="display: none"/>
         <h1>HCSDVDレンタル</h1>
         <h2>返却処理</h2>
@@ -37,7 +140,7 @@
             <h:outputText value="#{henkyakuBb.entaidays[0]}"/>
             <h:outputText value="#{henkyakuBb.moneys[0]}" />
             <h:outputText value="" rendered="#{henkyakuBb.flg1[0]}" />
-            <h:commandButton value="表示" styleClass="syosaibtn" action="#{henkyakuBb.del(0)}" rendered="#{henkyakuBb.flg2[0]}" />
+            <h:commandButton type="button" value="表示" styleClass="syosaibtn" onclick="return runBtnOpenM('openModal00')" rendered="#{henkyakuBb.flg2[0]}" />
             <h:outputText value="" rendered="#{henkyakuBb.flg1[0]}" />
             <h:commandButton value="×" styleClass="delbtn" action="#{henkyakuBb.del(0)}" rendered="#{henkyakuBb.flg2[0]}" />
             <h:outputText value="2" />
@@ -47,7 +150,7 @@
             <h:outputText value="#{henkyakuBb.entaidays[1]}"/>
             <h:outputText value="#{henkyakuBb.moneys[1]}" />
             <h:outputText value="" rendered="#{henkyakuBb.flg1[1]}" />
-            <h:commandButton value="表示" styleClass="syosaibtn" action="#{henkyakuBb.del(1)}" rendered="#{henkyakuBb.flg2[1]}" />
+            <h:commandButton type="button" value="表示" styleClass="syosaibtn" onclick="return runBtnOpenM('openModal01')" rendered="#{henkyakuBb.flg2[1]}" />
             <h:outputText value="" rendered="#{henkyakuBb.flg1[1]}" />
             <h:commandButton value="×" styleClass="delbtn" action="#{henkyakuBb.del(1)}" rendered="#{henkyakuBb.flg2[1]}" />
             <h:outputText value="3" />
@@ -57,7 +160,7 @@
             <h:outputText value="#{henkyakuBb.entaidays[2]}"/>
             <h:outputText value="#{henkyakuBb.moneys[2]}" />
             <h:outputText value="" rendered="#{henkyakuBb.flg1[2]}" />
-            <h:commandButton value="表示" styleClass="syosaibtn" action="#{henkyakuBb.del(2)}" rendered="#{henkyakuBb.flg2[2]}" />
+            <h:commandButton type="button" value="表示" styleClass="syosaibtn" onclick="return runBtnOpenM('openModal02')" rendered="#{henkyakuBb.flg2[2]}" />
             <h:outputText value="" rendered="#{henkyakuBb.flg1[2]}" />
             <h:commandButton value="×" styleClass="delbtn" action="#{henkyakuBb.del(2)}" rendered="#{henkyakuBb.flg2[2]}" />
             <h:outputText value="4" />
@@ -67,7 +170,7 @@
             <h:outputText value="#{henkyakuBb.entaidays[3]}"/>
             <h:outputText value="#{henkyakuBb.moneys[3]}" />
             <h:outputText value="" rendered="#{henkyakuBb.flg1[3]}" />
-            <h:commandButton value="表示" styleClass="syosaibtn" action="#{henkyakuBb.del(3)}" rendered="#{henkyakuBb.flg2[3]}" />
+            <h:commandButton type="button" value="表示" styleClass="syosaibtn" onclick="return runBtnOpenM('openModal03')" rendered="#{henkyakuBb.flg2[3]}" />
             <h:outputText value="" rendered="#{henkyakuBb.flg1[3]}" />
             <h:commandButton value="×" styleClass="delbtn" action="#{henkyakuBb.del(3)}" rendered="#{henkyakuBb.flg2[3]}" />
             <h:outputText value="5" />
@@ -77,7 +180,7 @@
             <h:outputText value="#{henkyakuBb.entaidays[4]}"/>
             <h:outputText value="#{henkyakuBb.moneys[4]}" />
             <h:outputText value="" rendered="#{henkyakuBb.flg1[4]}" />
-            <h:commandButton value="表示" styleClass="syosaibtn" action="#{henkyakuBb.del(4)}" rendered="#{henkyakuBb.flg2[4]}" />
+            <h:commandButton type="button" value="表示" styleClass="syosaibtn" onclick="return runBtnOpenM('openModal04')" rendered="#{henkyakuBb.flg2[4]}" />
             <h:outputText value="" rendered="#{henkyakuBb.flg1[4]}" />
             <h:commandButton value="×" styleClass="delbtn" action="#{henkyakuBb.del(4)}" rendered="#{henkyakuBb.flg2[4]}" />
             <h:outputText value="6" />
@@ -87,7 +190,7 @@
             <h:outputText value="#{henkyakuBb.entaidays[5]}"/>
             <h:outputText value="#{henkyakuBb.moneys[5]}" />
             <h:outputText value="" rendered="#{henkyakuBb.flg1[5]}" />
-            <h:commandButton value="表示" styleClass="syosaibtn" action="#{henkyakuBb.del(5)}" rendered="#{henkyakuBb.flg2[5]}" />
+            <h:commandButton type="button" value="表示" styleClass="syosaibtn" onclick="return runBtnOpenM('openModal05')" rendered="#{henkyakuBb.flg2[5]}" />
             <h:outputText value="" rendered="#{henkyakuBb.flg1[5]}" />
             <h:commandButton value="×" styleClass="delbtn" action="#{henkyakuBb.del(5)}" rendered="#{henkyakuBb.flg2[5]}" />
             <h:outputText value="7" />
@@ -97,7 +200,7 @@
             <h:outputText value="#{henkyakuBb.entaidays[6]}"/>
             <h:outputText value="#{henkyakuBb.moneys[6]}" />
             <h:outputText value="" rendered="#{henkyakuBb.flg1[6]}" />
-            <h:commandButton value="表示" styleClass="syosaibtn" action="#{henkyakuBb.del(6)}" rendered="#{henkyakuBb.flg2[6]}" />
+            <h:commandButton type="button" value="表示" styleClass="syosaibtn" onclick="return runBtnOpenM('openModal06')" rendered="#{henkyakuBb.flg2[6]}" />
             <h:outputText value="" rendered="#{henkyakuBb.flg1[6]}" />
             <h:commandButton value="×" styleClass="delbtn" action="#{henkyakuBb.del(6)}" rendered="#{henkyakuBb.flg2[6]}" />
             <h:outputText value="8" />
@@ -107,7 +210,7 @@
             <h:outputText value="#{henkyakuBb.entaidays[7]}"/>
             <h:outputText value="#{henkyakuBb.moneys[7]}" />
             <h:outputText value="" rendered="#{henkyakuBb.flg1[7]}" />
-            <h:commandButton value="表示" styleClass="syosaibtn" action="#{henkyakuBb.del(7)}" rendered="#{henkyakuBb.flg2[7]}" />
+            <h:commandButton type="button" value="表示" styleClass="syosaibtn" onclick="return runBtnOpenM('openModal07')" rendered="#{henkyakuBb.flg2[7]}" />
             <h:outputText value="" rendered="#{henkyakuBb.flg1[7]}" />
             <h:commandButton value="×" styleClass="delbtn" action="#{henkyakuBb.del(7)}" rendered="#{henkyakuBb.flg2[7]}" />
             <h:outputText value="9" />
@@ -117,7 +220,7 @@
             <h:outputText value="#{henkyakuBb.entaidays[8]}"/>
             <h:outputText value="#{henkyakuBb.moneys[8]}" />
             <h:outputText value="" rendered="#{henkyakuBb.flg1[8]}" />
-            <h:commandButton value="表示" styleClass="syosaibtn" action="#{henkyakuBb.del(8)}" rendered="#{henkyakuBb.flg2[8]}" />
+            <h:commandButton type="button" value="表示" styleClass="syosaibtn" onclick="return runBtnOpenM('openModal08')" rendered="#{henkyakuBb.flg2[8]}" />
             <h:outputText value="" rendered="#{henkyakuBb.flg1[8]}" />
             <h:commandButton value="×" styleClass="delbtn" action="#{henkyakuBb.del(8)}" rendered="#{henkyakuBb.flg2[8]}" />
             <h:outputText value="10" />
@@ -127,7 +230,7 @@
             <h:outputText value="#{henkyakuBb.entaidays[9]}"/>
             <h:outputText value="#{henkyakuBb.moneys[9]}" />
             <h:outputText value="" rendered="#{henkyakuBb.flg1[9]}" />
-            <h:commandButton value="表示" styleClass="syosaibtn" action="#{henkyakuBb.del(9)}" rendered="#{henkyakuBb.flg2[9]}" />
+            <h:commandButton type="button" value="表示" styleClass="syosaibtn" onclick="return runBtnOpenM('openModal09')" rendered="#{henkyakuBb.flg2[9]}" />
             <h:outputText value="" rendered="#{henkyakuBb.flg1[9]}" />
             <h:commandButton value="×" styleClass="delbtn" action="#{henkyakuBb.del(9)}" rendered="#{henkyakuBb.flg2[9]}" />
         </h:panelGrid>
@@ -145,7 +248,7 @@
                     <h:outputText value="名前"/>
                     <h:outputText value="#{henkyakuBb.name}"/>
                     <h:outputText value="貸出中個数"/>
-                    <h:outputText value="0"/>
+                    <h:outputText value="#{henkyakuBb.kashidashinow}"/>
                     <h:outputText value="延滞物合計"/>
                     <h:outputText value="0"/>
                     <h:outputText value="生年月日"/>
@@ -163,12 +266,293 @@
             </li>
         </ul>
         
+        
         <h:form id="tugi">
             <h:commandButton type="button" id="next" onclick="return runBtnDisabled('tugi', 'next')" value="次へ" styleClass="btn"/>
             <h:commandButton value="送　信"  action="#{henkyakuBb.scan()}" styleClass="btn"  id ="senni"/>
             <h:inputText value="#{henkyakuBb.barcode}" id="mem" styleClass="btn"/>
         </h:form>
 
+        <button id="openModal00"></button>
+        <!-- モーダルエリアここから -->
+        <section id="modalArea00" class="modalArea00">
+            <div id="modalBg" class="modalBg"></div>
+            <div class="modalWrapper">
+                <div class="modalContents00">
+                    <!--モーダルウィンドウ内容-->
+                    <h:outputText value="バーコード    " /><h:outputText value="#{henkyakuBb.barcodes[0]}" /><br/>
+                    <h:outputText value="DVDコード     " /><h:outputText value="#{henkyakuBb.barcodes[0]}" /><br/>
+                    <h:outputText value="タイトル      " /><h:outputText value="#{henkyakuBb.titles[0]}" /><br/>
+                    <h:outputText value="主演者        " /><h:outputText value="#{henkyakuBb.syuen[0]}" /><br/>
+                    <h:outputText value="コメント      " /><h:outputText value="#{henkyakuBb.komento[0]}" /><br/>
+                    <h:outputText value="入荷日        " /><h:outputText value="#{henkyakuBb.getday[0]}" /><br/>
+                    <h:outputText value="新作区分      " /><h:outputText value="#{henkyakuBb.newold[0]}" /><br/>
+                    <h:outputText value="貸出開始日    " /><h:outputText value="#{henkyakuBb.startday[0]}" /><br/>
+                    <h:outputText value="返却期限日    " /><h:outputText value="#{henkyakuBb.returnday[0]}" /><br/>
+                    <h:outputText value="延滞日数      " /><h:outputText value="#{henkyakuBb.entaidays[0]}"/><br/>
+                    <h:outputText value="延滞料金      " /><h:outputText value="#{henkyakuBb.moneys[0]}" /><br/>
+                    <h:outputText value="DVD/BD       " /><br/>
+                    <button id="del">閉じる</button>
+                </div>
+                <div id="closeModal" class="closeModal">
+                    ×
+                </div>
+            </div>
+        </section>
+        <!-- モーダルエリアここまで -->
+        
+        <button id="openModal01"></button>
+        <!-- モーダルエリアここから -->
+        <section id="modalArea01" class="modalArea01">
+            <div id="modalBg" class="modalBg"></div>
+            <div class="modalWrapper">
+                <div class="modalContents01">
+                    <!--モーダルウィンドウ内容-->
+                    <h:outputText value="バーコード    " /><h:outputText value="#{henkyakuBb.barcodes[1]}" /><br/>
+                    <h:outputText value="DVDコード     " /><h:outputText value="#{henkyakuBb.barcodes[1]}" /><br/>
+                    <h:outputText value="タイトル      " /><h:outputText value="#{henkyakuBb.titles[1]}" /><br/>
+                    <h:outputText value="主演者        " /><h:outputText value="#{henkyakuBb.syuen[1]}" /><br/>
+                    <h:outputText value="コメント      " /><h:outputText value="#{henkyakuBb.komento[1]}" /><br/>
+                    <h:outputText value="入荷日        " /><h:outputText value="#{henkyakuBb.getday[1]}" /><br/>
+                    <h:outputText value="新作区分      " /><h:outputText value="#{henkyakuBb.newold[1]}" /><br/>
+                    <h:outputText value="貸出開始日    " /><h:outputText value="#{henkyakuBb.startday[1]}" /><br/>
+                    <h:outputText value="返却期限日    " /><h:outputText value="#{henkyakuBb.returnday[1]}" /><br/>
+                    <h:outputText value="延滞日数      " /><h:outputText value="#{henkyakuBb.entaidays[1]}"/><br/>
+                    <h:outputText value="延滞料金      " /><h:outputText value="#{henkyakuBb.moneys[1]}" /><br/>
+                    <h:outputText value="DVD/BD       " /><br/>
+                    <button id="del">閉じる</button>
+                </div>
+                <div id="closeModal" class="closeModal">
+                    ×
+                </div>
+            </div>
+        </section>
+        <!-- モーダルエリアここまで -->
+        
+        <button id="openModal02"></button>
+        <!-- モーダルエリアここから -->
+        <section id="modalArea02" class="modalArea02">
+            <div id="modalBg" class="modalBg"></div>
+            <div class="modalWrapper">
+                <div class="modalContents02">
+                    <!--モーダルウィンドウ内容-->
+                    <h:outputText value="バーコード    " /><h:outputText value="#{henkyakuBb.barcodes[2]}" /><br/>
+                    <h:outputText value="DVDコード     " /><h:outputText value="#{henkyakuBb.barcodes[2]}" /><br/>
+                    <h:outputText value="タイトル      " /><h:outputText value="#{henkyakuBb.titles[2]}" /><br/>
+                    <h:outputText value="主演者        " /><h:outputText value="#{henkyakuBb.syuen[2]}" /><br/>
+                    <h:outputText value="コメント      " /><h:outputText value="#{henkyakuBb.komento[2]}" /><br/>
+                    <h:outputText value="入荷日        " /><h:outputText value="#{henkyakuBb.getday[2]}" /><br/>
+                    <h:outputText value="新作区分      " /><h:outputText value="#{henkyakuBb.newold[2]}" /><br/>
+                    <h:outputText value="貸出開始日    " /><h:outputText value="#{henkyakuBb.startday[2]}" /><br/>
+                    <h:outputText value="返却期限日    " /><h:outputText value="#{henkyakuBb.returnday[2]}" /><br/>
+                    <h:outputText value="延滞日数      " /><h:outputText value="#{henkyakuBb.entaidays[2]}"/><br/>
+                    <h:outputText value="延滞料金      " /><h:outputText value="#{henkyakuBb.moneys[2]}" /><br/>
+                    <h:outputText value="DVD/BD       " /><br/>
+                    <button id="del">閉じる</button>
+                </div>
+                <div id="closeModal" class="closeModal">
+                    ×
+                </div>
+            </div>
+        </section>
+        <!-- モーダルエリアここまで -->
+        
+        <button id="openModal03"></button>
+        <!-- モーダルエリアここから -->
+        <section id="modalArea03" class="modalArea03">
+            <div id="modalBg" class="modalBg"></div>
+            <div class="modalWrapper">
+                <div class="modalContents03">
+                    <!--モーダルウィンドウ内容-->
+                    <h:outputText value="バーコード    " /><h:outputText value="#{henkyakuBb.barcodes[3]}" /><br/>
+                    <h:outputText value="DVDコード     " /><h:outputText value="#{henkyakuBb.barcodes[3]}" /><br/>
+                    <h:outputText value="タイトル      " /><h:outputText value="#{henkyakuBb.titles[3]}" /><br/>
+                    <h:outputText value="主演者        " /><h:outputText value="#{henkyakuBb.syuen[3]}" /><br/>
+                    <h:outputText value="コメント      " /><h:outputText value="#{henkyakuBb.komento[3]}" /><br/>
+                    <h:outputText value="入荷日        " /><h:outputText value="#{henkyakuBb.getday[3]}" /><br/>
+                    <h:outputText value="新作区分      " /><h:outputText value="#{henkyakuBb.newold[3]}" /><br/>
+                    <h:outputText value="貸出開始日    " /><h:outputText value="#{henkyakuBb.startday[3]}" /><br/>
+                    <h:outputText value="返却期限日    " /><h:outputText value="#{henkyakuBb.returnday[3]}" /><br/>
+                    <h:outputText value="延滞日数      " /><h:outputText value="#{henkyakuBb.entaidays[3]}"/><br/>
+                    <h:outputText value="延滞料金      " /><h:outputText value="#{henkyakuBb.moneys[3]}" /><br/>
+                    <h:outputText value="DVD/BD       " /><br/>
+                    <button id="del">閉じる</button>
+                </div>
+                <div id="closeModal" class="closeModal">
+                    ×
+                </div>
+            </div>
+        </section>
+        <!-- モーダルエリアここまで -->
+        
+        <button id="openModal04"></button>
+        <!-- モーダルエリアここから -->
+        <section id="modalArea04" class="modalArea04">
+            <div id="modalBg" class="modalBg"></div>
+            <div class="modalWrapper">
+                <div class="modalContents04">
+                    <!--モーダルウィンドウ内容-->
+                    <h:outputText value="バーコード    " /><h:outputText value="#{henkyakuBb.barcodes[4]}" /><br/>
+                    <h:outputText value="DVDコード     " /><h:outputText value="#{henkyakuBb.barcodes[4]}" /><br/>
+                    <h:outputText value="タイトル      " /><h:outputText value="#{henkyakuBb.titles[4]}" /><br/>
+                    <h:outputText value="主演者        " /><h:outputText value="#{henkyakuBb.syuen[4]}" /><br/>
+                    <h:outputText value="コメント      " /><h:outputText value="#{henkyakuBb.komento[4]}" /><br/>
+                    <h:outputText value="入荷日        " /><h:outputText value="#{henkyakuBb.getday[4]}" /><br/>
+                    <h:outputText value="新作区分      " /><h:outputText value="#{henkyakuBb.newold[4]}" /><br/>
+                    <h:outputText value="貸出開始日    " /><h:outputText value="#{henkyakuBb.startday[4]}" /><br/>
+                    <h:outputText value="返却期限日    " /><h:outputText value="#{henkyakuBb.returnday[4]}" /><br/>
+                    <h:outputText value="延滞日数      " /><h:outputText value="#{henkyakuBb.entaidays[4]}"/><br/>
+                    <h:outputText value="延滞料金      " /><h:outputText value="#{henkyakuBb.moneys[4]}" /><br/>
+                    <h:outputText value="DVD/BD       " /><br/>
+                    <button id="del">閉じる</button>
+                </div>
+                <div id="closeModal" class="closeModal">
+                    ×
+                </div>
+            </div>
+        </section>
+        <!-- モーダルエリアここまで -->
+        
+        <button id="openModal05"></button>
+        <!-- モーダルエリアここから -->
+        <section id="modalArea05" class="modalArea05">
+            <div id="modalBg" class="modalBg"></div>
+            <div class="modalWrapper">
+                <div class="modalContents05">
+                    <!--モーダルウィンドウ内容-->
+                    <h:outputText value="バーコード    " /><h:outputText value="#{henkyakuBb.barcodes[5]}" /><br/>
+                    <h:outputText value="DVDコード     " /><h:outputText value="#{henkyakuBb.barcodes[5]}" /><br/>
+                    <h:outputText value="タイトル      " /><h:outputText value="#{henkyakuBb.titles[5]}" /><br/>
+                    <h:outputText value="主演者        " /><h:outputText value="#{henkyakuBb.syuen[5]}" /><br/>
+                    <h:outputText value="コメント      " /><h:outputText value="#{henkyakuBb.komento[5]}" /><br/>
+                    <h:outputText value="入荷日        " /><h:outputText value="#{henkyakuBb.getday[5]}" /><br/>
+                    <h:outputText value="新作区分      " /><h:outputText value="#{henkyakuBb.newold[5]}" /><br/>
+                    <h:outputText value="貸出開始日    " /><h:outputText value="#{henkyakuBb.startday[5]}" /><br/>
+                    <h:outputText value="返却期限日    " /><h:outputText value="#{henkyakuBb.returnday[5]}" /><br/>
+                    <h:outputText value="延滞日数      " /><h:outputText value="#{henkyakuBb.entaidays[5]}"/><br/>
+                    <h:outputText value="延滞料金      " /><h:outputText value="#{henkyakuBb.moneys[5]}" /><br/>
+                    <h:outputText value="DVD/BD       " /><br/>
+                    <button id="del">閉じる</button>
+                </div>
+                <div id="closeModal" class="closeModal">
+                    ×
+                </div>
+            </div>
+        </section>
+        <!-- モーダルエリアここまで -->
+        
+        <button id="openModal06"></button>
+        <!-- モーダルエリアここから -->
+        <section id="modalArea06" class="modalArea06">
+            <div id="modalBg" class="modalBg"></div>
+            <div class="modalWrapper">
+                <div class="modalContents06">
+                    <!--モーダルウィンドウ内容-->
+                    <h:outputText value="バーコード    " /><h:outputText value="#{henkyakuBb.barcodes[6]}" /><br/>
+                    <h:outputText value="DVDコード     " /><h:outputText value="#{henkyakuBb.barcodes[6]}" /><br/>
+                    <h:outputText value="タイトル      " /><h:outputText value="#{henkyakuBb.titles[6]}" /><br/>
+                    <h:outputText value="主演者        " /><h:outputText value="#{henkyakuBb.syuen[6]}" /><br/>
+                    <h:outputText value="コメント      " /><h:outputText value="#{henkyakuBb.komento[6]}" /><br/>
+                    <h:outputText value="入荷日        " /><h:outputText value="#{henkyakuBb.getday[6]}" /><br/>
+                    <h:outputText value="新作区分      " /><h:outputText value="#{henkyakuBb.newold[6]}" /><br/>
+                    <h:outputText value="貸出開始日    " /><h:outputText value="#{henkyakuBb.startday[6]}" /><br/>
+                    <h:outputText value="返却期限日    " /><h:outputText value="#{henkyakuBb.returnday[6]}" /><br/>
+                    <h:outputText value="延滞日数      " /><h:outputText value="#{henkyakuBb.entaidays[6]}"/><br/>
+                    <h:outputText value="延滞料金      " /><h:outputText value="#{henkyakuBb.moneys[6]}" /><br/>
+                    <h:outputText value="DVD/BD       " /><br/>
+                    <button id="del">閉じる</button>
+                </div>
+                <div id="closeModal" class="closeModal">
+                    ×
+                </div>
+            </div>
+        </section>
+        <!-- モーダルエリアここまで -->
+        
+        <button id="openModal07"></button>
+        <!-- モーダルエリアここから -->
+        <section id="modalArea07" class="modalArea07">
+            <div id="modalBg" class="modalBg"></div>
+            <div class="modalWrapper">
+                <div class="modalContents07">
+                    <!--モーダルウィンドウ内容-->
+                    <h:outputText value="バーコード    " /><h:outputText value="#{henkyakuBb.barcodes[7]}" /><br/>
+                    <h:outputText value="DVDコード     " /><h:outputText value="#{henkyakuBb.barcodes[7]}" /><br/>
+                    <h:outputText value="タイトル      " /><h:outputText value="#{henkyakuBb.titles[7]}" /><br/>
+                    <h:outputText value="主演者        " /><h:outputText value="#{henkyakuBb.syuen[7]}" /><br/>
+                    <h:outputText value="コメント      " /><h:outputText value="#{henkyakuBb.komento[7]}" /><br/>
+                    <h:outputText value="入荷日        " /><h:outputText value="#{henkyakuBb.getday[7]}" /><br/>
+                    <h:outputText value="新作区分      " /><h:outputText value="#{henkyakuBb.newold[7]}" /><br/>
+                    <h:outputText value="貸出開始日    " /><h:outputText value="#{henkyakuBb.startday[7]}" /><br/>
+                    <h:outputText value="返却期限日    " /><h:outputText value="#{henkyakuBb.returnday[7]}" /><br/>
+                    <h:outputText value="延滞日数      " /><h:outputText value="#{henkyakuBb.entaidays[7]}"/><br/>
+                    <h:outputText value="延滞料金      " /><h:outputText value="#{henkyakuBb.moneys[7]}" /><br/>
+                    <h:outputText value="DVD/BD       " /><br/>
+                    <button id="del">閉じる</button>
+                </div>
+                <div id="closeModal" class="closeModal">
+                    ×
+                </div>
+            </div>
+        </section>
+        <!-- モーダルエリアここまで -->
+        
+        <button id="openModal08"></button>
+        <!-- モーダルエリアここから -->
+        <section id="modalArea08" class="modalArea08">
+            <div id="modalBg" class="modalBg"></div>
+            <div class="modalWrapper">
+                <div class="modalContents08">
+                    <!--モーダルウィンドウ内容-->
+                    <h:outputText value="バーコード    " /><h:outputText value="#{henkyakuBb.barcodes[8]}" /><br/>
+                    <h:outputText value="DVDコード     " /><h:outputText value="#{henkyakuBb.barcodes[8]}" /><br/>
+                    <h:outputText value="タイトル      " /><h:outputText value="#{henkyakuBb.titles[8]}" /><br/>
+                    <h:outputText value="主演者        " /><h:outputText value="#{henkyakuBb.syuen[8]}" /><br/>
+                    <h:outputText value="コメント      " /><h:outputText value="#{henkyakuBb.komento[8]}" /><br/>
+                    <h:outputText value="入荷日        " /><h:outputText value="#{henkyakuBb.getday[8]}" /><br/>
+                    <h:outputText value="新作区分      " /><h:outputText value="#{henkyakuBb.newold[8]}" /><br/>
+                    <h:outputText value="貸出開始日    " /><h:outputText value="#{henkyakuBb.startday[8]}" /><br/>
+                    <h:outputText value="返却期限日    " /><h:outputText value="#{henkyakuBb.returnday[8]}" /><br/>
+                    <h:outputText value="延滞日数      " /><h:outputText value="#{henkyakuBb.entaidays[8]}"/><br/>
+                    <h:outputText value="延滞料金      " /><h:outputText value="#{henkyakuBb.moneys[8]}" /><br/>
+                    <h:outputText value="DVD/BD       " /><br/>
+                    <button id="del">閉じる</button>
+                </div>
+                <div id="closeModal" class="closeModal">
+                    ×
+                </div>
+            </div>
+        </section>
+        <!-- モーダルエリアここまで -->
+        
+        <button id="openModal09"></button>
+        <!-- モーダルエリアここから -->
+        <section id="modalArea09" class="modalArea09">
+            <div id="modalBg" class="modalBg"></div>
+            <div class="modalWrapper">
+                <div class="modalContents09">
+                    <!--モーダルウィンドウ内容-->
+                    <h:outputText value="バーコード    " /><h:outputText value="#{henkyakuBb.barcodes[9]}" /><br/>
+                    <h:outputText value="DVDコード     " /><h:outputText value="#{henkyakuBb.barcodes[9]}" /><br/>
+                    <h:outputText value="タイトル      " /><h:outputText value="#{henkyakuBb.titles[9]}" /><br/>
+                    <h:outputText value="主演者        " /><h:outputText value="#{henkyakuBb.syuen[9]}" /><br/>
+                    <h:outputText value="コメント      " /><h:outputText value="#{henkyakuBb.komento[9]}" /><br/>
+                    <h:outputText value="入荷日        " /><h:outputText value="#{henkyakuBb.getday[9]}" /><br/>
+                    <h:outputText value="新作区分      " /><h:outputText value="#{henkyakuBb.newold[9]}" /><br/>
+                    <h:outputText value="貸出開始日    " /><h:outputText value="#{henkyakuBb.startday[9]}" /><br/>
+                    <h:outputText value="返却期限日    " /><h:outputText value="#{henkyakuBb.returnday[9]}" /><br/>
+                    <h:outputText value="延滞日数      " /><h:outputText value="#{henkyakuBb.entaidays[9]}"/><br/>
+                    <h:outputText value="延滞料金      " /><h:outputText value="#{henkyakuBb.moneys[9]}" /><br/>
+                    <h:outputText value="DVD/BD       " /><br/>
+                    <button id="del">閉じる</button>
+                </div>
+                <div id="closeModal" class="closeModal">
+                    ×
+                </div>
+            </div>
+        </section>
+        <!-- モーダルエリアここまで -->
+        
     </h:body>
 </html>
 

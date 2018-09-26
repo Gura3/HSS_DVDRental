@@ -30,17 +30,17 @@ public class Menber implements Serializable {
     private String job;     //職業
     private String last_visits;//最終来店日
     private String mail_address;//メールアドレス
-    private boolean mail_magazine;//メールマガジン
-    private boolean unpaid;//未払い情報
-    private boolean lend_cnt;//貸し出し中個数
-    private boolean del_flg;//退会フラグ
-    private boolean dangercnt;//危険なカウント
+    private String mail_magazine;//メールマガジン
+    private String unpaid;//未払い情報
+    private String lend_cnt;//貸し出し中個数
+    private String del_flg;//退会フラグ
+    private String dangercnt;//危険なカウント
     
     //コンストラクタ
     public Menber() {
     }
 
-    public Menber(Integer member_no, String birth_day, String name, String kana, String sex, String postal, String address, String phone, String job, String last_visits, String mail_address, boolean mail_magazine, boolean unpaid, boolean lend_cnt, boolean del_flg, boolean dangercnt) {
+    public Menber(Integer member_no, String birth_day, String name, String kana, String sex, String postal, String address, String phone, String job, String last_visits, String mail_address, String mail_magazine, String unpaid, String lend_cnt, String del_flg, String dangercnt) {
         this.member_no = member_no;
         this.birth_day = birth_day;
         this.name = name;
@@ -105,26 +105,7 @@ public class Menber implements Serializable {
         return mail_address;
     }
 
-    public boolean isMail_magazine() {
-        return mail_magazine;
-    }
-
-    public boolean isUnpaid() {
-        return unpaid;
-    }
-
-    public boolean isLend_cnt() {
-        return lend_cnt;
-    }
-
-    public boolean isDel_flg() {
-        return del_flg;
-    }
-
-    public boolean isDangercnt() {
-        return dangercnt;
-    }
-    
+   
     //セッター
     public void setMember_no(Integer member_no) {
         this.member_no = member_no;
@@ -170,23 +151,44 @@ public class Menber implements Serializable {
         this.mail_address = mail_address;
     }
 
-    public void setMail_magazine(boolean mail_magazine) {
+    public String getMail_magazine() {
+        return mail_magazine;
+    }
+
+    public void setMail_magazine(String mail_magazine) {
         this.mail_magazine = mail_magazine;
     }
 
-    public void setUnpaid(boolean unpaid) {
+    public String getUnpaid() {
+        return unpaid;
+    }
+
+    public void setUnpaid(String unpaid) {
         this.unpaid = unpaid;
     }
 
-    public void setLend_cnt(boolean lend_cnt) {
+    public String getLend_cnt() {
+        return lend_cnt;
+    }
+
+    public void setLend_cnt(String lend_cnt) {
         this.lend_cnt = lend_cnt;
     }
 
-    public void setDel_flg(boolean del_flg) {
+    public String getDel_flg() {
+        return del_flg;
+    }
+
+    public void setDel_flg(String del_flg) {
         this.del_flg = del_flg;
     }
 
-    public void setDangercnt(boolean dangercnt) {
+    public String getDangercnt() {
+        return dangercnt;
+    }
+
+    public void setDangercnt(String dangercnt) {
         this.dangercnt = dangercnt;
     }
+
 }

@@ -20,8 +20,10 @@ public class MemberManager {
     @PersistenceContext
     EntityManager em;
     
-    public Menber getMemBercode(String memberno){
+    public Menber getMemB(String memberno){
+        System.out.println("getMemB");
         Menber m = null;
+        System.out.println(1);
         return m;
     }
     

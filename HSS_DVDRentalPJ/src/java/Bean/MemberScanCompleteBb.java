@@ -5,9 +5,14 @@
  */
 package Bean;
 
+import static HenkanTools.Tool.differenceDays;
+import static HenkanTools.Tool.fmtSlash;
 import Manager.MemberCardManager;
 import Manager.MemberManager;
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
@@ -54,7 +59,7 @@ public class MemberScanCompleteBb implements Serializable{
     Member_card mc;   //会員カード
     Menber mem;      //会員
     
-    public String next() {
+    public String next() throws ParseException {
         mc = null;
         mem = null;
         
@@ -62,7 +67,7 @@ public class MemberScanCompleteBb implements Serializable{
             //会員カード探す
             mc = mcMng.getMemBercode(mem_barcode);
             //会員カードの情報を元に会員を探す
-            mem = mMng.getMemBercode(mc.getMember_no());
+            mem = mMng.getTheMem(mc.getMember_no());
         }catch (Exception e) {
             e.printStackTrace();
         }
@@ -72,21 +77,31 @@ public class MemberScanCompleteBb implements Serializable{
             //見つからなかった場合
             return "memberScanError";
         }else{
-            
-//            setMem_barcode(m.getMem_barcode());
-//            setIssue_date(m.getIssue_date());
-//            setDel_flg(m.getDel_flg());
-//            setMemberno(m.getMember_no());
-            
             //見つかった場合
-            //表示する情報をセット
-            setSex(mem.getSex());
-            setName(mem.getName());
-            setKana(mem.getKana());
-            setBirthday(mem.getBirthday());
-            setPhone(mem.getPhone());
-            
-            return  "memberScanComplete";
+            if(mem.getDel_flg().equals("0")){
+                //表示する情報をセット
+                setSex(mem.getSex());
+                setName(mem.getName());
+                setKana(mem.getKana());
+                setBirthday(mem.getBirth_day());
+                setPhone(mem.getPhone());
+                Date date = new Date();
+                SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy/MM/dd");
+                int ret = differenceDays(sdf1.format(date),fmtSlash(mc.getIssue_date()));
+                ret = 365 - ret;
+                if(ret < 31){
+                    if(ret < 1){
+                        ret = 0;
+                    }
+                    setFlg1(true);
+                    setFlg2(false);
+                    setExpirationDate(Integer.toString(ret));
+                    return "memberScanComplete";
+                }
+                return  "memberScanComplete";
+            }else{
+                return "memberEmptyError";
+            }
         }
         
     }

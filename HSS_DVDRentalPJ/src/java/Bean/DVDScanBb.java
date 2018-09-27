@@ -5,6 +5,8 @@
  */
 package Bean;
 
+import static HenkanTools.Tool.cnvSextion;
+import Manager.DvdManager;
 import Manager.KashiDvdManager;
 import javax.ejb.EJB;
 import javax.enterprise.context.ApplicationScoped;
@@ -22,20 +24,36 @@ public class DVDScanBb {
     private String barcode;            //DVDバーコード
     private String barcodes[] = new String[10];            //DVDバーコード配列
     private int scancnt;            //スキャンした回数
+    private String title;
     private String titles[] = new String[10]; 
     private String days[] = new String[10];
     private String moneys[] = new String[10];
     private boolean flg1[] = new boolean[10];
     private boolean flg2[] = new boolean[10];
+    private String newold;
     static private int total;
     private int tax;
     private int deposit;            //預かり金
     private int change;            //おつり
+    private boolean plan1;
+    private boolean plan2;
+    private boolean plan3;
+    private String planview1;
+    private String planview2;
+    private String planview3;
+    private String planview11;
+    private String planview22;
+    private String planview33;
+    
 
     @EJB
     KashiDvdManager kashimng;
+    @EJB
+    DvdManager dvdmng;
     
     Lend_item kd = null;
+    Dvd d = null;
+    Sextion s = null;
     
     public String next(){
         setScancnt(0);
@@ -59,54 +77,62 @@ public class DVDScanBb {
     
     public String scan(){
         try {
+            kd = kashimng.getKashiDvdData(barcode);
+            d = dvdmng.getDvdData(kd.getDvd_code());
+            s = dvdmng.getSextiondvd(d.getDvd_code(), kd.getStore_cd());
         } catch (Exception e) {
-                e.printStackTrace();
-                return "DVDScan.xhtml";
-            }
-        if(!getBarcode().equals("")){
-            setBarcodes(getBarcode(),getScancnt());
-            if(getBarcode().equals("1234567890128")){
-                setTitles("パパ嫌い！～頑張れヒロユキ、二人ではじめてのおつかい～",getScancnt());
-                setDays("2018/8/30～2018/9/6",getScancnt());
-                setMoneys("160",getScancnt());
-                setFlg1(false,getScancnt());
-                setFlg2(true,getScancnt());
-                String mons[] = getMoneys();
-                setTotal(getTotal()+Integer.parseInt(mons[getScancnt()]));
-                setTax((int)(getTotal()/1.08*0.08));
-                setScancnt(getScancnt()+1);
-            }else if(getBarcode().equals("2234567890127")){
-                setTitles("-MESHIYA-この国に独裁者が現れたら、戦う勇気を持てるか？",getScancnt());
-                setDays("2018/8/30～2018/9/6",getScancnt());
-                setMoneys("160",getScancnt());
-                setFlg1(false,getScancnt());
-                setFlg2(true,getScancnt());
-                String mons[] = getMoneys();
-                setTotal(getTotal()+Integer.parseInt(mons[getScancnt()]));
-                setTax((int)(getTotal()/1.08*0.08));
-                setScancnt(getScancnt()+1);
-            }else if(getBarcode().equals("3234567890126")){
-                setTitles("ビール大好き高濱プレゼンツ！通販天国",getScancnt());
-                setDays("2018/8/30～2018/9/6",getScancnt());
-                setMoneys("160",getScancnt());
-                setFlg1(false,getScancnt());
-                setFlg2(true,getScancnt());
-                String mons[] = getMoneys();
-                setTotal(getTotal()+Integer.parseInt(mons[getScancnt()]));
-                setTax((int)(getTotal()/1.08*0.08));
-                setScancnt(getScancnt()+1);
-            }else if(getBarcode().equals("4234567890125")){
-                setTitles("おかせん THE MOVIE",getScancnt());
-                setDays("2018/8/30～2018/9/6",getScancnt());
-                setMoneys("160",getScancnt());
-                setFlg1(false,getScancnt());
-                setFlg2(true,getScancnt());
-                String mons[] = getMoneys();
-                setTotal(getTotal()+Integer.parseInt(mons[getScancnt()]));
-                setTax((int)(getTotal()/1.08*0.08));
-                setScancnt(getScancnt()+1);
-            }
+            e.printStackTrace();
+            return "DVDScan.xhtml";
         }
+        setBarcodes(getBarcode(),getScancnt());
+        setTitle(d.getTitle());
+        setTitles(d.getTitle(),getScancnt());
+        setDays("2018/8/30～2018/9/6",getScancnt());
+        setMoneys("160",getScancnt());
+        setNewold(cnvSextion(s.getSextion()));
+        setFlg1(false,getScancnt());
+        setFlg2(true,getScancnt());
+        String mons[] = getMoneys();
+        setTotal(getTotal()+Integer.parseInt(mons[getScancnt()]));
+        setTax((int)(getTotal()/1.08*0.08));
+        setScancnt(getScancnt()+1);
+        if(s.getSextion().equals("0")){
+            setPlanview1("当日 \\200");
+            setPlanview2("1泊2日 \\260");
+            setPlanview11("当日");
+            setPlanview22("1泊2日");
+            setPlan1(true);
+            setPlan2(true);
+            setPlan3(false);
+        }else if(s.getSextion().equals("1")){
+            setPlanview1("当日 \\200");
+            setPlanview2("1泊2日 \\260");
+            setPlanview3("2泊3日 \\300");
+            setPlanview11("当日");
+            setPlanview22("1泊2日");
+            setPlanview33("2泊3日");
+            setPlan1(true);
+            setPlan2(true);
+            setPlan3(true);
+        }else{
+            setPlanview1("7泊8日 \\160");
+            setPlanview11("7泊8日");
+            setPlan1(true);
+            setPlan2(false);
+            setPlan3(false);
+        }
+        return "DVDPlan.xhtml";
+    }
+    
+    public String plan1(){
+        return "DVDScan.xhtml";
+    }
+    
+    public String plan2(){
+        return "DVDScan.xhtml";
+    }
+    
+    public String plan3(){
         return "DVDScan.xhtml";
     }
     
@@ -263,6 +289,94 @@ public class DVDScanBb {
 
     public void setBarcode(String barcode) {
         this.barcode = barcode;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getNewold() {
+        return newold;
+    }
+
+    public void setNewold(String newold) {
+        this.newold = newold;
+    }
+
+    public boolean isPlan1() {
+        return plan1;
+    }
+
+    public void setPlan1(boolean plan1) {
+        this.plan1 = plan1;
+    }
+
+    public boolean isPlan2() {
+        return plan2;
+    }
+
+    public void setPlan2(boolean plan2) {
+        this.plan2 = plan2;
+    }
+
+    public boolean isPlan3() {
+        return plan3;
+    }
+
+    public void setPlan3(boolean plan3) {
+        this.plan3 = plan3;
+    }
+
+    public String getPlanview1() {
+        return planview1;
+    }
+
+    public void setPlanview1(String planview1) {
+        this.planview1 = planview1;
+    }
+
+    public String getPlanview2() {
+        return planview2;
+    }
+
+    public void setPlanview2(String planview2) {
+        this.planview2 = planview2;
+    }
+
+    public String getPlanview3() {
+        return planview3;
+    }
+
+    public void setPlanview3(String planview3) {
+        this.planview3 = planview3;
+    }
+
+    public String getPlanview11() {
+        return planview11;
+    }
+
+    public void setPlanview11(String planview11) {
+        this.planview11 = planview11;
+    }
+
+    public String getPlanview22() {
+        return planview22;
+    }
+
+    public void setPlanview22(String planview22) {
+        this.planview22 = planview22;
+    }
+
+    public String getPlanview33() {
+        return planview33;
+    }
+
+    public void setPlanview33(String planview33) {
+        this.planview33 = planview33;
     }
 
     

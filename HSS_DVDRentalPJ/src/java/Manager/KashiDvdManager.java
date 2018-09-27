@@ -23,6 +23,7 @@ public class KashiDvdManager {
     EntityManager em;
     
     public Lend_item getKashiDvdData(String dvd_barcode){
+        System.out.println("getKashiDvdData");
         Lend_item d = null;
         System.out.println(1);
         TypedQuery query = em.createNamedQuery(Lend_item.Comedvd, Lend_item.class);

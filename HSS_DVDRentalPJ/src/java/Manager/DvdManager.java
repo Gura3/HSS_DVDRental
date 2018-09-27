@@ -39,21 +39,33 @@ public class DvdManager {
     }
     
     public Dvd getDvdData(String dvd_code) {
+        System.out.println("getDvdData");
         Dvd d = null;
         TypedQuery query = null;
+        System.out.println(1);
         query = em.createNamedQuery(Dvd.Comeon, Dvd.class);
+        System.out.println(2);
         query.setParameter(1,dvd_code);
+        System.out.println(3);
         d = (Dvd)query.getSingleResult();
+        System.out.println(4);
         return d;
     }
     
     public Sextion getSextiondvd(String dvd_code,String store_cd) {
+        System.out.println("getSextiondvd");
         Sextion d = null;
         TypedQuery query = null;
+        System.out.println(1);
         query = em.createNamedQuery(Sextion.Sextionserch, Sextion.class);
+        System.out.println(2);
         query.setParameter(1,dvd_code);
         query.setParameter(2,store_cd);
+        System.out.println(3);
+        System.out.println("dvd_code"+dvd_code);
+        System.out.println("store_cd"+store_cd);
         d = (Sextion)query.getSingleResult();
+        System.out.println(4);
         return d;
     }
 }

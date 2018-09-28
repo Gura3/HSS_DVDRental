@@ -7,18 +7,15 @@
         <title>HCSDVDレンタル-貸出バーコードスキャン</title>
         <h:outputStylesheet library="css" name="title.css"/>
         <h:outputStylesheet library="css" name="DVDScan.css"/>
-        <h:outputStylesheet library="css" name="DVDPlan.css"/>
-       <h:outputScript library="js" name="jquery-3.3.1.min.js"/>
-        <script>
-            $(document).ready( function(){
-                $('#modalArea00').fadeIn();
-                $('#closeModal , #del').click(function(){
-                $('#modalArea00').fadeOut();
-            });
-            });
-        </script>
         <!-- スキャンのスクリプト -->
         <h:outputScript library="js" name="scan.js"/>
+        <h:outputScript library="js" name="jquery-3.3.1.min.js"/>
+        <script>
+           $(window).on("load",function(){
+                 alert('正常なバーコードを読み取れませんでした。');
+            });
+            
+        </script>
     </h:head>
     <h:body>
         <h1>HCSDVDレンタル</h1>
@@ -145,32 +142,8 @@
             <h:commandButton type="button" id="next" onclick="return runBtnDisabled('tugi', 'next')" value="次へ" styleClass="btn"/>
             <h:commandButton value="送　信"  action="#{DVDScanBb.scan()}" styleClass="btn"  id ="senni"/>
             <h:inputText value="#{DVDScanBb.barcode}" id="mem" styleClass="btn"/>
-        </h:form>   
-        <!-- モーダルエリアここから -->
-        <section id="modalArea00" class="modalArea00">
-            <div id="modalBg" class="modalBg"></div>
-            <div class="modalWrapper">
-                <div class="modalContents00">
-                    <!--モーダルウィンドウ内容-->
-                    <h:form>
-                    <h:outputText value="バーコード  　" /><h:outputText value="#{DVDScanBb.barcode}" /><br/>
-                    <h:outputText value="タイトル    　" /><h:outputText value="#{DVDScanBb.title}" /><br/>
-                    <h:outputText value="新作区分    　" /><h:outputText value="#{DVDScanBb.newold}" /><br/>
-                    <h:outputText value="貸出期間を選択してください。" /><br/>
-                    <h:outputText value="#{DVDScanBb.planview1}" rendered="#{DVDScanBb.plan1}" /><br/>
-                    <h:outputText value="#{DVDScanBb.planview2}" rendered="#{DVDScanBb.plan2}" /><br/>
-                    <h:outputText value="#{DVDScanBb.planview3}" rendered="#{DVDScanBb.plan3}" /><br/>
-                    <h:commandButton id="plan1" rendered="#{DVDScanBb.plan1}" value="#{DVDScanBb.planview11}&nbsp;選択" action="#{DVDScanBb.plans(1)}"/>
-                    <h:commandButton id="plan2" rendered="#{DVDScanBb.plan2}" value="#{DVDScanBb.planview22}&nbsp;選択" action="#{DVDScanBb.plans(2)}"/>
-                    <h:commandButton id="plan3" rendered="#{DVDScanBb.plan3}" value="#{DVDScanBb.planview33}&nbsp;選択" action="#{DVDScanBb.plans(3)}"/>
-                    </h:form>
-                </div>
-                <div id="closeModal" class="closeModal">
-                    ×
-                </div>
-            </div>
-        </section>
-        <!-- モーダルエリアここまで -->
+        </h:form>
+
     </h:body>
 </html>
 

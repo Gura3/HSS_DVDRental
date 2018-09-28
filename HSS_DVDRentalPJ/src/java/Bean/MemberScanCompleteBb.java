@@ -80,10 +80,11 @@ public class MemberScanCompleteBb implements Serializable{
             //見つかった場合
             if(mem.getDel_flg().equals("0")){
                 //表示する情報をセット
+                setMemberno(mc.getMember_no());
                 setSex(mem.getSex());
                 setName(mem.getName());
                 setKana(mem.getKana());
-                setBirthday(mem.getBirth_day());
+                setBirthday(fmtSlash(mem.getBirth_day()));
                 setPhone(mem.getPhone());
                 Date date = new Date();
                 SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy/MM/dd");

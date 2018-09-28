@@ -6,8 +6,13 @@
 package Bean;
 
 import static HenkanTools.Tool.cnvSextion;
+import static HenkanTools.Tool.fmtSlash;
 import Manager.DvdManager;
 import Manager.KashiDvdManager;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import javax.ejb.EJB;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
@@ -44,8 +49,15 @@ public class DVDScanBb {
     private String planview11;
     private String planview22;
     private String planview33;
+    private String planmoney1;
+    private String planmoney2;
+    private String planmoney3;
     
-
+    private String today;
+    private String retplanday;
+    private String retplandays[] = new String[10];
+    private String addday;
+    
     @EJB
     KashiDvdManager kashimng;
     @EJB
@@ -56,6 +68,9 @@ public class DVDScanBb {
     Sextion s = null;
     
     public String next(){
+        Date date = new Date();
+        SimpleDateFormat sdf1 = new SimpleDateFormat("yyyyMMdd");
+        setToday(sdf1.format(date));
         setScancnt(0);
         setTotal(0);
         setTax(0);
@@ -82,25 +97,17 @@ public class DVDScanBb {
             s = dvdmng.getSextiondvd(d.getDvd_code(), kd.getStore_cd());
         } catch (Exception e) {
             e.printStackTrace();
-            return "DVDScan.xhtml";
+            return "DVDScanerror.xhtml";
         }
-        setBarcodes(getBarcode(),getScancnt());
         setTitle(d.getTitle());
-        setTitles(d.getTitle(),getScancnt());
-        setDays("2018/8/30～2018/9/6",getScancnt());
-        setMoneys("160",getScancnt());
         setNewold(cnvSextion(s.getSextion()));
-        setFlg1(false,getScancnt());
-        setFlg2(true,getScancnt());
-        String mons[] = getMoneys();
-        setTotal(getTotal()+Integer.parseInt(mons[getScancnt()]));
-        setTax((int)(getTotal()/1.08*0.08));
-        setScancnt(getScancnt()+1);
         if(s.getSextion().equals("0")){
             setPlanview1("当日 \\200");
             setPlanview2("1泊2日 \\260");
             setPlanview11("当日");
             setPlanview22("1泊2日");
+            setPlanmoney1("200");
+            setPlanmoney2("260");
             setPlan1(true);
             setPlan2(true);
             setPlan3(false);
@@ -111,12 +118,16 @@ public class DVDScanBb {
             setPlanview11("当日");
             setPlanview22("1泊2日");
             setPlanview33("2泊3日");
+            setPlanmoney1("200");
+            setPlanmoney2("260");
+            setPlanmoney2("300");
             setPlan1(true);
             setPlan2(true);
             setPlan3(true);
         }else{
             setPlanview1("7泊8日 \\160");
             setPlanview11("7泊8日");
+            setPlanmoney1("160");
             setPlan1(true);
             setPlan2(false);
             setPlan3(false);
@@ -124,15 +135,56 @@ public class DVDScanBb {
         return "DVDPlan.xhtml";
     }
     
-    public String plan1(){
-        return "DVDScan.xhtml";
-    }
-    
-    public String plan2(){
-        return "DVDScan.xhtml";
-    }
-    
-    public String plan3(){
+    public String plans(int choose){
+        setBarcodes(getBarcode(),getScancnt());
+        setTitles(d.getTitle(),getScancnt());
+        setFlg1(false,getScancnt());
+        setFlg2(true,getScancnt());
+        // フォーマット変換用のSimpleDateFormatオブジェクトを生成
+        DateFormat df = new SimpleDateFormat("yyyyMMdd");
+ 
+        // 現在日時を保持するCalendarオブジェクトを生成
+        Calendar cal = Calendar.getInstance();
+ 
+        // 現在日時をyyyyMMdd形式で出力（結果：20130814）
+        System.out.println(df.format(cal.getTime()));
+ 
+        if(choose == 1){
+            setMoneys(getPlanmoney1(),getScancnt());
+            if(s.getSextion().equals("0")){
+                // 加算しないで格納
+                setRetplanday(getToday());
+            }else if(s.getSextion().equals("1")){
+                // 加算しないで格納
+                setRetplanday(getToday());
+            }else if(s.getSextion().equals("2")){
+                // 7日を加算
+                cal.add(Calendar.DATE, 7);
+                setRetplanday(df.format(cal.getTime()));
+            }
+        }else if(choose == 2){
+            setMoneys(getPlanmoney2(),getScancnt());
+            if(s.getSextion().equals("0")){
+                // 1日を加算
+                cal.add(Calendar.DATE, 1);
+                setRetplanday(df.format(cal.getTime()));
+            }else if(s.getSextion().equals("1")){
+                // 1日を加算
+                cal.add(Calendar.DATE, 1);
+                setRetplanday(df.format(cal.getTime()));
+            }
+        }else if(choose == 3){
+            setMoneys(getPlanmoney3(),getScancnt());
+            // 2日を加算
+                cal.add(Calendar.DATE, 2);
+                setRetplanday(df.format(cal.getTime()));
+        }
+        String mons[] = getMoneys();
+        setTotal(getTotal()+Integer.parseInt(mons[getScancnt()]));
+        setTax((int)(getTotal()/1.08*0.08));
+        setDays(fmtSlash(today)+"～"+fmtSlash(getRetplanday()),getScancnt());
+        setRetplandays(getRetplanday(), getScancnt());
+        setScancnt(getScancnt()+1);
         return "DVDScan.xhtml";
     }
     
@@ -378,6 +430,63 @@ public class DVDScanBb {
     public void setPlanview33(String planview33) {
         this.planview33 = planview33;
     }
+
+    public String getPlanmoney1() {
+        return planmoney1;
+    }
+
+    public void setPlanmoney1(String planmoney1) {
+        this.planmoney1 = planmoney1;
+    }
+
+    public String getPlanmoney2() {
+        return planmoney2;
+    }
+
+    public void setPlanmoney2(String planmoney2) {
+        this.planmoney2 = planmoney2;
+    }
+
+    public String getPlanmoney3() {
+        return planmoney3;
+    }
+
+    public void setPlanmoney3(String planmoney3) {
+        this.planmoney3 = planmoney3;
+    }
+
+    public String getToday() {
+        return today;
+    }
+
+    public void setToday(String today) {
+        this.today = today;
+    }
+
+    public String[] getRetplandays() {
+        return retplandays;
+    }
+
+    public void setRetplandays(String retplandays,int scancnt) {
+        this.retplandays[scancnt] = retplandays;
+    }
+
+    public String getAddday() {
+        return addday;
+    }
+
+    public void setAddday(String addday) {
+        this.addday = addday;
+    }
+
+    public String getRetplanday() {
+        return retplanday;
+    }
+
+    public void setRetplanday(String retplanday) {
+        this.retplanday = retplanday;
+    }
+
 
     
 

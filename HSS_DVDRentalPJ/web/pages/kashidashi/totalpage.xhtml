@@ -9,6 +9,7 @@
         <h:outputStylesheet library="css" name="title.css"/>
         <h:outputStylesheet library="css" name="totalpage.css"/>
         <!-- スキャンのスクリプト -->
+        <h:outputScript library="js" name="totalpage.js"/>
         <h:outputScript library="js" name="jquery-3.3.1.min.js"/>
         <script>
             $(function(){
@@ -20,6 +21,16 @@
                             document.getElementById("tugi:mem").value = document.getElementById("tugi:mem").value + String.fromCharCode(ev.keyCode);
                     }
                 });
+            });
+        </script>
+        <script>
+            $(function () {
+                $('#openModal00').click(function(){
+                    $('#modalArea00').fadeIn();
+            });
+            $('#closeModal , #del').click(function(){
+                $('#modalArea00').fadeOut();
+            });
             });
         </script>
     </h:head>
@@ -34,7 +45,7 @@
         
         <h:form styleClass="subMenu">
             <h:commandButton value="戻る" styleClass="button" action="#{DVDScanBb.back()}"/>
-            <h:commandButton value="延滞金上乗せ" styleClass="delbtn" action="#{DVDScanBb.back()}"/>
+            <h:commandButton value="延滞金上乗せ" styleClass="delbtn" rendered="#{memberScanCompleteBb.flg2}" action="#{DVDScanBb.back()}"/>
             <input type="button" class="button" value="処理を中断" onClick="location.href='http://localhost:8080/HSS_DVDRentalPJ/'"/>
         </h:form>
         
@@ -46,9 +57,9 @@
             <h:outputText value="&yen;#{DVDScanBb.tax}" class="a"/>
             <h:outputText value="割引" />
             <h:panelGroup>
-            <h:outputText value="0枚" class="b"/>
-            <h:commandButton value="割引" styleClass="c" action="#{DVDScanBb.delete(0)}" id="disc"/>
-            <h:commandButton value="クリア" styleClass="d" action="#{DVDScanBb.delete(0)}" id="clear"/>
+            <h:outputText value="#{DVDScanBb.sales}枚" class="b"/>
+            <h:commandButton type="button" value="割引" styleClass="c" onclick="return runBtnOpenM('openModal00')" id="disc"/>
+            <h:commandButton value="クリア" styleClass="d" action="#{DVDScanBb.risettosan()}" id="clear"/>
             </h:panelGroup>
             <h:outputText value="預かり金額" />
             <h:panelGroup>
@@ -89,6 +100,35 @@
                 </h:form>
             </li>
         </ul>
+        
+        <button id="openModal00"></button>
+        <!-- モーダルエリアここから -->
+        <section id="modalArea00" class="modalArea00">
+            <div id="modalBg" class="modalBg"></div>
+            <div class="modalWrapper">
+                <div class="modalContents00">
+                    <!--モーダルウィンドウ内容-->
+                    <h:form>
+                    <h:outputText value="割引券使用枚数を選択" /><br/>
+                    <h:commandButton id="mai1" rendered="#{DVDScanBb.mai1}" value="#{DVDScanBb.maiview1}枚使用" action="#{DVDScanBb.mais(1)}"/>
+                    <h:commandButton id="mai2" rendered="#{DVDScanBb.mai2}" value="#{DVDScanBb.maiview2}枚使用" action="#{DVDScanBb.mais(2)}"/>
+                    <h:commandButton id="mai3" rendered="#{DVDScanBb.mai3}" value="#{DVDScanBb.maiview3}枚使用" action="#{DVDScanBb.mais(3)}"/>
+                    <h:commandButton id="mai4" rendered="#{DVDScanBb.mai4}" value="#{DVDScanBb.maiview4}枚使用" action="#{DVDScanBb.mais(4)}"/>
+                    <h:commandButton id="mai5" rendered="#{DVDScanBb.mai5}" value="#{DVDScanBb.maiview5}枚使用" action="#{DVDScanBb.mais(5)}"/>
+                    <h:commandButton id="mai6" rendered="#{DVDScanBb.mai6}" value="#{DVDScanBb.maiview6}枚使用" action="#{DVDScanBb.mais(6)}"/>
+                    <h:commandButton id="mai7" rendered="#{DVDScanBb.mai7}" value="#{DVDScanBb.maiview7}枚使用" action="#{DVDScanBb.mais(7)}"/>
+                    <h:commandButton id="mai8" rendered="#{DVDScanBb.mai8}" value="#{DVDScanBb.maiview8}枚使用" action="#{DVDScanBb.mais(8)}"/>
+                    <h:commandButton id="mai9" rendered="#{DVDScanBb.mai9}" value="#{DVDScanBb.maiview9}枚使用" action="#{DVDScanBb.mais(9)}"/>
+                    <h:commandButton id="mai10" rendered="#{DVDScanBb.mai10}" value="#{DVDScanBb.maiview10}枚使用" action="#{DVDScanBb.mais(10)}"/>
+                    
+                    </h:form>
+                </div>
+                <div id="closeModal" class="closeModal">
+                    ×
+                </div>
+            </div>
+        </section>
+        <!-- モーダルエリアここまで -->
         
     </h:body>
 </html>

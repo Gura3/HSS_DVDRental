@@ -60,4 +60,14 @@ public class KashiDvdManager {
         
         return query.getResultList();
     }
+    
+    public int getCntlend(){
+        System.out.println("getCntlend");
+        TypedQuery query = null;
+        System.out.println(1);
+        query = em.createNamedQuery(Lend.Cntlend, Lend.class);
+        System.out.println(2);
+        
+        return (int)query.getSingleResult();
+    }
 }

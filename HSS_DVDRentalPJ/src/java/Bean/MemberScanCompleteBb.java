@@ -9,6 +9,7 @@ import static HenkanTools.Tool.differenceDays;
 import static HenkanTools.Tool.fmtSlash;
 import Manager.MemberCardManager;
 import Manager.MemberManager;
+import Parameters.Nowfield;
 import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -97,6 +98,7 @@ public class MemberScanCompleteBb implements Serializable{
                     setFlg1(true);
                     setFlg2(false);
                     setExpirationDate(Integer.toString(ret));
+                    Nowfield.MEMBERNO = getMemberno();
                     return "memberScanComplete";
                 }
                 return  "memberScanComplete";

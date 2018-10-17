@@ -7,8 +7,10 @@ package Bean;
 
 import static HenkanTools.Tool.cnvSextion;
 import static HenkanTools.Tool.fmtSlash;
+import static HenkanTools.Tool.getHostName;
 import Manager.DvdManager;
 import Manager.KashiDvdManager;
+import Parameters.Nowfield;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -40,6 +42,7 @@ public class DVDScanBb {
     private int tax;
     private int deposit;            //預かり金
     private int change;            //おつり
+    private int sales;              //割引
     private boolean plan1;
     private boolean plan2;
     private boolean plan3;
@@ -58,11 +61,37 @@ public class DVDScanBb {
     private String retplandays[] = new String[10];
     private String addday;
     
+    private boolean mai1;
+    private boolean mai2;
+    private boolean mai3;
+    private boolean mai4;
+    private boolean mai5;
+    private boolean mai6;
+    private boolean mai7;
+    private boolean mai8;
+    private boolean mai9;
+    private boolean mai10;
+        
+    private String maiview1;
+    private String maiview2;
+    private String maiview3;
+    private String maiview4;
+    private String maiview5;
+    private String maiview6;
+    private String maiview7;
+    private String maiview8;
+    private String maiview9;
+    private String maiview10;
+    
+    
     @EJB
     KashiDvdManager kashimng;
     @EJB
     DvdManager dvdmng;
+    @EJB
+    LendDb lenddb;
     
+    Lend l = null;
     Lend_item kd = null;
     Dvd d = null;
     Sextion s = null;
@@ -188,6 +217,20 @@ public class DVDScanBb {
         return "DVDScan.xhtml";
     }
     
+    public String mais(int choose){
+        setSales(choose);
+        setTotal(getTotal()-50*choose);
+        setTax((int)(getTotal()/1.08*0.08));
+        return "totalpage.xhtml";
+    }
+    
+    public String risettosan(){
+        setTotal(getTotal()+50*getSales());
+        setTax((int)(getTotal()/1.08*0.08));
+        setSales(0);
+        return "totalpage.xhtml";
+    }
+    
     public String del(int it){
         if(it == 9){
             String mons[] = getMoneys();
@@ -232,11 +275,112 @@ public class DVDScanBb {
     public String complete(){
         DVDScanBb tot = new DVDScanBb();
         setChange(getDeposit()-tot.getTotal());
+        String name = getHostName();
+        System.out.println("ホスト名 = '"+name+"'");
+        if(getChange()<0){
+            return "totalpage";
+        }
+        if(name.equals("HCS70148")){
+            l.setStore_cd("00");
+        }
+        System.out.println(kashimng.getCntlend());
+        l.setLend_no(String.format("%08d",kashimng.getCntlend()));
+        l.setMember_no(Nowfield.MEMBERNO);
+        l.setLend_date(getToday());
+        System.out.println(l.getLend_no());
+        System.out.println(l.getMember_no());
         return "complete";
     }
     
     public String totalpage(){
+        setSales(0);
         setDeposit(0);
+        setMai1(false);
+        setMai2(false);
+        setMai3(false);
+        setMai4(false);
+        setMai5(false);
+        setMai6(false);
+        setMai7(false);
+        setMai8(false);
+        setMai9(false);
+        setMai10(false);
+        setMaiview1("1");
+        setMaiview2("2");
+        setMaiview3("3");
+        setMaiview4("4");
+        setMaiview5("5");
+        setMaiview6("6");
+        setMaiview7("7");
+        setMaiview8("8");
+        setMaiview9("9");
+        setMaiview10("10");
+        if(getScancnt() == 1){
+            setMai1(true);
+        }else if(getScancnt() == 2){
+            setMai1(true);
+            setMai2(true);
+        }else if(getScancnt() == 3){
+            setMai1(true);
+            setMai2(true);
+            setMai3(true);
+        }else if(getScancnt() == 4){
+            setMai1(true);
+            setMai2(true);
+            setMai3(true);
+            setMai4(true);
+        }else if(getScancnt() == 5){
+            setMai1(true);
+            setMai2(true);
+            setMai3(true);
+            setMai4(true);
+            setMai5(true);
+        }else if(getScancnt() == 6){
+            setMai1(true);
+            setMai2(true);
+            setMai3(true);
+            setMai4(true);
+            setMai5(true);
+            setMai6(true);
+        }else if(getScancnt() == 7){
+            setMai1(true);
+            setMai2(true);
+            setMai3(true);
+            setMai4(true);
+            setMai5(true);
+            setMai6(true);
+            setMai7(true);
+        }else if(getScancnt() == 8){
+            setMai1(true);
+            setMai2(true);
+            setMai3(true);
+            setMai4(true);
+            setMai5(true);
+            setMai6(true);
+            setMai7(true);
+            setMai8(true);
+        }else if(getScancnt() == 9){
+            setMai1(true);
+            setMai2(true);
+            setMai3(true);
+            setMai4(true);
+            setMai5(true);
+            setMai6(true);
+            setMai7(true);
+            setMai8(true);
+            setMai9(true);
+        }else if(getScancnt() == 10){
+            setMai1(true);
+            setMai2(true);
+            setMai3(true);
+            setMai4(true);
+            setMai5(true);
+            setMai6(true);
+            setMai7(true);
+            setMai8(true);
+            setMai9(true);
+            setMai10(true);
+        }
         return "totalpage";
     }
     
@@ -485,6 +629,174 @@ public class DVDScanBb {
 
     public void setRetplanday(String retplanday) {
         this.retplanday = retplanday;
+    }
+
+    public boolean isMai1() {
+        return mai1;
+    }
+
+    public void setMai1(boolean mai1) {
+        this.mai1 = mai1;
+    }
+
+    public String getMaiview1() {
+        return maiview1;
+    }
+
+    public void setMaiview1(String maiview1) {
+        this.maiview1 = maiview1;
+    }
+
+    public boolean isMai2() {
+        return mai2;
+    }
+
+    public void setMai2(boolean mai2) {
+        this.mai2 = mai2;
+    }
+
+    public boolean isMai3() {
+        return mai3;
+    }
+
+    public void setMai3(boolean mai3) {
+        this.mai3 = mai3;
+    }
+
+    public boolean isMai4() {
+        return mai4;
+    }
+
+    public void setMai4(boolean mai4) {
+        this.mai4 = mai4;
+    }
+
+    public boolean isMai5() {
+        return mai5;
+    }
+
+    public void setMai5(boolean mai5) {
+        this.mai5 = mai5;
+    }
+
+    public boolean isMai6() {
+        return mai6;
+    }
+
+    public void setMai6(boolean mai6) {
+        this.mai6 = mai6;
+    }
+
+    public boolean isMai7() {
+        return mai7;
+    }
+
+    public void setMai7(boolean mai7) {
+        this.mai7 = mai7;
+    }
+
+    public boolean isMai8() {
+        return mai8;
+    }
+
+    public void setMai8(boolean mai8) {
+        this.mai8 = mai8;
+    }
+
+    public boolean isMai9() {
+        return mai9;
+    }
+
+    public void setMai9(boolean mai9) {
+        this.mai9 = mai9;
+    }
+
+    public boolean isMai10() {
+        return mai10;
+    }
+
+    public void setMai10(boolean mai10) {
+        this.mai10 = mai10;
+    }
+
+    public String getMaiview2() {
+        return maiview2;
+    }
+
+    public void setMaiview2(String maiview2) {
+        this.maiview2 = maiview2;
+    }
+
+    public String getMaiview3() {
+        return maiview3;
+    }
+
+    public void setMaiview3(String maiview3) {
+        this.maiview3 = maiview3;
+    }
+
+    public String getMaiview4() {
+        return maiview4;
+    }
+
+    public void setMaiview4(String maiview4) {
+        this.maiview4 = maiview4;
+    }
+
+    public String getMaiview5() {
+        return maiview5;
+    }
+
+    public void setMaiview5(String maiview5) {
+        this.maiview5 = maiview5;
+    }
+
+    public String getMaiview6() {
+        return maiview6;
+    }
+
+    public void setMaiview6(String maiview6) {
+        this.maiview6 = maiview6;
+    }
+
+    public String getMaiview7() {
+        return maiview7;
+    }
+
+    public void setMaiview7(String maiview7) {
+        this.maiview7 = maiview7;
+    }
+
+    public String getMaiview8() {
+        return maiview8;
+    }
+
+    public void setMaiview8(String maiview8) {
+        this.maiview8 = maiview8;
+    }
+
+    public String getMaiview9() {
+        return maiview9;
+    }
+
+    public void setMaiview9(String maiview9) {
+        this.maiview9 = maiview9;
+    }
+
+    public String getMaiview10() {
+        return maiview10;
+    }
+
+    public void setMaiview10(String maiview10) {
+        this.maiview10 = maiview10;
+    }
+
+    public int getSales() {
+        return sales;
+    }
+
+    public void setSales(int sales) {
+        this.sales = sales;
     }
 
 

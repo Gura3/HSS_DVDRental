@@ -5,6 +5,7 @@
  */
 package HenkanTools;
 
+import java.net.InetAddress;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.util.Date;
@@ -84,6 +85,15 @@ public static int differenceDays(Date date1,Date date2) {
     long one_date_time = 1000 * 60 * 60 * 24;
     long diffDays = (datetime1 - datetime2) / one_date_time;
     return (int)diffDays; 
+}
+
+public static String getHostName() {
+    try {
+        return InetAddress.getLocalHost().getHostName();
+    }catch (Exception e) {
+        e.printStackTrace();
+    }
+    return "UnknownHost";
 }
 
 

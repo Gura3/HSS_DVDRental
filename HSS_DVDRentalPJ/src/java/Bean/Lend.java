@@ -18,9 +18,7 @@ import javax.validation.constraints.NotNull;
     @NamedQuery(name=Lend.Comelend,
                 query="SELECT l FROM Lend l WHERE l.lend_no = ?1"),
     @NamedQuery(name=Lend.Memlend,
-                query="SELECT l FROM Lend l WHERE l.member_no = ?1"),
-    @NamedQuery(name=Lend.Cntlend,
-                query="SELECT COUNT(l) FROM Lend l")
+                query="SELECT l FROM Lend l WHERE l.member_no = ?1")
 })
 
 @Entity

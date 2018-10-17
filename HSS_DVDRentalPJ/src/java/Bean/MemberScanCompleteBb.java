@@ -82,6 +82,8 @@ public class MemberScanCompleteBb implements Serializable{
             if(mem.getDel_flg().equals("0")){
                 //表示する情報をセット
                 setMemberno(mc.getMember_no());
+                Nowfield.MEMBERNO = getMemberno();
+                    System.out.println("MemScanCompBb memberno"+Nowfield.MEMBERNO);
                 setSex(mem.getSex());
                 setName(mem.getName());
                 setKana(mem.getKana());
@@ -98,7 +100,6 @@ public class MemberScanCompleteBb implements Serializable{
                     setFlg1(true);
                     setFlg2(false);
                     setExpirationDate(Integer.toString(ret));
-                    Nowfield.MEMBERNO = getMemberno();
                     return "memberScanComplete";
                 }
                 return  "memberScanComplete";

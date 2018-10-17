@@ -15,6 +15,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Random;
 import javax.ejb.EJB;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
@@ -90,9 +91,12 @@ public class DVDScanBb {
     DvdManager dvdmng;
     @EJB
     LendDb lenddb;
+    @EJB
+    Kashi_meisaiDb kashidb;
     
-    Lend l = null;
+    Lend l = new Lend();
     Lend_item kd = null;
+    Kashi_meisai km = new Kashi_meisai();
     Dvd d = null;
     Sextion s = null;
     
@@ -166,6 +170,8 @@ public class DVDScanBb {
     
     public String plans(int choose){
         setBarcodes(getBarcode(),getScancnt());
+        System.out.println("スキャンカウント"+getScancnt());
+        System.out.println("バーコード"+getBarcodechan(getScancnt()));
         setTitles(d.getTitle(),getScancnt());
         setFlg1(false,getScancnt());
         setFlg2(true,getScancnt());
@@ -277,18 +283,45 @@ public class DVDScanBb {
         setChange(getDeposit()-tot.getTotal());
         String name = getHostName();
         System.out.println("ホスト名 = '"+name+"'");
+        System.out.println(getChange());
         if(getChange()<0){
+            System.out.println("1");
             return "totalpage";
         }
         if(name.equals("HCS70148")){
+            System.out.println("2");
             l.setStore_cd("00");
         }
-        System.out.println(kashimng.getCntlend());
-        l.setLend_no(String.format("%08d",kashimng.getCntlend()));
+        System.out.println("3");
+        Random bango = new Random();
+        System.out.println("4");
+        int lenddayo = bango.nextInt(100000000);
+        System.out.println("5");
+        System.out.println(lenddayo);
+        l.setLend_no(String.format("%08d",lenddayo));
         l.setMember_no(Nowfield.MEMBERNO);
         l.setLend_date(getToday());
-        System.out.println(l.getLend_no());
-        System.out.println(l.getMember_no());
+        System.out.println("lendno"+l.getLend_no());
+        System.out.println("memno"+l.getMember_no());
+        lenddb.add(l);
+        int cnti = 0;
+        int cntj = getScancnt()-1;
+        while(cntj > -1){
+            km.setLend_no(l.getLend_no());
+            km.setLend_det_no(String.format("%08d",cnti));
+            km.setDvd_barcode(getBarcodechan(cnti));
+            km.setReturn_plan_day(getRetplandaychan(cnti));
+            km.setMoney(getMoneychan(cnti));
+            cnti++;
+            cntj--;
+            System.out.println("lendno"+km.getLend_no());
+            System.out.println("lenddetno"+km.getLend_det_no());
+            System.out.println("dvdbar"+km.getDvd_barcode());
+            System.out.println("retplan"+km.getReturn_plan_day());
+            System.out.println("retday"+km.getReturn_day());
+            System.out.println("money"+km.getMoney());
+            kashidb.add(km);
+        }
         return "complete";
     }
     
@@ -799,7 +832,16 @@ public class DVDScanBb {
         this.sales = sales;
     }
 
-
+    public String getBarcodechan(int cnt){
+        return barcodes[cnt];
+    }
     
+    public String getRetplandaychan(int cnt){
+        return retplandays[cnt];
+    }
+    
+    public String getMoneychan(int cnt){
+        return moneys[cnt];
+    }
 
 }

@@ -6,32 +6,48 @@
     <h:head>
         <title>HCSDVDレンタル-トップページ</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8"/>
-        <link rel="stylesheet" type="text/css" href="resources/css/title.css"/>
-        <link rel="stylesheet" type="text/css" href="resources/css/top.css"/>
+        <h:outputStylesheet library="css" name="title.css" />
     </h:head>
-    <body>
+    <h:body>
+        <h1>HCSDVDレンタル</h1>
+        <h2>身分証明書番号入力</h2>
         <h:form>
+            <h:selectOneRadio value="#{memberBb.iden_kbn}"> 　　　
+                <f:selectItems value="運転免許" />
+                <f:selectItems value="学生証" />
+                <f:selectItems value="保険証" />
+                <f:selectItems value="保険証" />
+                <f:selectItems value="パスポート" />
+                <f:selectItems value="その他" />
+            </h:selectOneRadio>
+            
+            <h:inputText value="#{memberBb.iden_no} "/>
+            
+            <h:button outcome="/index.xhtml"/>
+<!--            <h:commandButton action="" />-->
+        </h:form>
+<!--        <h:form>
             <h:selectOneRadio id="iden" value="#{Identifybb.iden}" onclick="selectbtn()"> 　　　
                 <f:selectItems value="#{Identifybb.items}"/>
             </h:selectOneRadio>    
-           
+
         </h:form>
         <h:form>
-         <h:inputText value="#{Identifybb.num}"/>
+            <h:inputText value="#{Identifybb.num}"/>
         </h:form>
-         <div class="subMenu">
-             <a href="enrollment_top.xhtml"><button>処理を中断<br></br>（トップページへ戻る）</button></a>
-             <a href="scan_card.xhtml"><button>会員カードをスキャン</button></a>
+        <div class="subMenu">
+            <a href="enrollment_top.xhtml"><button>処理を中断<br></br>（トップページへ戻る）</button></a>
+            <a href="scan_card.xhtml"><button>会員カードをスキャン</button></a>
         </div>
-        
-        <h3><!--ラジオボタンで選んだ身分証とその保険区分 -->保険証（健康保険）区分「HK」</h3>
+
+        <h3>ラジオボタンで選んだ身分証とその保険区分 保険証（健康保険）区分「HK」</h3>
         <p>:半角数字の記号で数字を入力してください（8桁）<br></br>
-           :完了　会員カードスキャンに移行してください</p>
+            :完了　会員カードスキャンに移行してください</p>
         <div class="greenbox"><h:inputTextarea value="#{identifyBb.iden}"/> </div>
-        
-            
-           <!--コマンドボタンで切り替え-->
-             <a href="./index.xhtml"><button>トップページに戻る</button></a>
-              <a href="/scan_card.xhtml"><button>会員カードスキャン</button></a>
-    </body>
+
+
+        コマンドボタンで切り替え
+        <a href="/index.xhtml"><button>トップページに戻る</button></a>
+        <a href="/scan_card.xhtml"><button>会員カードスキャン</button></a>-->
+    </h:body>
 </html>

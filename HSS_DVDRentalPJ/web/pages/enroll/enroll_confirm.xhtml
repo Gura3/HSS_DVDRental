@@ -5,38 +5,70 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
         <title>会員情報確認画面</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link rel="stylesheet" type="text/css" href="../../resources/css/top.css"/>
-        <link rel="stylesheet" type="text/css" href="../../resources/css/enroll.css"/> 
-
-
-
-    </head>
-    <body>
+        <h:outputStylesheet library="css" name="title.css" />
+        <!--        <h:outputStylesheet library="css" name="enroll.css" />-->
+    </h:head>
+    <h:body>
         <h1>HCSDVDレンタル</h1>
         <h2>会員登録処理</h2>
-        <br></br>
 
         <h3>*お客様の基本情報</h3> 
-        <table>
-            <tr><td>性別</td><td>#{memberBb.sex}</td></tr>
-            <tr><td>氏名</td><td>#{memberBb.name}</td></tr>
-            <tr><td>氏名(フリガナ）</td><td>#{memberBb.kana}</td></tr>
-            <tr><td>生年月日</td><td>#{memberBb.birthday}</td></tr>
-            <tr><td>郵便番号</td><td>#{memberBb.postal}</td></tr>
-            <tr><td>住所</td><td>#{memberBb.address}</td></tr>
-            <tr><td>電話番号</td><td>#{memberBb.phone}</td></tr>
-            <tr><td>メールアドレス</td><td>#{memberBb.mail_address}</td></tr>
-            <tr><td>職業</td><td>#{memberBb.job}</td></tr>
-            <tr><td>メールマガジンを希望</td><td>#{memberBb.mail_magazine}</td></tr>
-        </table>
-        <h3>お客様の身分証と情報を照らし合わせてください。<br/>情報が正しいと判断した場合のみ<br/>身分証番号入力に移行してください。</h3>
-        <a href="instore_enroll.xhtml"><button>登録しなおす<br/>（登録画面に戻る）</button></a> 
-        <a href="enrollment_top.xhtml"><button>処理を中断<br/>（トップページに戻る）</button></a>
-        <a href="select_identify.xhtml"><button>身分証番号入力</button></a>
+        <!--        <table class="enrolltable">
+                    <tr><td>性別</td><td>#{memberBb.sex}</td></tr>
+                    <tr><td>氏名</td><td>#{memberBb.name}</td></tr>
+                    <tr><td>氏名(フリガナ）</td><td>#{memberBb.kana}</td></tr>
+                    <tr><td>生年月日</td><td>#{memberBb.birthday}</td></tr>
+                    <tr><td>郵便番号</td><td>#{memberBb.postal}</td></tr>
+                    <tr><td>住所</td><td>#{memberBb.address}</td></tr>
+                    <tr><td>電話番号</td><td>#{memberBb.phone}</td></tr>
+                    <tr><td>メールアドレス</td><td>#{memberBb.mail_address}</td></tr>
+                    <tr><td>職業</td><td>#{memberBb.job}</td></tr>
+                    <tr><td>メールマガジンを希望</td><td>#{memberBb.mail_magazine}</td></tr>
+                </table>-->
 
-    </body>
+<!--        <h:form>
+            <h:button outcome="/instore_enroll.xhtml" value="登録しなおす&#13;(登録画面に戻る)" />
+            <h:button outcome="/index.xhtml" value="トップページへ戻る" />
+            <h:commandButton action="#{memberBb.inputIden()}" value="身分証番号を入力" />
+        </h:form>-->
+
+        <h:form>
+            <h:panelGrid columns="2" cellpadding="0" rules="all" border="1">
+                性別
+                <h:outputText value="#{memberBb.sex}"/>
+                氏名
+                <h:outputText value="#{memberBb.name}"/>
+                氏名（フリガナ）
+                <h:outputText value="#{memberBb.kana}"/>
+                生年月日
+                <h:outputText value="#{memberBb.birthday}"/>
+                郵便番号
+                <h:outputText value="#{memberBb.postal}" />
+                住所
+                <h:outputText value="#{memberBb.address}"/>
+                電話番号
+                <h:outputText value="#{memberBb.phone}"/>
+                E-Mailアドレス
+                <h:outputText value="#{memberBb.mail_address}"/>
+                職業<span class="req">[必須]</span>
+                <h:outputText value="#{memberBb.job}"/>
+                メール配信を希望
+                <h:outputText value="#{memberBb.mail_magazine}"/>
+            </h:panelGrid>
+            <h3>
+                お客様の身分証と情報を照らし合わせてください。<br/>
+                情報が正しいと判断した場合のみ<br/>
+                身分証番号入力に移行してください。
+            </h3>
+            <h:button outcome="instore_enroll.xhtml" value="登録しなおす(登録画面に戻る)" />
+            <h:button outcome="/index.xhtml" value="トップページへ戻る" />
+            <h:commandButton action="#{memberBb.inputIden()}" value="身分証番号を入力" />
+        </h:form>
+
+    </h:body>
 </html>

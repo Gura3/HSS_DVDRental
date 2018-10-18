@@ -7,85 +7,148 @@ and open the template in the editor.
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      >
+      xmlns:f="http://java.sun.com/jsf/core" >
 
-    <head>
+    <h:head>
         <title>店内入会TOPページ</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link rel="stylesheet" type="text/css" href="../../resources/css/top.css"/>
-        <link rel="stylesheet" type="text/css" href="../../resources/css/enroll.css"/>
-    </head>
+        <h:outputStylesheet library="css" name="title.css" />
+        <!--        <h:outputStylesheet library="css" name="enroll.css" />-->
+    </h:head>
 
-    <body>
+    <h:body>
         <h1>HCSDVDレンタル</h1>
         <h2>会員登録処理</h2>
-        <br></br>
-
         <h3>会員情報を入力してください</h3>
         <h:form>
-            <table >
-                <tr>
-                    <td>性別<span class="req">　　　　　　　　　[必須]</span></td>
-                    <td class="sub2"><input type="radio" name="sex" value="#{memberBb.sex}">男　　</input><input type="radio" name="sex" value="#{memberBb.sex}" >女</input></td>
-                </tr>
-                <tr>
-                    <td>氏名<span class="req">　　　　　　　　　[必須]</span></td>
-                    <td class="sub2"><h:inputText  value="#{memberBb.name}"/></td> 
-                </tr>
-                <tr>
-                    <td>氏名（フリガナ）<span class="req">　　[必須]</span></td>
-                    <td class="sub2"><h:inputText  value="#{memberBb.kana}"/></td>
-                </tr>
-                <tr>
-                    <td>生年月日<span class="req">　　　　　　[必須]</span></td>
-                    <td class="sub2">    
-                        <form action="cgi-bin/example.cgi">
+            <h:panelGrid columns="2" cellpadding="0" rules="all" border="1">
+                性別<span class="req">[必須]</span>
+                <h:selectOneRadio value="#{memberBb.sex}">
+                    <f:selectItem itemValue="man" itemLabel="男" />
+                    <f:selectItem itemValue="woman" itemLabel="女"/>
+                </h:selectOneRadio>
+                氏名<span class="req">[必須]</span>
+                <h:inputText value="#{memberBb.name}" />
+                氏名（フリガナ）<span class="req">[必須]</span>
+                <h:inputText value="#{memberBb.kana}"/>
+                生年月日<span class="req">[必須]</span>
+                <h:inputText value="#{memberBb.birthday}"/>
+                郵便番号<span class="req">[必須]</span>
+                <h:inputText value="#{memberBb.postal}" />
+                住所<span class="req">[必須]</span>
+                <h:inputText value="#{memberBb.address}"/>
+                電話番号<span class="req">[必須]</span>
+                <h:inputText value="#{memberBb.phone}"/>
+                E-Mailアドレス
+                <h:inputText value="#{memberBb.mail_address}"/>
+                職業<span class="req">[必須]</span>
+                <h:panelGroup>
+                    <h:selectOneRadio value="#{memberBb.job}">
+                        <f:selectItem itemValue="会社員" itemLabel="会社員" />
+                        <f:selectItem itemValue="派遣・アルバイト" itemLabel="派遣・アルバイト"/>
+                        <f:selectItem itemValue="自営業" itemLabel="自営業"/>
+                        <f:selectItem itemValue="専業主婦" itemLabel="専業主婦"/>
+                        <f:selectItem itemValue="学生" itemLabel="学生"/>
+                        <f:selectItem itemValue="その他" itemLabel="その他"/>
+                    </h:selectOneRadio>
+                </h:panelGroup>
+                メール配信を希望
+                <h:panelGroup>
+                    <h:selectBooleanCheckbox value="#{memberBb.mail_magazine}"/>
+                    <h:outputLabel value="メールマガジンを受け取る"/>
+                </h:panelGroup>
+            </h:panelGrid>
 
-                            <input type="date" name="date" value="#{memberBb.birthday}">
-
-                            </input>
-                        </form>
-                    </td>
-                </tr>
-                <tr>
-                    <td>郵便番号<span class="req">　　　　　　[必須]</span></td>
-                    <td class="sub2"><h:inputText  value="#{memberBb.postal}"/></td>
-                </tr>
-                <tr>
-                    <td>住所<span class="req">　　　　　　　　　[必須]</span></td>
-                    <td class="sub2"><h:inputText  value="#{memberBb.postal}"/></td>
-                </tr>
-
-                <tr>
-                    <td>電話番号<span class="req">　　　　　　[必須]</span></td>
-                    <td class="sub2"><h:inputText  value="#{memberBb.phone}"/></td>
-                </tr>
-                <tr>
-                    <td>E-Mailアドレス</td>
-                    <td class="sub2"><h:inputText  value="#{memberBb.mail_address}"/></td>
-                </tr>
-                <tr>
-                    <td rowspan="3">職業<span class="req">　　　　　　　　[必須]</span></td>
-                    <td class="sub2"><input type="radio" name="kbn" value="#{memberBb.job}"/>会社員　　　 <input type="radio" name="kbn" value="#{memberBb.job}"/>派遣・アルバイト 　　　<input type="radio" name="kbn" value="#{memberBb.job}"/>自営業　　　 </td>
-
-                    <tr><td class="sub2"><input type="radio" name="kbn" value="#{memberBb.job}"/>専業主婦　　　<input type="radio" name="kbn" value="#{memberBb.job}"/>学生　　　　<input type="radio" name="kbn" value="#{memberBb.job}"/>その他 </td>　</tr>
-                </tr>
-                <tr></tr>
-                <tr>
-                    <td>メール配信を希望</td>
-                    <td class="sub2">　<h:selectBooleanCheckbox value="#{memberBb.mail_magazine}"/>メールマガジンを受け取る</td>
-                </tr>
-
-            </table>
-        </h:form>
-        <h3>入力が完了しましたら<span class="blue">会員情報確認ボタン</span>を押してください</h3>
-        <!--<a href="./index.xhtml"><button>トップページに戻る</button></a> 
-        <a href="./enroll_confirm.xhtml"><button>会員情報確認</button></a>-->
-        <h:form>
+            <h3>入力が完了しましたら<span class="blue">会員情報確認ボタン</span>を押してください</h3>
             <h:commandButton value="会員情報確認" styleClass="boxcb" action="#{memberBb.confirm()}"/>
-            <h:commandButton  value="トップページに戻る" styleClass="boxcb" action="#{memberBb.toprt()}"/>
+            <h:button  value="トップページに戻る" styleClass="boxcb" outcome="/index"/>
         </h:form>
-
-
-    </body>
+        <!--        <h3>入力が完了しましたら<span class="blue">会員情報確認ボタン</span>を押してください</h3>
+                <h:form>
+                    <h:commandButton value="会員情報確認" styleClass="boxcb" action="#{memberBb.confirm()}"/>
+                    <h:button  value="トップページに戻る" styleClass="boxcb" outcome="/index"/>
+                </h:form>-->
+        <!--            <table class="enrolltable">
+                        
+                         性別 
+                        <tr>
+                            <td>性別<span class="req">[必須]</span></td>
+                            <td>
+                                <h:selectOneRadio styleClass="clear">
+                                    <f:selectItem itemValue="man" itemLabel="男" />
+                                    <f:selectItem itemValue="woman" itemLabel="女"/>
+                                </h:selectOneRadio>
+                            </td>
+                        </tr>
+        
+                         氏名 
+                        <tr>
+                            <td>氏名<span class="req">[必須]</span></td>
+                            <td><h:inputText id="name" /></td> 
+                        </tr>
+        
+                         氏名（フリガナ） 
+                        <tr>
+                            <td>氏名（フリガナ）<span class="req">[必須]</span></td>
+                            <td class="sub2"><h:inputText id="kana" value="#{memberBb.kana}"/></td>
+                        </tr>
+        
+                         生年月日 
+                        <tr>
+                            <td>生年月日<span class="req">[必須]</span></td>
+                            <td class="sub2">    
+                                <form action="cgi-bin/example.cgi">
+                                    <input type="date" name="date" value="#{memberBb.birthday}">
+                                    
+                                    </input>
+                                </form>
+                            </td>
+                        </tr>
+        
+                         郵便番号 
+                        <tr>
+                            <td>郵便番号<span class="req">[必須]</span></td>
+                            <td class="sub2"><h:inputText value="#{memberBb.postal}"/></td>
+                        </tr>
+        
+                         住所 
+                        <tr>
+                            <td>住所<span class="req">[必須]</span></td>
+                            <td><h:inputText  value="#{memberBb.postal}"/></td>
+                        </tr>
+        
+                         電話番号 
+                        <tr>
+                            <td>電話番号<span class="req">[必須]</span></td>
+                            <td><h:inputText value="#{memberBb.phone}"/></td>
+                        </tr>
+        
+                         E-Mailアドレス 
+                        <tr>
+                            <td>E-Mailアドレス</td>
+                            <td><h:inputText value="#{memberBb.mail_address}"/></td>
+                        </tr>
+        
+                         職業 
+                        <tr>
+                            <td>職業<span class="req">[必須]</span></td>
+                            <td>
+                                <h:selectOneRadio styleClass="clear">
+                                    <f:selectItem itemValue="j1" itemLabel="会社員" />
+                                    <f:selectItem itemValue="j2" itemLabel="派遣・アルバイト"/>
+                                    <f:selectItem itemValue="j3" itemLabel="自営業"/>
+                                    <f:selectItem itemValue="j4" itemLabel="専業主婦"/>
+                                    <f:selectItem itemValue="j4" itemLabel="学生"/>
+                                    <f:selectItem itemValue="j5" itemLabel="その他"/>
+                                </h:selectOneRadio>
+                            </td>
+                        </tr>
+        
+                         メルマガ 
+                        <tr>
+                            <td>メール配信を希望</td>
+                            <td><h:selectBooleanCheckbox value="#{memberBb.mail_magazine}"/>メールマガジンを受け取る</td>
+                        </tr>
+                    </table>-->
+    </h:body>
 </html>

@@ -1,21 +1,40 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : 2018/07/13, 10:33:13
-    Author     : s20163014
-*/
+//メッセージのスタイル 
+h3{
+    font-size: 175%;
+    text-align: center;
+}
 
+//必須
+.req{
+    color: red;
+}
+//登録テーブルのスタイル
+.enrolltable{
+    border-collapse: collapse;
+    height: 70%;
+    width: 70%;
+    margin-right: auto;
+    margin-left: auto;
+}
 
-.box {
+.enrolltable td{
+    border: solid 2px #3498db;   /*線の色*/
+    padding: 2px 4px;
+}
+
+//セルの中のテーブルの線を隠す
+.clear td,.clear th{
+    border: solid 2px #FFFFFF;   /*線の色*/
+    padding: 2px 4px;
+}
+
+/*.box {
     padding: 0 1em;
     margin: 0 auto;
     font-weight: bold;
-    color: #6091d3;/*文字色*/
+    color: #6091d3;//文字色
     background: #FFF;
-    border: solid 3px #6091d3;/*線*/
+    border: solid 3px #6091d3;//線
     width: 50%;
 
 }
@@ -52,7 +71,7 @@ h3{
 
 
 }
-/* タイトルバー */
+ タイトルバー 
 h1{
     position: relative;
     padding: 0.35em 0.5em;
@@ -73,7 +92,7 @@ h1:before{
 
 }
 
-/* サブタイトルバー */
+ サブタイトルバー 
 h2 {
     position: relative;
     padding: .75em 1em .75em 1.75em;
@@ -100,16 +119,14 @@ a button{
 
 }
 
-.req{
-    color: red;
-}
+
 .blue{
     color: blue;
     font-size: larger;
 }
 
 
-/*td {
+td {
 　font-size: 3px;
     dominant-baseline: auto;
     margin-left:  auto;
@@ -124,7 +141,7 @@ table{
   border-collapse: collapse;
   border: 1px solid #ccc;
     border-color: blue;
-}*/
+}
 
 table {
     width: 100%;
@@ -142,17 +159,4 @@ kbn{
     marigin-left: auto;
     margin-right: auto;
     margin-top: auto;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
+}*/

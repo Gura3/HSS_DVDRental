@@ -19,24 +19,37 @@ public class MemberBb {
     private String job;
     private Integer last_visits;
     private String mail_address;
-    private boolean mail_magazine;
+    private boolean mail_magazine;  //メールマガジン
     private boolean unpaid;
     private boolean lend_cnt;
     private boolean del_flg;
     private boolean dangercnt;
+    
+   
 
+    
+    
+    //身分証明賞
+    private String iden_kbn;    //身分証明書区分
+    private String iden_no;     //身分証明書番号
+    
+    //会員登録トップ画面
     public String next() {
         return "/pages/enroll/enrollment_top";
     }
-
-    public String toprt() {
-        return "/index.xhtml";
+    
+    //身分証明書入力
+    public String inputIden(){
+        return "/pages/enroll/identify_confirm.xhtml";
+        
     }
-
+    
+    //店内会員登録画面
     public String instore_next() {
         return "/pages/enroll/instore_enroll.xhtml";
     }
-
+    
+    //会員情報確認画面
     public String confirm() {
         return "/pages/enroll/enroll_confirm.xhtml";
     }
@@ -169,6 +182,20 @@ public class MemberBb {
         this.dangercnt = dangercnt;
     }
     
+    //身分証明書のゲッターセッター
+    public void setIden_no(String iden_no) {
+        this.iden_no = iden_no;
+    }
 
+    public String getIden_kbn() {
+        return iden_kbn;
+    }
+
+    public String getIden_no() {
+        return iden_no;
+    }
+     public void setIden_kbn(String iden_kbn) {
+        this.iden_kbn = iden_kbn;
+    }
 }
 

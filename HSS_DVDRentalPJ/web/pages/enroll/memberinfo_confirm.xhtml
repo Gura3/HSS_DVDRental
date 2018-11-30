@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html" >
+    <h:head>
+        <title>会員情報確認</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <h:outputStylesheet library="css" name="title.css" />
+    </h:head>
+    <h:body>
+        <h1>HCSDVDレンタル</h1>
+        <h2>会員情報登録</h2>
+        
+        <h:panelGrid columns="2" cellpadding="0" rules="all" border="1">
+            性別
+            <h:outputText value="#{memberBb.sex}" />
+            氏名
+            <h:outputText value="#{memberBb.name}" />
+            氏名（フリガナ）
+            <h:outputText value="#{memberBb.kana}"/>
+            生年月日
+            <h:outputText value="#{memberBb.birthday}"/>
+            郵便番号
+            <h:outputText value="#{memberBb.postal}" />
+            住所
+            <h:outputText value="#{memberBb.address}"/>
+            電話番号
+            <h:outputText value="#{memberBb.phone}"/>
+            E-Mailアドレス
+            <h:outputText value="#{memberBb.mail_address}"/>
+            職業
+            <h:outputText value="#{memberBb.job}"/>
+            メール配信を希望
+            <h:outputText value="#{memberBb.cnvMg(memberBb.mail_magazine)}"/>
+            E-Mailアドレス
+            <h:outputText value="#{memberBb.mail_address}"/>
+            身分証明書番号
+            <h:outputText value="#{memberBb.iden_no}"/>
+            身分証明書種類
+            <h:outputText value="#{memberBb.iden_kbn}"/>
+            <h:form>
+            <h:commandButton action="#{memberBb.memIns()}" value="登録完了" />
+            </h:form>
+            <h:button outcome="/index" value="トップページに戻る"/>
+            
+        </h:panelGrid>
+    </h:body>
+</html>

@@ -12,42 +12,27 @@
         <h1>HCSDVDレンタル</h1>
         <h2>身分証明書番号入力</h2>
         <h:form>
-            <h:selectOneRadio value="#{memberBb.iden_kbn}"> 　　　
-                <f:selectItems value="運転免許" />
-                <f:selectItems value="学生証" />
-                <f:selectItems value="保険証" />
-                <f:selectItems value="保険証" />
-                <f:selectItems value="パスポート" />
-                <f:selectItems value="その他" />
-            </h:selectOneRadio>
+            <h:inputText value="#{memberBb.iden_no}"/>
             
-            <h:inputText value="#{memberBb.iden_no} "/>
-            
-            <h:button outcome="/index.xhtml"/>
-<!--            <h:commandButton action="" />-->
+            <!--            <h:commandButton action="" />-->
+
+
+            <h:panelGrid columns="1" cellpadding="3" rules="all" border="1">
+                <h:selectOneRadio value="#{memberBb.iden_kbn}">
+                    <f:selectItem itemValue="運転免許（未成年を除く）" itemLabel="運転免許（未成年を除く）" />
+                    <f:selectItem itemValue="保険証（健康保険）" itemLabel="保険証（健康保険）"/>
+                    <f:selectItem itemValue="保険証（高校生を除く）" itemLabel="保険証（高校生を除く）"/>
+                    <f:selectItem itemValue="学生証（後期高齢者医療）" itemLabel="学生証（後期高齢者医療）"/>
+                    <f:selectItem itemValue="パスポート（未成年を除く）" itemLabel="パスポート（未成年を除く）"/>
+                    <f:selectItem itemValue="その他" itemLabel="その他"/>
+                </h:selectOneRadio>
+            </h:panelGrid>
+
+
+            <h3>入力が完了しましたら<span class="blue">会員情報確認ボタン</span>を押してください</h3>
+            <h:button outcome="/index.xhtml" value="トップページへ戻る" />
+            <h:commandButton value="会員カードスキャン" styleClass="boxcb" action="${memberBb.scan()}"/>
         </h:form>
-<!--        <h:form>
-            <h:selectOneRadio id="iden" value="#{Identifybb.iden}" onclick="selectbtn()"> 　　　
-                <f:selectItems value="#{Identifybb.items}"/>
-            </h:selectOneRadio>    
-
-        </h:form>
-        <h:form>
-            <h:inputText value="#{Identifybb.num}"/>
-        </h:form>
-        <div class="subMenu">
-            <a href="enrollment_top.xhtml"><button>処理を中断<br></br>（トップページへ戻る）</button></a>
-            <a href="scan_card.xhtml"><button>会員カードをスキャン</button></a>
-        </div>
-
-        <h3>ラジオボタンで選んだ身分証とその保険区分 保険証（健康保険）区分「HK」</h3>
-        <p>:半角数字の記号で数字を入力してください（8桁）<br></br>
-            :完了　会員カードスキャンに移行してください</p>
-        <div class="greenbox"><h:inputTextarea value="#{identifyBb.iden}"/> </div>
-
-
-        コマンドボタンで切り替え
-        <a href="/index.xhtml"><button>トップページに戻る</button></a>
-        <a href="/scan_card.xhtml"><button>会員カードスキャン</button></a>-->
     </h:body>
+
 </html>

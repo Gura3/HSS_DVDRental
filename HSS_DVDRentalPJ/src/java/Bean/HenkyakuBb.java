@@ -243,15 +243,17 @@ public class HenkyakuBb {
             setBirthday(fmtSlash(m.getBirth_day()));
             setPhone(m.getPhone());
             List<Lend> llist = kashimng.getMemkashi(getMemberno());
+            
             if(llist != null){
-                int cnt = 0;
-                for(int i=0;i<llist.size();i++){
-                    if(llist.get(i) != null){
-                        if(mng.getKaeshitenai(llist.get(i).getLend_no()) != null){
-                            cnt++;
-                        }
-                    }
-                }
+                List<Kashi_meisai> kasilist = mng.getKaeshitenaiList(llist.get(0).getLend_no());
+                int cnt = kasilist.size();
+//                for(int i=0;i<10;i++){
+//                    if(llist.get(i) != null){
+//                        if(mng.getKaeshitenai(llist.get(i).getLend_no(),String.format("%08d",i)) != null){
+//                            cnt++;
+//                        }
+//                    }
+//                }
                 setKashidashinow(Integer.toString(cnt));
             }else{
                 setKashidashinow("0");

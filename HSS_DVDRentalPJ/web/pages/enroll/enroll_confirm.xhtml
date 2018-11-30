@@ -31,40 +31,42 @@ and open the template in the editor.
                     <tr><td>メールマガジンを希望</td><td>#{memberBb.mail_magazine}</td></tr>
                 </table>-->
 
-<!--        <h:form>
-            <h:button outcome="/instore_enroll.xhtml" value="登録しなおす&#13;(登録画面に戻る)" />
-            <h:button outcome="/index.xhtml" value="トップページへ戻る" />
-            <h:commandButton action="#{memberBb.inputIden()}" value="身分証番号を入力" />
-        </h:form>-->
+        <!--        <h:form>
+                    <h:button outcome="/instore_enroll.xhtml" value="登録しなおす&#13;(登録画面に戻る)" />
+                    <h:button outcome="/index.xhtml" value="トップページへ戻る" />
+                    <h:commandButton action="#{memberBb.inputIden()}" value="身分証番号を入力" />
+                </h:form>-->
 
+
+        <h:panelGrid columns="2" cellpadding="0" rules="all" border="1">
+            性別
+            <h:outputText value="#{memberBb.sex}"/>
+            氏名
+            <h:outputText value="#{memberBb.name}"/>
+            氏名（フリガナ）
+            <h:outputText value="#{memberBb.kana}"/>
+            生年月日
+            <h:outputText value="#{memberBb.birthday}"/>
+            郵便番号
+            <h:outputText value="#{memberBb.postal}" />
+            住所
+            <h:outputText value="#{memberBb.address}"/>
+            電話番号
+            <h:outputText value="#{memberBb.phone}"/>
+            E-Mailアドレス
+            <h:outputText value="#{memberBb.mail_address}"/>
+            職業<span class="req">[必須]</span>
+            <h:outputText value="#{memberBb.job}"/>
+            メール配信を希望
+            <h:outputText value="受け取る" rendered="#{memberBb.mail_magazine}"/>
+            <h:outputText value="受け取らない" rendered="#{!memberBb.mail_magazine}"/>
+        </h:panelGrid>
+        <h3>
+            お客様の身分証と情報を照らし合わせてください。<br/>
+            情報が正しいと判断した場合のみ<br/>
+            身分証番号入力に移行してください。
+        </h3>
         <h:form>
-            <h:panelGrid columns="2" cellpadding="0" rules="all" border="1">
-                性別
-                <h:outputText value="#{memberBb.sex}"/>
-                氏名
-                <h:outputText value="#{memberBb.name}"/>
-                氏名（フリガナ）
-                <h:outputText value="#{memberBb.kana}"/>
-                生年月日
-                <h:outputText value="#{memberBb.birthday}"/>
-                郵便番号
-                <h:outputText value="#{memberBb.postal}" />
-                住所
-                <h:outputText value="#{memberBb.address}"/>
-                電話番号
-                <h:outputText value="#{memberBb.phone}"/>
-                E-Mailアドレス
-                <h:outputText value="#{memberBb.mail_address}"/>
-                職業<span class="req">[必須]</span>
-                <h:outputText value="#{memberBb.job}"/>
-                メール配信を希望
-                <h:outputText value="#{memberBb.mail_magazine}"/>
-            </h:panelGrid>
-            <h3>
-                お客様の身分証と情報を照らし合わせてください。<br/>
-                情報が正しいと判断した場合のみ<br/>
-                身分証番号入力に移行してください。
-            </h3>
             <h:button outcome="instore_enroll.xhtml" value="登録しなおす(登録画面に戻る)" />
             <h:button outcome="/index.xhtml" value="トップページへ戻る" />
             <h:commandButton action="#{memberBb.inputIden()}" value="身分証番号を入力" />

@@ -19,7 +19,7 @@ and open the template in the editor.
     </h:head>
     <h:body>
         <h1>HCSDVDレンタル</h1>
-        <h2>会員カード再発行処理</h2>
+        <h2>会員カード登録</h2>
         <h3>未使用の会員カードをスキャンしてください</h3>
         <div class="box">
             <p align="center">スキャン待ち</p>
@@ -27,10 +27,9 @@ and open the template in the editor.
         
         <h:form id="tugi">
             <h:commandButton type="button" id="next" onclick="return runBtnDisabled('tugi', 'next')" value="次へ" styleClass="btn"/>
-            <h:commandButton value="送　信"  action="#{reissueCard.scan()}" styleClass="btn"  id ="senni"/>
-            <h:inputText value="#{reissueCard.testNo}" id="mem" styleClass="btn"/>
+            <h:commandButton value="送　信"  action="#{memberBb.staffConfirm()}" styleClass="btn" id ="senni"/>
+            <h:inputText value="#{memberBb.member_no}" id="mem" styleClass="btn"/>
         </h:form>
-        <!--とりあえずページ遷移-->
-        <a href=""
     </h:body>
+    
 </html>

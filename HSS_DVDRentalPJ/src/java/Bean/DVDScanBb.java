@@ -291,6 +291,8 @@ public class DVDScanBb {
         if(name.equals("HCS70148")){
             System.out.println("2");
             l.setStore_cd("00");
+        }else{
+            l.setStore_cd("00");
         }
         System.out.println("3");
         Random bango = new Random();

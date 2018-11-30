@@ -6,6 +6,7 @@
 package Manager;
 
 import Bean.Kashi_meisai;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -33,18 +34,32 @@ public class HenkyakuManager {
         return k;
     }
     
-    public Kashi_meisai getKaeshitenai(String lend_no){
+    public Kashi_meisai getKaeshitenai(String lend_no,String cnt){
         System.out.println("getKaeshitenai");
         Kashi_meisai k = null;
         System.out.println(1);
         TypedQuery query = em.createNamedQuery(Kashi_meisai.Kaeshitakana, Kashi_meisai.class);
         System.out.println(2);
         query.setParameter(1,lend_no);
+        query.setParameter(2,cnt);
         System.out.println(3);
         k = (Kashi_meisai)query.getSingleResult();
         System.out.println(4);
         
         return k;
+    }
+    
+    public List<Kashi_meisai> getKaeshitenaiList(String lend_no){
+        System.out.println("getKaeshitenai");
+        TypedQuery<Kashi_meisai> query = null;
+        System.out.println(1);
+        query = em.createNamedQuery(Kashi_meisai.KaeshitakanaList, Kashi_meisai.class);
+        System.out.println(2);
+        query.setParameter(1,lend_no);
+        System.out.println(3);
+        System.out.println(4);
+        
+        return query.getResultList();
     }
     
 

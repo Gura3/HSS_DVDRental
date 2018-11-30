@@ -2,48 +2,40 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
     <h:head>
-        <title>店内会員登録-完了</title>
-        <link rel="stylesheet" type="text/css" href="resours/css/mystyle.css"/>
-        <link rel="stylesheet" type="text/css" href="resours/css/title.css"/>
-        <link rel="stylesheet" type="text/css" href="resours/css/top.css"/>
+        <title>現計処理-完了</title>
+        <h:outputStylesheet library="css" name="title.css"/>
+        <h:outputStylesheet library="css" name="comps.css"/>
+        <h:outputStylesheet library="css" name="kashicomp.css"/>
     </h:head>
     <h:body>
         <h1>HCSDVDレンタル</h1>
 <!--        <p id="gazou">
-            <img src="resours/images/kaiintouroku.PNG"></img>
+            <img src="resours/images/saihakkou.PNG"></img>
         </p>
 -->
-<h2>店内会員登録</h2>
+<h2>会員登録処理</h2>
         <p></p>
-        <div>
+<!--        <div>
         <ol id="Pass">
-            <li>会員情報入力</li>
-            <li>仮登録会員情報</li>
-            <li>身分証番号入力</li>
-            <li>会員カードスキャン</li>
+            <li>会員検索</li>
             <li>会員情報確認</li>
-            <li class="loc">本登録完了</li>
+            <li>身分証番号入力</li>
+            <li>バーコードスキャン</li>
+            <li class="loc">再発行完了</li>
         </ol>
         </div>
-        <br></br><br></br>
+-->
+        
         <div class="moji">
             <p class="dai">会員登録が完了しました。</p>
-            <p class="syou">再度この処理をする場合は<strong>再度処理ボタン</strong>を押してください。</p>
-            
+            <p class="syou">S構も完了しました。</p>
         </div>
-        <p></p>
-        <div class="botan">
-        <h:form>
-            <h:commandButton class="saido" value="再度処理(会員登録選択画面へ)" alt="sa"></h:commandButton>
-            <h:commandButton class="top" value="トップページに戻る"></h:commandButton>
-        </h:form>
-                
+       
            
-      
-        </div>
+      <h:button outcome="/index.xhtml" value="トップページへ戻る" />
     </h:body>
     
 </html>
-                

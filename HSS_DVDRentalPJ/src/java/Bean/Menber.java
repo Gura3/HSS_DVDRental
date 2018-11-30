@@ -150,13 +150,23 @@ public class Menber implements Serializable {
     public void setMail_address(String mail_address) {
         this.mail_address = mail_address;
     }
-
-    public String getMail_magazine() {
-        return mail_magazine;
+    
+   
+    public boolean getMail_magazine() {
+        boolean magazine = true;
+        if(this.mail_magazine.equals("0")){
+            magazine = false;
+        }
+        return magazine;
     }
-
-    public void setMail_magazine(String mail_magazine) {
-        this.mail_magazine = mail_magazine;
+    
+    //booleanをStringに変換
+    public void setMail_magazine(boolean magazine) {
+        String m = "1";
+        if(!magazine){
+            m = "0";
+        }
+        this.mail_magazine = m;
     }
 
     public String getUnpaid() {

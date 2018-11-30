@@ -12,6 +12,8 @@ import javax.validation.constraints.*;
     @NamedQuery(name=Kashi_meisai.ComeKashi_meisai,
                 query="SELECT l FROM Kashi_meisai l WHERE l.dvd_barcode = ?1 AND l.return_day IS NULL"),
     @NamedQuery(name=Kashi_meisai.Kaeshitakana,
+                query="SELECT l FROM Kashi_meisai l WHERE l.lend_no = ?1 AND l.lend_det_no = ?2 AND l.return_day IS NULL"),
+    @NamedQuery(name=Kashi_meisai.KaeshitakanaList,
                 query="SELECT l FROM Kashi_meisai l WHERE l.lend_no = ?1 AND l.return_day IS NULL")
 })
 
@@ -21,6 +23,7 @@ public class Kashi_meisai implements Serializable {
     
     public static final String ComeKashi_meisai ="ComeKashi_meisai";
     public static final String Kaeshitakana ="Kaeshitakana";
+    public static final String KaeshitakanaList ="KaeshitakanaList";
     @Id
     @NotNull
     private String lend_no; //貸出番号
